@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
+import style from './app.module.css';
+import Navigation from './components/navigation/navigation';
 
 function App() {
   return (
-    <div className="App">
-
+    <div className={style.app}>
+      <Navigation />
     </div>
   );
 }
