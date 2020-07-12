@@ -8,7 +8,6 @@ const App = () => {
   return (
     <div className={style.app}>
       <Navigation />
-
       <div className={style.container}>
         <Aside />
         <Main />
