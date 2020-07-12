@@ -2,9 +2,9 @@ import React from 'react';
 import style from './navigation.module.css';
 
 
-const Item = (props) => {
+const Item = ({ href, title }) => {
     return (
-        <li className={style.listItem}><a href={props.path}>{props.name}</a></li>
+        <li className={style.listItem}><a href={href}>{title}</a></li>
     )
 }
 
