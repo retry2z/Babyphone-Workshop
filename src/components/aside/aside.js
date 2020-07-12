@@ -1,18 +1,17 @@
 import React from 'react';
-import style from './navigation.module.css';
 import Link from '../link/link';
+import style from './aside.module.css';
 
-const Navigation = () => {
+const Aside = () => {
     return (
-        <header className={style.navigation}>
+        <aside className={style.aside}>
             <ul>
                 <Link href="#" title="Going to 1" />
                 <Link href="#" title="Going to 2" />
                 <Link href="#" title="Going to 3" />
             </ul>
-        </header>
+        </aside>
     )
 }
 
-
-export default Navigation;
+export default Aside
