@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './navigation.module.css';
+import style from './link.module.css';
 
 
 const Item = ({ href, title }) => {
