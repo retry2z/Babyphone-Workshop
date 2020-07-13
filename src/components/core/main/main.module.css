@@ -4,11 +4,12 @@
     height: auto;
     /* border:1px solid blue; */
     margin-bottom: 5%;
+    padding: 0px 0.4% 0px 0.4%;
 }
 
 main h1 {
     text-align: center;
     color: #234465;
-    margin-bottom: 2%;
+    margin-bottom: 2.8%;
     text-transform: uppercase;
 }
