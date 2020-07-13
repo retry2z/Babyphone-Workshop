@@ -4,6 +4,7 @@ import Navigation from './components/core/navigation/navigation';
 import Aside from './components/core/aside/aside';
 import Main from './components/core/main/main';
 import Product from './components/product/product';
+import Footer from './components/core/footer/footer';
 
 const App = () => {
   return (
@@ -16,6 +17,8 @@ const App = () => {
         <Main>
           <Product />
         </Main>
+
+        <Footer />
       </div>
 
 
