@@ -17,11 +17,9 @@ const App = () => {
         <Main>
           <Product />
         </Main>
-
-        <Footer />
       </div>
-
-
+      <Footer />
+      
     </div>
   );
 }
