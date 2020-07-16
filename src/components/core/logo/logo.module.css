@@ -1,0 +1,15 @@
+.logo {
+    display: inline-block;
+    height: auto;
+    margin-right: 2%;
+    cursor: pointer;
+    padding: 0.5%;
+    margin: 0.1%;
+    vertical-align: top;
+    padding-left: 15px;
+}
+
+.imgLogo {
+    width: 78px;
+    margin: 8px;
+}
