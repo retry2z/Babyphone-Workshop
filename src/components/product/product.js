@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './product.module.css'
 import Card from './card/card';
+import HeaderPage from '../core/header/header'
 import productService from './product-service';
 
 class Product extends React.Component {
@@ -24,7 +25,10 @@ class Product extends React.Component {
 
         return data.map(doc => {
             return (
-                <Card key={doc.id} author={doc.author} description={doc.description} />
+                <>
+                    <HeaderPage title="Origamies" />
+                    <Card key={doc.id} author={doc.author} description={doc.description} />
+                </>
             )
         })
     }

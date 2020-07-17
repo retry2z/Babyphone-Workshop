@@ -18,11 +18,10 @@ header .listItem {
     vertical-align: top;
 }
 
-/* header .listItem:not(:first-child) {
-    padding: 2%;
+header .listItem:not(:first-child) {
+    padding: 1.2%;
     margin-top: 1.5%;
-    border-top: 2px solid #ffa000;
-} */
+}
 
 aside .listItem {
     display: block;
