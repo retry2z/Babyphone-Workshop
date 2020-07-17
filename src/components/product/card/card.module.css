@@ -9,10 +9,10 @@
 .description {
     word-wrap: break-word;
     padding: 0.5%;
-    font-style: italic;
+    font-size: 22px;
     /* border:1px solid blue; */
     margin-bottom: 0.5%;
-    width: 95%;
+    width: 92%;
     display: inline-block;
     vertical-align: top;
 }
@@ -32,6 +32,6 @@
 
 .card img {
     padding: 0.5%;
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
 }
