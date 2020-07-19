@@ -23,12 +23,9 @@ class Product extends React.Component {
     renderOrigamis() {
         const { data } = this.state
 
-        return data.map(doc => {
+        return data.map((doc, index) => {
             return (
-                <>
-                    <HeaderPage title="Origamies" />
-                    <Card key={doc.id} author={doc.author} description={doc.description} />
-                </>
+                <Card key={doc.id} author={doc.author} description={doc.description} index={index} />
             )
         })
     }
@@ -36,6 +33,7 @@ class Product extends React.Component {
     render() {
         return (
             <div className={style.container} >
+                <HeaderPage title="Origamies" />
                 {this.renderOrigamis()}
             </div>
         )
