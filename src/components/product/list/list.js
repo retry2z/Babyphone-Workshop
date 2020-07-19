@@ -1,10 +1,10 @@
 import React from 'react';
-import style from './product.module.css'
-import Card from './card/card';
-import HeaderPage from '../core/header/header'
-import productService from './product-service';
+import style from './list.module.css'
+import Card from '../card/card';
+import HeaderPage from '../../core/headerPage/HeaderPage'
+import productService from '../product-service';
 
-class Product extends React.Component {
+class List extends React.Component {
     constructor(props) {
         super(props);
 
@@ -40,4 +40,4 @@ class Product extends React.Component {
     }
 }
 
-export default Product
+export default List

@@ -3,9 +3,9 @@ import style from './navigation.module.css';
 import Link from '../link/link';
 import Logo from '../logo/logo';
 import logo from '../../../images/white-origami-bird.png';
-import router from '../../routes/routes';
+import router from '../../../routes/routes';
 
-const Navigation = () => {
+const Header = () => {
     const navigation = router();
 
     return (
@@ -23,4 +23,4 @@ const Navigation = () => {
 }
 
 
-export default Navigation;
+export default Header;

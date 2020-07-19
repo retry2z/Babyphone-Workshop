@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from '../link/link';
 import style from './aside.module.css';
-import router from '../../routes/routes';
+import router from '../../../routes/routes';
 
 
 const Aside = () => {
