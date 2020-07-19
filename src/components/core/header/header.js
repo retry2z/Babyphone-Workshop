@@ -1,8 +1,8 @@
 import React from 'react';
-import style from './navigation.module.css';
+import style from './header.module.css';
 import Link from '../link/link';
 import Logo from '../logo/logo';
-import logo from '../../../images/white-origami-bird.png';
+import logoImage from '../../../images/white-origami-bird.png';
 import router from '../../../routes/routes';
 
 const Header = () => {
@@ -11,10 +11,10 @@ const Header = () => {
     return (
         <header className={style.navigation}>
             <ul>
-                <Logo href={logo} title="Logo" />
+                <Logo href={logoImage} title="Logo" />
                 {
                     navigation.map(path => {
-                        return <Link href={path.link} title={path.title} />
+                        return <Link key={path.title} href={path.link} title={path.title} />
                     })
                 }
             </ul>

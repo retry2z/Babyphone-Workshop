@@ -1,11 +1,14 @@
 import React from 'react';
 
 import ProductList from '../../components/product/list/list';
+import Common from '../../components/common/common';
 
 const Home = () => {
     return (
-        <ProductList />
-    );
+        <Common>
+            <ProductList />
+        </Common>
+    )
 }
 
-export default Home;
+export default Home

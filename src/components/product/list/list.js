@@ -1,7 +1,5 @@
 import React from 'react';
-import style from './list.module.css'
 import Card from '../card/card';
-import HeaderPage from '../../core/headerPage/HeaderPage'
 import productService from '../product-service';
 
 class List extends React.Component {
@@ -32,10 +30,9 @@ class List extends React.Component {
 
     render() {
         return (
-            <div className={style.container} >
-                <HeaderPage title="Origamies" />
+            <>
                 {this.renderOrigamis()}
-            </div>
+            </>
         )
     }
 }
