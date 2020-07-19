@@ -1,16 +1,14 @@
 import React from 'react';
 
-import ProductList from '../../components/product/list/list';
 import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
 
-const Home = () => {
+const Share = () => {
     return (
         <Common>
-            <Title title='Publication' />
-            <ProductList />
+            <Title title='Share you thoughts...' />
         </Common>
     )
 }
 
-export default Home
+export default Share

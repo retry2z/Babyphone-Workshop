@@ -28,7 +28,8 @@ import {
 //   )
 // }
 
-const LazyPublications = React.lazy(() => import('./pages/home-page/home'))
+const LazyPublications = React.lazy(() => import('./pages/home-page/home'));
+const LazyShare = React.lazy(() => import('./pages/share-you-thoughts/share'));
 
 const LazyNavigation = () => {
 
@@ -37,6 +38,8 @@ const LazyNavigation = () => {
             <Switch>
                 <Suspense fallback={<h1>Loading..</h1>}>
                     <Route path="/" exact component={LazyPublications} />
+                    <Route path="/share" exact component={LazyShare} />
+
                 </Suspense>
             </Switch>
         </BrowserRouter>
