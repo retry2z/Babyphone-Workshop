@@ -1,11 +1,14 @@
 import React from 'react';
+import './share.module.css'
 
 import Common from '../../components/common/common';
 import Title from '../../components/elements/title/title';
 import Card from '../../components/product/card/card';
 import productService from '../../services/product-service';
+import InformationPanel from '../../components/product/information-panel/information-panel';
+import DefinedButton from '../../components/elements/button/button';
 
-class Home extends React.Component {
+class Share extends React.Component {
     constructor(props) {
         super(props);
 
@@ -19,6 +22,7 @@ class Home extends React.Component {
 
         const result = data
             .sort((a, b) => Number(new Date(a.createdAt)) - Number(new Date(b.createdAt)))
+            .slice(0, 3)
             .map((doc, index) => {
                 return <Card key={doc.id} data={{ index, ...doc }} />
             })
@@ -31,11 +35,15 @@ class Home extends React.Component {
     render() {
         return (
             <Common>
-                <Title title='Publication' />
-                <> {this.state.data} </>
+                <Title title='Share Your Thought' />
+                <textarea></textarea>
+                <DefinedButton title='Post' />
+                <InformationPanel title='History'>
+                    {this.state.data}
+                </InformationPanel>
             </Common>
         )
     }
 }
 
-export default Home
+export default Share
