@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Common from '../../components/common/common';
-import Title from '../../components/core/title/title';
+import Title from '../../components/elements/title/title';
 import Card from '../../components/product/card/card';
 import productService from '../../services/product-service';
 
