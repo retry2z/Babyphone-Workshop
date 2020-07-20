@@ -10,16 +10,18 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
-            data: <Card author='...' description='Loading...' index='0' />,
+            data: <Card />,
         }
     }
 
     componentDidMount = async () => {
         const { data } = await productService.list();
 
-        const result = data.map((doc, index) => {
-            return <Card key={doc.id} author={doc.author} description={doc.description} index={index} />
-        });
+        const result = data
+            .sort((a, b) => Number(new Date(a.createdAt)) - Number(new Date(b.createdAt)))
+            .map((doc, index) => {
+                return <Card key={doc.id} data={{ index, ...doc }} />
+            })
 
         this.setState({
             data: result
