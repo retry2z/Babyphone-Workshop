@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './login.module.css'
 
 import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
@@ -20,11 +21,14 @@ class Register extends React.Component {
     render() {
         return (
             <Common>
-                <Title title='Register' />
-                <form>
-                    <InputField />
-                    <DefinedButton />
-                </form>
+                <Title title='Login' />
+                <div className={style.box}>
+                    <form>
+                        <InputField id='email' label='Email: ' />
+                        <InputField id='password' label='Password: ' />
+                        <DefinedButton title='Register' />
+                    </form>
+                </div>
             </Common>
         )
     }

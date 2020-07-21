@@ -1,7 +1,7 @@
-.box{
-    position: inherit;;
-	transform: translate(-50%,-50%);
-    background-color:rgb(247, 244, 244);
-	border-radius:3px;
-	padding:70px 100px;
+.box {
+    background: #eeeeee;
+    padding: 20px;
+    margin: 1em auto;
+    border-radius: 3px;
+    width: 40%;
 }
