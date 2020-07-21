@@ -32,9 +32,21 @@ class Register extends React.Component {
                 <Title title='Register' />
                 <div className={style.box}>
                     <form>
-                        <InputField type='email' placeholder='Email: ' onChange={(event) => { this.onChange(event, 'email') }} />
-                        <InputField type='password' placeholder='Password: ' onChange={(event) => { this.onChange(event, 'password') }} />
-                        <InputField type='password' placeholder='Re-password: ' onChange={(event) => { this.onChange(event, 'rePassword') }} />
+                        <InputField
+                            type='email'
+                            placeholder='Email: '
+                            onChange={(event) => { this.onChange(event, 'email') }}
+                        />
+                        <InputField
+                            type='password'
+                            placeholder='Password: '
+                            onChange={(event) => { this.onChange(event, 'password') }}
+                        />
+                        <InputField
+                            type='password'
+                            placeholder='Re-password: '
+                            onChange={(event) => { this.onChange(event, 'rePassword') }}
+                        />
                         <DefinedButton title='Register' />
                     </form>
                 </div>
