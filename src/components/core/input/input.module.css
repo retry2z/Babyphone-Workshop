@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+.input {
+    width: 100%;
+
+}
+
+.input {
+    position:relative;
+    margin: 0 auto;
+    margin-bottom:30px;
+    padding: 1%;
+    text-align: center;
+    width: 84%;
+}
+
+label{
+	position:absolute;
+	top:0px;
+	left:0px;
+    font-size:14px;
+	color:#234465;	
+	transition: all 0.5s ease-in-out;
+}
+
+input{ 
+    border:0;
+    border-bottom:1px solid #234465;  
+    background:transparent;
+    width:100%;
+    padding:14px 0 5px 0;
+    font-size:16px;
+    color:rgb(0, 0, 0);
+}
+
+.input input:focus{ 
+    border:none;	
+    outline:none;
+    border-bottom:1px solid #ffa000;	
+}
+
+.input input:focus ~ label {
+    color: #234465;
+	top:-6px;
+	font-size:12px;	
+}
+
+
+

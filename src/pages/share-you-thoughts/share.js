@@ -2,11 +2,11 @@ import React from 'react';
 import './share.module.css'
 
 import Common from '../../components/common/common';
-import Title from '../../components/elements/title/title';
+import Title from '../../components/core/title/title';
 import Card from '../../components/product/card/card';
 import productService from '../../services/product-service';
 import InformationPanel from '../../components/product/information-panel/information-panel';
-import DefinedButton from '../../components/elements/button/button';
+import DefinedButton from '../../components/core/button/button';
 
 class Share extends React.Component {
     constructor(props) {

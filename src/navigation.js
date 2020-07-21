@@ -5,8 +5,11 @@ import {
     Route
 } from 'react-router-dom'
 
-import Publications from './pages/home-page/home'
-import ShareThoughtsPage from './pages/share-you-thoughts/share'
+import Publications from './pages/home-page/home';
+import ShareThoughtsPage from './pages/share-you-thoughts/share';
+import RegisterPage from './pages/register-page/register';
+import LoginPage from './pages/login-page/login';
+
 
 
 const Navigation = () => {
@@ -16,6 +19,8 @@ const Navigation = () => {
             <Switch>
                 <Route path="/" exact component={Publications} />
                 <Route path="/share" component={ShareThoughtsPage} />
+                <Route path="/auth/login" component={LoginPage} />
+                <Route path="/auth/register" component={RegisterPage} />
             </Switch>
         </BrowserRouter>
     )
