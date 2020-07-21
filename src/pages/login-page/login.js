@@ -26,7 +26,7 @@ class Register extends React.Component {
                     <form>
                         <InputField id='email' label='Email: ' />
                         <InputField id='password' label='Password: ' />
-                        <DefinedButton title='Register' />
+                        <DefinedButton title='Login' />
                     </form>
                 </div>
             </Common>

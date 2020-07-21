@@ -12,10 +12,18 @@ class Register extends React.Component {
         super(props);
 
         this.state = {
+            email: '',
+            password: '',
+            rePassword: '',
         }
     }
 
-    componentDidMount = async () => {
+    onChange = (event, field) => {
+        const newState = {
+            [field]: event.target.value
+        }
+
+        this.setState(newState);
     }
 
     render() {
@@ -24,9 +32,9 @@ class Register extends React.Component {
                 <Title title='Register' />
                 <div className={style.box}>
                     <form>
-                        <InputField id='email' label='Email: ' />
-                        <InputField id='password' label='Password: ' />
-                        <InputField id='password' label='Re-password: ' />
+                        <InputField type='email' placeholder='Email: ' onChange={(event) => { this.onChange(event, 'email') }} />
+                        <InputField type='password' placeholder='Password: ' onChange={(event) => { this.onChange(event, 'password') }} />
+                        <InputField type='password' placeholder='Re-password: ' onChange={(event) => { this.onChange(event, 'rePassword') }} />
                         <DefinedButton title='Register' />
                     </form>
                 </div>
