@@ -31,9 +31,9 @@ class Register extends React.Component {
                 <Title title='Login' />
                 <div className={style.box}>
                     <form>
-                        <InputField id='email' label='Email: ' /><InputField
+                        <InputField
                             type='email'
-                            placeholder='Email: '
+                            placeholder='Email address: '
                             onChange={(event) => { this.onChange(event, 'email') }}
                         />
                         <InputField

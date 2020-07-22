@@ -10,7 +10,7 @@ import ShareThoughtsPage from './pages/share-you-thoughts/share';
 import ProfilePage from './pages/profile-page/profile';
 import RegisterPage from './pages/register-page/register';
 import LoginPage from './pages/login-page/login';
-
+import ErrorPage from './pages/404-page/notFound';
 
 
 const Navigation = () => {
@@ -23,6 +23,7 @@ const Navigation = () => {
                 <Route path="/user/profile" component={ProfilePage} />
                 <Route path="/auth/login" component={LoginPage} />
                 <Route path="/auth/register" component={RegisterPage} />
+                <Route component={ErrorPage} />
             </Switch>
         </BrowserRouter>
     )
