@@ -3,9 +3,9 @@ import './share.module.css'
 
 import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
-import Card from '../../components/product/card/card';
+import ProductCard from '../../components/product-card/card';
 import productService from '../../services/product-service';
-import InformationPanel from '../../components/product/information-panel/information-panel';
+import InformationPanel from '../../components/information-panel/information-panel';
 import DefinedButton from '../../components/core/button/button';
 
 class Share extends React.Component {
@@ -13,7 +13,7 @@ class Share extends React.Component {
         super(props);
 
         this.state = {
-            data: <Card />,
+            data: <ProductCard />,
         }
     }
 
@@ -24,7 +24,7 @@ class Share extends React.Component {
             .sort((a, b) => Number(new Date(a.createdAt)) - Number(new Date(b.createdAt)))
             .slice(0, 3)
             .map((doc, index) => {
-                return <Card key={doc.id} data={{ index, ...doc }} />
+                return <ProductCard key={doc.id} data={{ index, ...doc }} />
             })
 
         this.setState({

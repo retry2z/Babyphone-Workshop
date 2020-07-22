@@ -11,7 +11,7 @@ const router = (id, uid) => {
         },
         {
             title: "Profile",
-            link: `/user/profile/${uid}`
+            link: `/user/profile`
         },
         {
             title: "Register",
