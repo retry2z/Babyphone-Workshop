@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './card.module.css';
-import defaultImage from '../../../images/blue-origami-bird.png';
+import defaultImage from '../../images/blue-origami-bird.png';
 
-const Card = ({ data }) => {
+const ProductCard = ({ data }) => {
     const author = data?.author || '...';
     const imageUrl = data?.imageUrl || defaultImage;
     const description = data?.description || 'Loading...';
@@ -25,4 +25,4 @@ const Card = ({ data }) => {
     )
 }
 
-export default Card
+export default ProductCard

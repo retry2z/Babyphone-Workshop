@@ -2,7 +2,7 @@ import React from 'react';
 
 import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
-import Card from '../../components/product/card/card';
+import ProductCard from '../../components/product-card/card';
 import productService from '../../services/product-service';
 
 class Home extends React.Component {
@@ -10,7 +10,7 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
-            data: <Card />,
+            data: <ProductCard />,
         }
     }
 
@@ -20,7 +20,7 @@ class Home extends React.Component {
         const result = data
             .sort((a, b) => Number(new Date(a.createdAt)) - Number(new Date(b.createdAt)))
             .map((doc, index) => {
-                return <Card key={doc.id} data={{ index, ...doc }} />
+                return <ProductCard key={doc.id} data={{ index, ...doc }} />
             })
 
         this.setState({

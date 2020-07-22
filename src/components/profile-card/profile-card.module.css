@@ -1,0 +1,29 @@
+.profile {
+    width: 100%;
+    display: block;
+    padding: 0.5%;
+    text-align: center;
+}
+
+.profile .personalInfo img {
+    max-width: 52%;
+    display: block;
+    padding: 1.5%;
+    padding-bottom: 25px;
+    margin: 0 auto;
+}
+
+.profile .personalInfo{
+    vertical-align: top;
+    padding: 10px;
+    color: #234465;
+    width: 50%;
+}
+.profile p{
+    padding-bottom: 5.5%;
+}
+
+.personalContent {
+    width: 55%;
+}
+

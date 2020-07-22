@@ -1,4 +1,6 @@
 .card {
+    color: #234465;
+    background: #eeeeee;
     width: 100%;
     height: auto;
     border: 1px solid #234465;
@@ -9,7 +11,7 @@
 .description {
     word-wrap: break-word;
     padding: 0.5%;
-    font-size: 22px;
+    font-size: 18px;
     /* border:1px solid blue; */
     margin-bottom: 0.5%;
     width: 92%;
