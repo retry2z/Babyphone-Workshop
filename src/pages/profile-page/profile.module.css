@@ -1,14 +1,7 @@
-.box {
-    background: #eeeeee;
-    padding: 20px;
-    padding-top: 30px;
-    border-radius: 3px;
-}
-
 .profile {
     display: grid;
     padding: 5%;
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 45% 45%;
 }
 
 .card .formPanel {

@@ -1,13 +1,31 @@
 import React from 'react';
-import style from './register.module.css'
+import styled from 'styled-components';
 
 import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
-import InputField from '../../components/core/input/input';
-import DefinedButton from '../../components/core/button/button';
+import FormControl from '../../components/from-control/form';
 
 
 class Register extends React.Component {
+
+    form = [
+        {
+            type: 'email',
+            placeholder: 'Email: ',
+            onChange: event => this.changeHandler(event, 'email'),
+        },
+        {
+            type: 'password',
+            placeholder: 'Password: ',
+            onChange: event => this.changeHandler(event, 'password'),
+        },
+        {
+            type: 'password',
+            placeholder: 'Re-Password: ',
+            onChange: event => this.changeHandler(event, 'rePassword'),
+        },
+    ]
+
     constructor(props) {
         super(props);
 
@@ -18,7 +36,7 @@ class Register extends React.Component {
         }
     }
 
-    onChange = (event, field) => {
+    changeHandler = (event, field) => {
         const newState = {
             [field]: event.target.value
         }
@@ -26,33 +44,25 @@ class Register extends React.Component {
         this.setState(newState);
     }
 
+    submitHandler = (event) => {
+        event.preventDefault();
+        console.log(this.state);
+    }
+
     render() {
         return (
             <Common>
                 <Title title='Register' />
-                <div className={style.box}>
-                    <form>
-                        <InputField
-                            type='email'
-                            placeholder='Email: '
-                            onChange={(event) => { this.onChange(event, 'email') }}
-                        />
-                        <InputField
-                            type='password'
-                            placeholder='Password: '
-                            onChange={(event) => { this.onChange(event, 'password') }}
-                        />
-                        <InputField
-                            type='password'
-                            placeholder='Re-password: '
-                            onChange={(event) => { this.onChange(event, 'rePassword') }}
-                        />
-                        <DefinedButton title='Register' />
-                    </form>
-                </div>
+                <Wrapper>
+                    <FormControl fields={this.form} formAction={this.submitHandler} buttonTitle='Register' />
+                </Wrapper>
             </Common>
         )
     }
 }
 
+const Wrapper = styled.section`
+    margin: 1em auto;
+    width: 45%;
+`;
 export default Register
