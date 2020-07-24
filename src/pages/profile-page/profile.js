@@ -11,18 +11,18 @@ class Profile extends React.Component {
     form = [
         {
             type: 'password',
-            placeholder: 'Current password: ',
-            onChange: event => this.changeHandler(event, 'password'),
+            label: 'Current password: ',
+            name: 'password',
         },
         {
             type: 'password',
-            placeholder: 'New password: ',
-            onChange: event => this.changeHandler(event, 'newPassword'),
+            label: 'New password: ',
+            name: 'newPassword'
         },
         {
             type: 'password',
-            placeholder: 'Re-password: ',
-            onChange: event => this.changeHandler(event, 'rePassword'),
+            label: 'Re-password: ',
+            name: 'rePassword'
         },
     ]
 
@@ -32,24 +32,12 @@ class Profile extends React.Component {
 
         this.state = {
             data: <ProductCard />,
-            password: '',
-            newPassword: '',
-            rePassword: '',
         }
     }
 
-    changeHandler = (event, field) => {
-        const newState = {
-            ...this.state,
-            [field]: event.target.value
-        }
 
-        this.setState(newState);
-    }
-
-    submitHandler = (event) => {
-        event.preventDefault();
-        console.log(this.state);
+    submitHandler = (value) => {
+        console.log(value);
     }
 
     render() {

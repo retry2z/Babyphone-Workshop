@@ -5,42 +5,24 @@ import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
 import FormControl from '../../components/from-control/form';
 
-
 class Login extends React.Component {
 
     form = [
         {
             type: 'email',
-            placeholder: 'Email: ',
-            onChange: event => this.changeHandler(event, 'email'),
+            name: 'email',
+            label: 'Email: ',
         },
         {
             type: 'password',
-            placeholder: 'Password: ',
-            onChange: event => this.changeHandler(event, 'password'),
+            name: 'password',
+            label: 'Password: ',
         },
     ]
 
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            email: '',
-            password: '',
-        }
-    }
-
-    changeHandler = (event, field) => {
-        const newState = {
-            [field]: event.target.value
-        }
-
-        this.setState(newState);
-    }
-
-    submitHandler = (event) => {
-        event.preventDefault();
-        console.log(this.state);
+    submitHandler = (value) => {
+        console.log(value);
     }
 
     render() {
@@ -49,6 +31,7 @@ class Login extends React.Component {
                 <Title title='Login' />
                 <Wrapper>
                     <FormControl fields={this.form} formAction={this.submitHandler} buttonTitle='Login' />
+
                 </Wrapper>
             </Common>
         )

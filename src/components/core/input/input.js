@@ -1,13 +1,17 @@
 import React from 'react'
 import style from './input.module.css'
 
-const InputField = ({ type, placeholder, onChange, value }) => {
+const InputField = ({ type, label, onChange, value }) => {
     const id = Math.random() / 1000;
+
+    const validators = (event) => {
+        console.log(event);
+    };
 
     return (
         <div className={style.input}>
-            <input id={id} type={type} onChange={onChange} value={value} />
-            <label htmlFor={id}>{placeholder}</label>
+            <input className={style.valid} id={id} type={type} onChange={onChange} onBlur={validators} value={value} />
+            <label htmlFor={id}>{label}</label>
         </div>
     )
 }

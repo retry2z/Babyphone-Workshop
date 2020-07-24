@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-
-.input {
-    width: 100%;
-
-}
-
 .input {
     position:relative;
     margin: 0 auto;
@@ -24,7 +18,7 @@ label{
 	transition: all 0.2s ease-in-out;
 }
 
-input{ 
+.valid { 
     border:0;
     border-bottom:1px solid #234465;  
     background:transparent;

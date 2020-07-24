@@ -4,27 +4,64 @@ import style from './form.module.css';
 import InputField from '../core/input/input';
 import DefinedButton from '../core/button/button';
 
-const FormControl = ({ fields, buttonTitle, formAction }) => {
+class FormControl extends React.Component {
 
-    return (
-        <div className={style.box}>
-            <form onSubmit={formAction}>
-                {
-                    fields.map((field, index) => {
-                        return (
-                            <InputField
-                                key={index}
-                                type={field.type}
-                                placeholder={field.placeholder}
-                                onChange={field.onChange}
-                            />
-                        )
-                    })
-                }
-                <DefinedButton title={buttonTitle} />
-            </form>
-        </div>
-    )
+    constructor(props) {
+        super(props);
+
+        this.fields = props.fields;
+        this.buttonTitle = props.buttonTitle;
+        this.formAction = props.formAction;
+        this.validators = props.validators;
+
+        this.state = this.initState;
+    }
+
+    get initState() {
+        const data = {}
+        this.fields.forEach((field) => {
+            const name = field.name || 'default';
+            data[name] = '';
+        });
+
+        return data
+    }
+
+    changeHandler = (event, field) => {
+        const newState = {};
+
+        newState[field] = event.target.value
+        this.setState(newState);
+    }
+
+    submitHandler = (event) => {
+        event.preventDefault();
+        this.formAction(this.state);
+    }
+
+    render() {
+        return (
+            <div className={style.box}>
+                <form onSubmit={this.submitHandler}>
+                    {
+                        this.fields.map((field, index) => {
+                            return (
+                                <InputField
+                                    key={index}
+                                    type={field.type || 'text'}
+                                    label={field.label || ''}
+                                    onChange={event => this.changeHandler(event, field.name)}
+                                    value={field.value}
+                                    validators={field.validators}
+                                />
+                            )
+                        })
+                    }
+                    <DefinedButton title={this.buttonTitle} />
+                </form>
+            </div>
+        )
+    }
 }
 
 export default FormControl
