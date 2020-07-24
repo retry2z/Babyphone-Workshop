@@ -1,44 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
 .input {
     position:relative;
     margin: 0 auto;
-    margin-bottom:30px;
-    padding: 1%;
+    margin-bottom:18px;
     text-align: center;
     width: 84%;
 }
 
-label{
-	position:absolute;
-	top:0px;
+.label{
+    position:absolute;
+    top:0px;
 	left:0px;
     font-size:14px;
-	color:#234465;	
-	transition: all 0.2s ease-in-out;
+    will-change: transform;
+    transition: all 0.6s steps(120);
 }
 
-.valid { 
+input { 
     border:0;
-    border-bottom:1px solid #234465;  
     background:transparent;
     width:100%;
-    padding:14px 0 5px 0;
-    font-size:16px;
-    color:rgb(0, 0, 0);
+    padding:20px 0 5px 0;
+    font-size:18px;
+    color: #234465;
 }
 
-.input input:focus{ 
+.span {
+    font-size: 11px;
+	color:#d82b2b;
+    content: ' ';
+    visibility: hidden;
+    text-align: left;
+}
+
+/* Validating */
+.valid {
+    border-bottom:1px solid #234465;  
+}
+
+.valid ~ label{
+	color:#234465;	
+}
+
+/*  */
+
+.invalid {
+    border-bottom:1px solid #d82b2b;  
+}
+
+.invalid ~ label{
+    color:#d82b2b;
+}
+
+.invalid ~ .span{
+    visibility: visible;
+}
+
+/* Animations */
+
+input:focus{ 
     border:none;	
     outline:none;
     border-bottom:1px solid #ffa000;	
 }
 
-.input input:focus ~ label {
-    color: #234465;
-	top:-6px;
-	font-size:12px;	
+input:focus ~ .label {
+	top:-7px;
+    font-size:11px;	
 }
 
-
-
+input:focus ~ .span {
+    visibility: hidden;
+}
