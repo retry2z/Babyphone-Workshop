@@ -1,36 +1,73 @@
 import React from 'react'
 import style from './input.module.css'
 
-const InputField = ({ isValid = false, type, label, onChange, validators, value, message }) => {
-    const id = Math.random() / 1000;
+import validateField from '../../../validators';
 
-    const emailValidator = (data) => {
-        const patternLength = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g;
-        if (!patternLength.test(data)) {
-            return false
+class InputField extends React.Component {
+    id = Math.random() / 10000;
+
+    constructor(props) {
+        super(props);
+        this._isValid = [];
+        this.type = props.type;
+        this.label = props.label;
+        this.onChange = props.onChange;
+        this.validators = props.validators;
+        this.value = props.value;
+
+        this.state = {
+            isValid: true,
+            error: {
+                message: ''
+            },
+            [this.id]: ''
         }
-
-        return true
     }
 
-    const validatorsn = (event) => {
-        console.log(event);
-    };
+    set _isValid(data) {
+        const test = data.find(x => x.validate.isValid === false);
 
-    return (
-        <div className={style.input}>
-            <input
-                className={isValid ? style['valid'] : style['invalid']}
-                id={id}
-                type={type}
-                onChange={onChange}
-                onBlur={validators}
-                value={value}
-            />
-            <label className={style.label} htmlFor={id}>{label}</label>
-            <span className={style.span}>{message} Test</span>
-        </div>
-    )
+        if (data.length) {
+            this.setState(
+                {
+                    ...this.state,
+                    isValid: !test,
+                    error: {
+                        message: test?.validate.message || ''
+                    }
+                }
+            )
+        }
+    }
+
+    changeHandler(event, id) {
+        this.setState(
+            {
+                [id]: event.target.value
+            }
+        )
+        this.onChange(event);
+    }
+
+    render() {
+        return (
+            <div className={style.input}>
+                <input
+                    className={this.state.isValid ? style['valid'] : style['invalid']}
+                    id={this.id}
+                    type={this.type}
+                    onChange={event => this.changeHandler(event, this.id)}
+                    onBlur={
+                        () => this._isValid = validateField(this.state[this.id], this.validators)
+                    }
+                    value={this.value}
+                />
+                <label className={style.label} htmlFor={this.id}>{this.label}</label>
+                <span className={style.span}>{this.state.error.message}</span>
+            </div>
+        )
+    }
+
 }
 
 export default InputField
