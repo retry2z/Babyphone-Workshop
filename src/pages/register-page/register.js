@@ -12,16 +12,36 @@ class Register extends React.Component {
             type: 'email',
             name: 'email',
             label: 'Email: ',
+            validators: [
+                {
+                    type: 'email',
+                    param: null,
+                    message: 'Wrong email'
+                },
+                {
+                    type: 'maxLength',
+                    param: 6,
+                    message: 'Input date extended'
+                },
+            ],
         },
         {
             type: 'password',
             name: 'password',
             label: 'Password: ',
+            validators: [
+                {
+                    type: 'maxLength',
+                    param: 6,
+                    message: 'Input date extended'
+                },
+            ],
         },
         {
             type: 'password',
             name: 'rePassword',
             label: 'Re-Password: ',
+
         },
     ]
 

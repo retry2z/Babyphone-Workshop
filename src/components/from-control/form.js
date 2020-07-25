@@ -52,21 +52,7 @@ class FormControl extends React.Component {
                                     label={field.label || ''}
                                     onChange={event => this.changeHandler(event, field.name)}
                                     value={field.value}
-
-                                    validators={
-                                        [
-                                            {
-                                                validator: 'email',
-                                                option: null,
-                                                message: 'Wrong email'
-                                            },
-                                            {
-                                                validator: 'maxLength',
-                                                option: 6,
-                                                message: 'Input date extended'
-                                            },
-                                        ]}
-                                        
+                                    validators={field.validators || []}
                                 />
                             )
                         })
