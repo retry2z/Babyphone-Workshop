@@ -2,7 +2,7 @@ import emailValidator from './functions/emailValidator';
 import minLengthValidator from './functions/minLength';
 import maxLengthValidator from './functions/maxLength';
 
-const validatorTypes = {
+const validatorChecker = {
     email(data) {
         return emailValidator(data)
     },
@@ -14,7 +14,7 @@ const validatorTypes = {
     }
 }
 
-export default (data, validators) => {
+export default (data = false, validators) => {
     if (!validators.length) {
         return []
     }
@@ -26,8 +26,8 @@ export default (data, validators) => {
         errors.push(
             {
                 validate: {
-                    type,
-                    isValid: validatorTypes[type](data, param),
+                    type: validator.type,
+                    isValid: validatorChecker[type](data, param || null),
                     message: validator.message
                 }
             }

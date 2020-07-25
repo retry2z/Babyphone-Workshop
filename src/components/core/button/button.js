@@ -1,10 +1,10 @@
 import React from 'react'
 import style from './button.module.css'
 
-const DefinedButton = ({ title, action }) => {
+const DefinedButton = ({ title = 'Default', action, isDisabled = false }) => {
 
     return (
-        <button className={style.button} onClick={action}>{title}</button>
+        <button className={style.button} onClick={action} disabled={isDisabled}>{title}</button>
     )
 }
 

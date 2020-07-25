@@ -14,29 +14,55 @@ class FormControl extends React.Component {
         this.formAction = props.formAction;
         this.validators = props.validators;
 
-        this.state = this.initState;
+        this.state = this.initState();
     }
 
-    get initState() {
-        const data = {}
+    initState() {
+        const data = {};
+        const form = {};
+
         this.fields.forEach((field) => {
             const name = field.name || 'default';
             data[name] = '';
+            form[name] = null;
         });
 
-        return data
+        return { data, form, isValid: false }
     }
 
-    changeHandler = (event, field) => {
-        const newState = {};
+    onChangeHandler = (event, field) => {
+        const newState = { ...this.state };
 
-        newState[field] = event.target.value
+        newState.data[field] = event.target.value;
         this.setState(newState);
+    }
+
+    onValidateHandler = (isValid, field) => {
+        const newState = { ...this.state };
+
+        newState.form[field] = isValid;
+        newState.isValid = this.isValidForm();
+        this.setState(newState);
+    }
+
+    isValidForm() {
+        const data = JSON.stringify(this.state.form);
+
+        if (data.includes('false') || data.includes('null')) {
+            return false
+        }
+
+        return true
     }
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.formAction(this.state);
+
+        if (!this.state.isValid) {
+            return console.log('Invalid Form');
+        }
+
+        this.formAction(this.state.data);
     }
 
     render() {
@@ -50,9 +76,10 @@ class FormControl extends React.Component {
                                     key={index}
                                     type={field.type || 'text'}
                                     label={field.label || ''}
-                                    onChange={event => this.changeHandler(event, field.name)}
-                                    value={field.value}
+                                    onChange={event => this.onChangeHandler(event, field.name)}
                                     validators={field.validators || []}
+                                    onValidate={isValid => this.onValidateHandler(isValid, field.name)}
+                                    value={field.value}
                                 />
                             )
                         })

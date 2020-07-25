@@ -10,6 +10,8 @@
     border: 2px solid #234465;
     border-radius:4px;
     margin-bottom: 2%;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
 }
 
 /* .button {
@@ -26,7 +28,7 @@
 
 
 button:hover{
-    background-color: white;
+    background-color: transparent;
     border: 2px solid #234465;
     color: #234465;
     font-weight: bold;

@@ -14,6 +14,7 @@ class InputField extends React.Component {
         this.onChange = props.onChange;
         this.validators = props.validators;
         this.value = props.value;
+        this.onValidate = props.onValidate;
 
         this.state = {
             isValid: true,
@@ -37,6 +38,7 @@ class InputField extends React.Component {
                     }
                 }
             )
+            this.onValidate({ valid: !test });
         }
     }
 
