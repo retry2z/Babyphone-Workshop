@@ -15,13 +15,7 @@ class Register extends React.Component {
             validators: [
                 {
                     type: 'email',
-                    param: null,
-                    message: 'Wrong email'
-                },
-                {
-                    type: 'maxLength',
-                    param: 6,
-                    message: 'Input date extended'
+                    message: 'Invalid emails address'
                 },
             ],
         },
@@ -31,9 +25,9 @@ class Register extends React.Component {
             label: 'Password: ',
             validators: [
                 {
-                    type: 'maxLength',
-                    param: 6,
-                    message: 'Input date extended'
+                    type: 'minLength',
+                    param: 8,
+                    message: 'Password must be at least 8 symbols',
                 },
             ],
         },
@@ -41,7 +35,13 @@ class Register extends React.Component {
             type: 'password',
             name: 'rePassword',
             label: 'Re-Password: ',
-
+            validators: [
+                {
+                    type: 'minLength',
+                    param: 8,
+                    message: 'Password must be at least 8 symbols',
+                },
+            ],
         },
     ]
 

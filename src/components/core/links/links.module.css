@@ -7,7 +7,6 @@ header .listItem:hover {
     border-bottom: 1px solid #ffa000;
     font-size: 16px;
     transition: all 0.5s ease;
-
 }
 
 header .listItem {
@@ -33,6 +32,7 @@ aside .listItem {
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
+    transition: all 0.2s ease-out;
 }
 
 aside .listItem a {
