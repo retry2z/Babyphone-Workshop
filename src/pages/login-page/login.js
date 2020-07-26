@@ -9,14 +9,34 @@ class Login extends React.Component {
 
     form = [
         {
-            type: 'email',
             name: 'email',
-            label: 'Email: ',
+            label: 'Email:',
+            validators: [
+                {
+                    type: 'email',
+                    message: 'Please enter a valid email address'
+                },
+                {
+                    type: 'required',
+                    message: 'This field should not be empty'
+                },
+            ],
         },
         {
             type: 'password',
             name: 'password',
-            label: 'Password: ',
+            label: 'Password:',
+            validators: [
+                {
+                    type: 'minLength',
+                    param: 8,
+                    message: 'Password must be at least 8 symbols',
+                },
+                {
+                    type: 'required',
+                    message: 'This field should not be empty'
+                },
+            ],
         },
     ]
 

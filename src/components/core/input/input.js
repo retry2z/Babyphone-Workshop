@@ -8,7 +8,6 @@ class InputField extends React.Component {
 
     constructor(props) {
         super(props);
-        this._isValid = [];
         this.type = props.type;
         this.label = props.label;
         this.onChange = props.onChange;
@@ -16,33 +15,37 @@ class InputField extends React.Component {
         this.value = props.value;
         this.onValidate = props.onValidate;
 
-        this.state = {
-            isValid: true,
-            error: {
-                message: ''
-            },
-            [this.id]: ''
-        }
+        this.state = this.initState();
     }
 
-    set _isValid(data) {
-        const test = data.find(x => x.validate.isValid === false);
+    initState() {
+        const data = {};
 
-        if (data.length) {
-            this.setState(
-                {
-                    ...this.state,
-                    isValid: !test,
-                    error: {
-                        message: test?.validate.message || ''
-                    }
-                }
-            )
-            this.onValidate({ valid: !test });
-        }
+        data.isValid = true;
+        data.error = { message: '' };
+        data[this.id] = '';
+
+        return data
     }
 
-    changeHandler(event, id) {
+    validatorHandler(data = []) {
+        if (!!data.length === false) {
+            return
+        }
+
+        const verify = data.find(x => x.validate.isValid === false);
+        const newState = { ...this.state };
+
+        newState.isValid = !verify;
+        newState.error = {
+            message: verify?.validate.message
+        }
+
+        this.setState(newState);
+        this.onValidate({ valid: !verify });
+    }
+
+    onChangeHandler(event, id) {
         this.setState(
             {
                 [id]: event.target.value
@@ -51,17 +54,27 @@ class InputField extends React.Component {
         this.onChange(event);
     }
 
+    onBlurHandler = () => {
+        if (!!this.validators.length === false) {
+            return
+        }
+        
+        const results = validateField(this.state[this.id], this.validators);
+        this.validatorHandler(results);
+    }
+
     render() {
         return (
             <div className={style.input}>
                 <input
                     className={this.state.isValid ? style['valid'] : style['invalid']}
+
                     id={this.id}
                     type={this.type}
-                    onChange={event => this.changeHandler(event, this.id)}
-                    onBlur={
-                        () => this._isValid = validateField(this.state[this.id], this.validators)
-                    }
+
+                    onChange={event => this.onChangeHandler(event, this.id)}
+                    onBlur={this.onBlurHandler}
+
                     value={this.value}
                 />
                 <label className={style.label} htmlFor={this.id}>{this.label}</label>
@@ -69,7 +82,6 @@ class InputField extends React.Component {
             </div>
         )
     }
-
 }
 
 export default InputField

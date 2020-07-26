@@ -1,16 +1,20 @@
 import emailValidator from './functions/emailValidator';
 import minLengthValidator from './functions/minLength';
 import maxLengthValidator from './functions/maxLength';
+import requiredValidator from './functions/requiredValidator';
 
 const validatorChecker = {
     email(data) {
         return emailValidator(data)
     },
     maxLength(data, length) {
-        return maxLengthValidator(data, length)
+        return maxLengthValidator(data, length);
     },
     minLength(data, length) {
-        return minLengthValidator(data, length)
+        return minLengthValidator(data, length);
+    },
+    required(data) {
+        return requiredValidator(data);
     }
 }
 
