@@ -8,8 +8,8 @@ class InputField extends React.Component {
 
     constructor(props) {
         super(props);
-        this.type = props.type;
-        this.label = props.label;
+        this.type = props.type || 'text';
+        this.label = props.label || '';
         this.onChange = props.onChange;
         this.validators = props.validators;
         this.value = props.value;
@@ -58,7 +58,7 @@ class InputField extends React.Component {
         if (!!this.validators.length === false) {
             return
         }
-        
+
         const results = validateField(this.state[this.id], this.validators);
         this.validatorHandler(results);
     }

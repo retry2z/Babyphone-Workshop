@@ -1,20 +1,24 @@
 import emailValidator from './functions/emailValidator';
-import minLengthValidator from './functions/minLength';
-import maxLengthValidator from './functions/maxLength';
-import requiredValidator from './functions/requiredValidator';
+import minLength from './functions/minLength';
+import maxLength from './functions/maxLength';
+import required from './functions/requiredValidator';
+import passwordMatch from './functions/passwordMatch';
 
 const validatorChecker = {
     email(data) {
         return emailValidator(data)
     },
     maxLength(data, length) {
-        return maxLengthValidator(data, length);
+        return maxLength(data, length);
     },
     minLength(data, length) {
-        return minLengthValidator(data, length);
+        return minLength(data, length);
     },
     required(data) {
-        return requiredValidator(data);
+        return required(data);
+    },
+    passwordMatch(field1, filed2) {
+        return passwordMatch(field1, filed2);
     }
 }
 

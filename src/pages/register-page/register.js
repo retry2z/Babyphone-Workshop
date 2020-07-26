@@ -52,6 +52,11 @@ class Register extends React.Component {
                     type: 'required',
                     message: 'This field should not be empty'
                 },
+                {
+                    type: 'passwordMatch',
+                    param: 'password',
+                    message: 'Passwords are not equals'
+                },
             ],
         },
     ]
@@ -66,7 +71,11 @@ class Register extends React.Component {
             <Common>
                 <Title title='Register' />
                 <Wrapper>
-                    <FormControl fields={this.form} formAction={this.submitHandler} buttonTitle='Register' />
+                    <FormControl
+                        fields={this.form}
+                        formAction={this.submitHandler}
+                        buttonTitle='Register'
+                    />
 
                 </Wrapper>
             </Common>

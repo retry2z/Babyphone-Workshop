@@ -81,7 +81,11 @@ class Profile extends React.Component {
                         <ProfileCard />
                     </div>
                     <div className={style.formPanel}>
-                        <FormControl fields={this.form} formAction={this.submitHandler} buttonTitle='Save' />
+                        <FormControl
+                            fields={this.form}
+                            formAction={this.submitHandler}
+                            buttonTitle='Save'
+                        />
 
                     </div>
                 </div>

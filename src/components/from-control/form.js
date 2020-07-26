@@ -95,10 +95,10 @@ class FormControl extends React.Component {
                             return (
                                 <InputField
                                     key={index}
-                                    type={field.type || 'text'}
-                                    label={field.label || ''}
+                                    type={field.type}
+                                    label={field.label}
                                     onChange={event => this.onChangeHandler(event, field.name)}
-                                    validators={field.validators || []}
+                                    validators={field.validators}
                                     onValidate={isValid => this.onValidateHandler(isValid, field.name)}
                                     value={field.value}
                                 />
