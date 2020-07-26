@@ -11,18 +11,51 @@ class Profile extends React.Component {
     form = [
         {
             type: 'password',
-            label: 'Current password: ',
             name: 'password',
+            label: 'Current Password:',
+            validators: [
+                {
+                    type: 'minLength',
+                    param: 8,
+                    message: 'Password must be at least 8 symbols',
+                },
+                {
+                    type: 'required',
+                    message: 'This field should not be empty'
+                },
+            ],
         },
         {
             type: 'password',
-            label: 'New password: ',
-            name: 'newPassword'
+            name: 'password',
+            label: 'New Password:',
+            validators: [
+                {
+                    type: 'minLength',
+                    param: 8,
+                    message: 'Password must be at least 8 symbols',
+                },
+                {
+                    type: 'required',
+                    message: 'This field should not be empty'
+                },
+            ],
         },
         {
             type: 'password',
-            label: 'Re-password: ',
-            name: 'rePassword'
+            name: 'rePassword',
+            label: 'Re-Password:',
+            validators: [
+                {
+                    type: 'minLength',
+                    param: 8,
+                    message: 'Password must be at least 8 symbols',
+                },
+                {
+                    type: 'required',
+                    message: 'This field should not be empty'
+                },
+            ],
         },
     ]
 
@@ -48,7 +81,11 @@ class Profile extends React.Component {
                         <ProfileCard />
                     </div>
                     <div className={style.formPanel}>
-                        <FormControl fields={this.form} formAction={this.submitHandler} buttonTitle='Save' />
+                        <FormControl
+                            fields={this.form}
+                            formAction={this.submitHandler}
+                            buttonTitle='Save'
+                        />
 
                     </div>
                 </div>
