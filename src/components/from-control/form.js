@@ -5,7 +5,7 @@ import InputField from '../core/input/input';
 import DefinedButton from '../core/button/button';
 import ErrorField from '../core/errorField/errorField';
 
-mport validateGroup from '../../validators';
+import validateGroup from '../../validators';
 
 class FormControl extends React.Component {
 
