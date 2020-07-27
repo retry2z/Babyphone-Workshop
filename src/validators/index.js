@@ -30,12 +30,12 @@ export default (data = false, validators) => {
     const errors = [];
 
     validators.forEach(validator => {
-        const { type, param } = validator;
+        const { type, param = false } = validator;
         errors.push(
             {
                 validate: {
                     type: validator.type,
-                    isValid: validatorChecker[type](data, param || null),
+                    isValid: validatorChecker[type](data, param),
                     message: validator.message
                 }
             }

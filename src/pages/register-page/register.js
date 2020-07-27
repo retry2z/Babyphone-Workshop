@@ -7,7 +7,7 @@ import FormControl from '../../components/from-control/form';
 
 class Register extends React.Component {
 
-    form = [
+    fields = [
         {
             name: 'email',
             label: 'Email:',
@@ -52,13 +52,16 @@ class Register extends React.Component {
                     type: 'required',
                     message: 'This field should not be empty'
                 },
-                {
-                    type: 'passwordMatch',
-                    param: 'password',
-                    message: 'Passwords are not equals'
-                },
             ],
         },
+    ]
+
+    validators = [
+        {
+            type: 'passwordMatch',
+            param: ['password', 'rePassword'],
+            message: 'Passwords are not equals',
+        }
     ]
 
 
@@ -72,7 +75,8 @@ class Register extends React.Component {
                 <Title title='Register' />
                 <Wrapper>
                     <FormControl
-                        fields={this.form}
+                        fields={this.fields}
+                        validators={this.validators}
                         formAction={this.submitHandler}
                         buttonTitle='Register'
                     />

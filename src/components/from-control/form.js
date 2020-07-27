@@ -5,15 +5,19 @@ import InputField from '../core/input/input';
 import DefinedButton from '../core/button/button';
 import ErrorField from '../core/errorField/errorField';
 
+import validateGroup from '../../validators';
+
 class FormControl extends React.Component {
 
     constructor(props) {
         super(props);
-        this.shouldBeValidated = false;
+        this.validators = props.validators || [];
+        this.shouldBeValidated = false && !!this.validators.length;
 
         this.fields = props.fields;
         this.buttonTitle = props.buttonTitle;
         this.formAction = props.formAction;
+
 
         this.state = this.initState();
     }
@@ -70,10 +74,26 @@ class FormControl extends React.Component {
     }
 
 
+
+
     submitHandler = (event) => {
         event.preventDefault();
 
-        if (!this.state.isValid && this.shouldBeValidated) {
+        if (!this.shouldBeValidated) {
+            return this.formAction(this.state.data);
+        }
+
+        const results = validateGroup(this.state.data, this.validators);
+        const verify = results.find(x => x.validate.isValid === false);
+        if (verify) {
+            const newState = { ...this.state };
+            newState.errorMessage = verify.validate.message;
+            this.setState(newState);
+
+            return
+        }
+
+        if (!this.state.isValid) {
             const newState = { ...this.state };
             newState.errorMessage = 'Form contain invalid fields';
             this.setState(newState);
