@@ -1,7 +1,8 @@
 .error {
     margin: 0 auto;
     text-align: center;
-    background: #FEF0F0;
+    /* background: #FEF0F0; */
+    background: transparent;
     color: #FA6375;
     padding: 12px;
     border-radius: 3px;
