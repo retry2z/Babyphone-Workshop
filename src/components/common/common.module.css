@@ -10,21 +10,12 @@
 }
 
 
-html {
+html, body {
     height: 100%;
     box-sizing: border-box;
     font-family: Montserrat;
 }
 
-body {
-   background: url('../../images/auth-bg.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    line-height: 1.6;
-    height: 100%;
-}
 
 .app {
     max-width: 100%;
