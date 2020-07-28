@@ -4,21 +4,33 @@ import Header from '../core/header/header';
 import Main from '../core/main/main';
 import Footer from '../core/footer/footer';
 
-const Common = (props) => {
-    return (
-        <div className={style.app}>
-            <Header />
+import { withRouter } from 'react-router-dom';
 
-            <div className={style.container}>
-                <Main>
-                    {props.children}
-                </Main>
+class Common extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.test = props
+    }
+
+
+    render() {
+        return (
+            <div className={style[this.props.location.pathname.split('/')[1]]} >
+                <Header />
+
+                <div className={style.container}>
+                    <Main>
+                        {this.props.children}
+                    </Main>
+                </div>
+
+                <Footer />
             </div>
-
-            <Footer />
-        </div>
-    )
+        )
+    }
 }
 
-export default Common;
+export default withRouter(Common)
 
