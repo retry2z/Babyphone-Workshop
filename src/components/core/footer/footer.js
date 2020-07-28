@@ -6,9 +6,6 @@ const Footer = () => {
 
     return (
         <footer className={style.footer}>
-            <ul>
-                <Links />
-            </ul>
             <p>Software University 2020</p>
         </footer>
     )

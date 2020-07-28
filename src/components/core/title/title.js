@@ -4,7 +4,7 @@ import style from './title.module.css';
 
 const Title = ({ title }) => {
     return (
-    <h1 className={style.title}>{title}</h1>
+    <h2 className={style.title}>{title}</h2>
     )
 }
 

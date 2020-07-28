@@ -1,84 +1,31 @@
 header .listItem a {
-    color: white;
+    color: #777777;
+    font-weight: bold;
     text-decoration: none;
+
 }
 
 header .listItem:hover {
-    border-bottom: 1px solid #ffa000;
-    font-size: 16px;
-    transition: all 0.5s ease;
+    background-color:#DAC3AB;
 }
 
 header .listItem {
     display: inline-block;
-    height: auto;
-    margin-right: 2%;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 16px;
+    
+    padding: 1.8rem 3rem;
     cursor: pointer;
-    padding: 0.5%;
-    margin: 0.1%;
-    vertical-align: top;
-}
-
-header .listItem:not(:first-child) {
+    transform: all 0.3s;
     padding: 1.2%;
-    margin-top: 1.5%;
+    margin-top: 1.8%;
+    margin-left: 0.8%;
+    margin-bottom: 1.5%;
 }
 
-aside .listItem {
-    display: block;
-    width: 98%;
-    margin-bottom: 11%;
-    height: 5vh;
-    text-align: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    transition: all 0.2s ease-out;
-}
 
-aside .listItem a {
-    color: #234465;
-    text-align: center;
-    text-decoration: none;
-    padding-top: 4%;
-    height: 60%;
-    display: block;
-}
 
-aside .listItem:hover {
-    font-weight: bold;
-    border-left: 2px solid #234465;
-}
-
-/* footer .listItem:nth-child(1) {
-    padding-left: 1%;
-} */
-
-footer .listItem a {    
-    color: white;
-    text-decoration: none;
-}
-
-footer .listItem {
-    display: inline-block;
-    height: auto;
-    margin-right: 2%;   
-    cursor: pointer;
-    padding: 0.5%;
-    margin: 0.1%;
-    vertical-align: top;
-    padding-bottom: 2%;
-}
-
-/* footer .listItem:not(:last-child) {
-    padding: 2%;
-    margin-top: 1.5%;
-    border-bottom: 2px solid #234465;
-} */
-
-/* footer .listItem:hover {
-    border-bottom: none;
-    border-bottom: 2px solid #234465;
-    font-weight: bold;
-} */
 
 

@@ -1,13 +1,12 @@
 .button{
-    background-color: #234465;
-    color: white;
+    background-color: #DAC3AB;
+    border: 2px solid #DAC3AB;
+    color: #777777;
     padding:10px 20px;
 	text-transform:uppercase;
     display: block;
     margin: 0 auto;
-    border:none;
 	margin-top:50px;
-    border: 2px solid #234465;
     border-radius:4px;
     margin-bottom: 2%;
     cursor: pointer;
@@ -28,8 +27,7 @@
 
 
 button:hover{
-    background-color: transparent;
-    border: 2px solid #234465;
-    color: #234465;
-    font-weight: bold;
+    background-color: #f1d9be;
+    border: 2px solid #f1d9be;
+    color: #777777;
 }
