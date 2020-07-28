@@ -14,7 +14,10 @@ const ProfileCard = ({ data }) => {
     return (
         <div className={style.profile}>
             <div className={style.personalInfo}>
-            <img src={imageUrl} alt="Profile" />
+                <img src={imageUrl} alt="Profile" />
+                <p>
+                    {name}
+                </p>
                 <p>
                     {email}
                 </p>

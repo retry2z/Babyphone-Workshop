@@ -1,7 +1,8 @@
 .profile {
     display: grid;
-    padding: 5%;
-    grid-template-columns: 45% 45%;
+    padding: 2%;
+    grid-template-columns: 50% 50%;
+    grid-gap: 2%;
 }
 
 .card .formPanel {

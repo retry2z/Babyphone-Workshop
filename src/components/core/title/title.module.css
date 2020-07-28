@@ -1,6 +1,8 @@
 .title {
     text-align: center;
-    color: #234465;
-    margin-bottom: 2.8%;
-    text-transform: uppercase;
+    color: #DAC3AB;
+    background-color:#1c354e;
+    margin: 0 auto;
+    width: 22%;
+    border-radius: 2px;
 }

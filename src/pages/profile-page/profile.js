@@ -3,7 +3,6 @@ import style from './profile.module.css'
 
 import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
-import InformationPanel from '../../components/information-panel/information-panel';
 import FormControl from '../../components/from-control/form';
 import ProductCard from '../../components/product-card/card';
 
@@ -89,7 +88,6 @@ class Profile extends React.Component {
 
                     </div>
                 </div>
-                <InformationPanel title='3 of your recent posts'>{this.state.data}</InformationPanel>
             </Common>
         )
     }

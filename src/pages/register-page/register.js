@@ -72,7 +72,7 @@ class Register extends React.Component {
     render() {
         return (
             <Common>
-                <Title title='Register' />
+                <Title title='Welcome' />
                 <Wrapper>
                     <FormControl
                         fields={this.fields}
