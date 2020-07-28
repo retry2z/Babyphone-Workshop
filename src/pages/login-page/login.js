@@ -48,7 +48,7 @@ class Login extends React.Component {
     render() {
         return (
             <Common>
-                <Title title='Login' />
+                <Title title='Welcome' />
                 <Wrapper>
                     <FormControl
                         fields={this.form}
