@@ -31,7 +31,7 @@ class Home extends React.Component {
     render() {
         return (
             <Common>
-                <Title title='Publication' />
+                <Title title='Available Rooms' />
                 <> {this.state.data} </>
             </Common>
         )
