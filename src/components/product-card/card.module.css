@@ -37,7 +37,7 @@
     margin: 1rem auto;
 }
 
-.room_btn {
+.room_join_btn {
     background-color: forestgreen;
     color:#f9f7f6;
     border: none;
@@ -50,6 +50,40 @@
     width: 100%;
 }
 
-.room_btn:hover {
-    background-color: #07ac72;
+.room_join_btn:hover {
+    background-color: #07ac46;
+}
+
+.room_leave_btn {
+    background-color: #FA7D58;
+    color:#f9f7f6;
+    border: none;
+    border-radius: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding: 1.2rem;
+    cursor: pointer;
+    transform: all 0.2;
+    width: 100%;
+}
+
+.room_leave_btn:hover {
+    background-color: #fa9273;
+}
+
+.room_owner_btn {
+    background-color: #fa5d58;
+    color:#f9f7f6;
+    border: none;
+    border-radius: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding: 1.2rem;
+    cursor: pointer;
+    transform: all 0.2;
+    width: 100%;
+}
+
+.room_owner_btn:hover {
+    background-color: #fc7975;
 }

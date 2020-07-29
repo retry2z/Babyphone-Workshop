@@ -1,4 +1,4 @@
-.card {
+.card_simple {
     color: #234465;
     background: #eeeeee;
     width: 100%;
@@ -8,32 +8,24 @@
     border-radius: 4px;
 }
 
-.description {
-    word-wrap: break-word;
-    padding: 0.5%;
-    font-size: 18px;
-    /* border:1px solid blue; */
-    margin-bottom: 0.5%;
-    width: 92%;
-    display: inline-block;
+.body {
+    display: grid;
+    grid-template-columns: 50% 50%;
     vertical-align: top;
+    word-wrap: break-word;
+    padding: 1.2%;
+    font-size: 18px;
+    margin-bottom: 0.5%;    
 }
 
-.card div {
-    /* border:1px solid red; */
-    height: auto;
+
+.author {
     text-align: right;
-    margin-bottom: 0.5%;
+    padding: 0.8%;
 }
 
-.card div span {
-    text-align: right;
-    /* border:1px solid green; */
-    padding-right: 1%;
+.card_simple:hover {
+    background: #c4c4c4;
+    cursor: pointer;
 }
 
-.card img {
-    padding: 0.5%;
-    width: 42px;
-    height: 42px;
-}

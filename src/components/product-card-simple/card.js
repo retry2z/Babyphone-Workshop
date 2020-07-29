@@ -1,27 +1,34 @@
 import React from 'react';
 import style from './card.module.css';
-import defaultImage from '../../images/logo.png';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ data }) => {
     const author = data?.author || '...';
-    const imageUrl = data?.imageUrl || defaultImage;
-    const description = data?.description || 'Loading...';
-    const number = (data?.index >= 0) ? data.index : '?';
+    const title = data?.title || 'Loading...';
+    const keywords = data?.keywords || 'Loading...';
+    const id = data?.id || 'error';
 
     return (
-        <div className={style.card}>
-            <img src={imageUrl} alt="product" />
-            <p className={style.description}>
-                <span>{number + ' - '}</span>
-                {description}
-            </p>
-            <div>
-                <span>
-                    <small>Author: </small>
-                    {author}
-                </span>
+        <Link to={'/product/details/' + id} style={{ textDecoration: 'none' }}>
+            <div className={style.card_simple}>
+                <div className={style.body}>
+                    <p>
+                        <span>Title: </span>
+                        {title}
+                    </p>
+                    <p>
+                        <span>Key words: </span>
+                        {keywords}
+                    </p>
+                </div>
+                <div className={style.author}>
+                    <span>
+                        <small>Author: </small>
+                        {author}
+                    </span>
+                </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

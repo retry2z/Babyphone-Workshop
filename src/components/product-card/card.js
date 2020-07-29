@@ -2,6 +2,8 @@ import React from 'react';
 import style from './card.module.css';
 import defaultImage from '../../images/logo.png';
 
+import ActiveBtn from './button';
+
 const ProductCard = ({ data }) => {
     const author = data?.author || '...';
     const imageUrl = data?.imageUrl || 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
@@ -27,7 +29,7 @@ const ProductCard = ({ data }) => {
                     <p>Floor</p>
                 </div>
             </div>
-            <button className={style.room_btn}>Join now</button>
+            <ActiveBtn type='owner' />
         </div>
     )
 }

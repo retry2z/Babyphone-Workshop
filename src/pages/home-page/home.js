@@ -2,7 +2,7 @@ import React from 'react';
 
 import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
-import ProductCard from '../../components/product-card/card';
+import ProductCard from '../../components/product-card-simple/card';
 import productService from '../../services/product-service';
 
 class Home extends React.Component {
