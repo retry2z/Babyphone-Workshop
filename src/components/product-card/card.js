@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './card.module.css';
-import defaultImage from '../../images/logo.png';
+import defaultImage from '../../images/room-default.jpg';
 
 import ActiveBtn from './button';
 
 const ProductCard = ({ data }) => {
     const author = data?.author || '...';
-    const imageUrl = data?.imageUrl || 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+    const imageUrl = data?.imageUrl || defaultImage;
     const people = data?.people || 'Loading...';
 
     return (
@@ -17,10 +17,10 @@ const ProductCard = ({ data }) => {
 
             <div className={style.people}>
                 <div className={style.person}>
-                    <p>Pizza dough</p>
+                    <p>{people}</p>
                 </div>
                 <div className={style.person}>
-                    <p>Cheese</p>
+                    <p>{author}</p>
                 </div>
                 <div className={style.person}>
                     <p>Tomato sauce</p>
