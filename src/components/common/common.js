@@ -13,7 +13,6 @@ class Common extends React.Component {
 
         this.currentPath = this.props.location.pathname.split('/')[1];
         this.background = !!this.currentPath.length ? this.currentPath : 'default';
-        console.log(this.background);
     }
 
 

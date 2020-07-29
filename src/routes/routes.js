@@ -2,12 +2,8 @@ const router = (id, uid) => {
 
     const navigation = [
         {
-            title: "Publications",
+            title: "Rooms",
             link: "/"
-        },
-        {
-            title: "Share your thoughts",
-            link: "/share"
         },
         {
             title: "Profile",

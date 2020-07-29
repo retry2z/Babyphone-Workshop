@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <header className={style.navigation}>
             <Logo href={logoImage} title="Logo" />
-            <ul>
+            <ul className={style.nav}>
                 <Links />
             </ul>
         </header>

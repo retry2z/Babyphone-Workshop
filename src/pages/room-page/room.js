@@ -1,14 +1,13 @@
 import React from 'react';
-import './share.module.css'
+import './room.module.css'
 
 import Common from '../../components/common/common';
-import Title from '../../components/core/title/title';
 import ProductCard from '../../components/product-card-simple/card';
 import productService from '../../services/product-service';
 import InformationPanel from '../../components/information-panel/information-panel';
 import DefinedButton from '../../components/core/button/button';
 
-class Share extends React.Component {
+class Room extends React.Component {
     constructor(props) {
         super(props);
 
@@ -35,7 +34,6 @@ class Share extends React.Component {
     render() {
         return (
             <Common>
-                <Title title='Share Your Thought' />
                 <textarea></textarea>
                 <DefinedButton title='Post' />
                 <InformationPanel title='History'>
@@ -46,4 +44,4 @@ class Share extends React.Component {
     }
 }
 
-export default Share
+export default Room

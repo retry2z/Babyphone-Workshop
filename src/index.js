@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-import LazyNavigation from './navigation';
+import NavigationRouter from './navigation';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <LazyNavigation />
+    <NavigationRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );

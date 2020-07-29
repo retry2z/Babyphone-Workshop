@@ -17,7 +17,7 @@ class FormControl extends React.Component {
         this.fields = props.fields;
         this.buttonTitle = props.buttonTitle;
         this.formAction = props.formAction;
-
+        this.theme = props.theme;
 
         this.state = this.initState();
     }
@@ -125,7 +125,7 @@ class FormControl extends React.Component {
                             )
                         })
                     }
-                    <DefinedButton title={this.buttonTitle} />
+                    <DefinedButton title={this.buttonTitle} theme={this.theme} />
                 </form>
             </div>
         )
