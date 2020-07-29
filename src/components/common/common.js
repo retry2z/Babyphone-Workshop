@@ -11,23 +11,27 @@ class Common extends React.Component {
     constructor(props) {
         super(props);
 
-        this.test = props
+        this.currentPath = this.props.location.pathname.split('/')[1];
+        this.background = !!this.currentPath.length ? this.currentPath : 'default';
+        console.log(this.background);
     }
 
 
     render() {
         return (
-            <div className={style[this.props.location.pathname.split('/')[1]]} >
-                <Header />
+            <>
+                <div className={style[this.background]} ></div>
 
-                <div className={style.container}>
+                <div className={style.main}>
+                    <Header />
+
                     <Main>
                         {this.props.children}
                     </Main>
-                </div>
 
-                <Footer />
-            </div>
+                    <Footer />
+                </div>
+            </>
         )
     }
 }

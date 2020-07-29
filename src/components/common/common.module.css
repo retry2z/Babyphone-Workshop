@@ -21,16 +21,42 @@ body {
     margin: 0 auto;
 }
 
-.auth {
-   background: url('../../images/auth-bg.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    line-height: 1.6;
+.main {
+    position: fixed;
+    left: 0;
+    right: 0;
     height: 100%;
+    z-index: 9999;
 }
 
-.container {
-    padding: 5.8%;    
+.default {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: block;
+    background: url('../../images/default-bg.jpg') no-repeat center center fixed; 
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+     line-height: 1.6;
+     height: 100%;
+     filter: blur(8px);
+    -webkit-filter: blur(8px);
+ }
+
+.auth {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: block;
+    background: url('../../images/auth-bg.jpg') no-repeat center center fixed; 
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+     line-height: 1.6;
+     height: 100%;
 }

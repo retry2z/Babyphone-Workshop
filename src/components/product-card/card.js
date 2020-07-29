@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './card.module.css';
-import defaultImage from '../../images/blue-origami-bird.png';
+import defaultImage from '../../images/logo.png';
 
 const ProductCard = ({ data }) => {
     const author = data?.author || '...';
