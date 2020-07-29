@@ -1,4 +1,4 @@
-.button{
+.button_default{
     background-color: #DAC3AB;
     border: 2px solid #DAC3AB;
     color: #777777;
@@ -13,21 +13,29 @@
     transition: all 0.2s ease-in;
 }
 
-/* .button {
-    color:#fff;
-	background-color:#234465;
-    border: 2px solid #234465;
-    padding:10px 20px;
-	text-transform:uppercase;
-	margin-top:50px;
-	border-radius:3px;
-    cursor:pointer;
-    
-} */
-
-
-.button:hover{
+.button_default:hover{
     background-color: #f1d9be;
     border: 2px solid #f1d9be;
     color: #777777;
+}
+
+.button_dark{
+    background-color: #1c354e;
+    border: 2px solid #1c354e;
+    color: #eeeeee;
+    padding:10px 20px;
+	text-transform:uppercase;
+    display: block;
+    margin: 0 auto;
+	margin-top:50px;
+    border-radius:4px;
+    margin-bottom: 2%;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+
+.button_dark:hover{
+    background-color: #30567c;
+    border: 2px solid #30567c;
+    color: #eeeeee;
 }

@@ -1,40 +1,77 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Common from '../../components/common/common';
-import Title from '../../components/core/title/title';
-import ProductCard from '../../components/product-card-simple/card';
+import ProductCardSimple from '../../components/product-card-simple/card';
 import productService from '../../services/product-service';
+import FormControl from '../../components/from-control/form';
+import Title from '../../components/core/title/title';
+
 
 class Home extends React.Component {
+
+    fields = [
+        {
+            name: 'search',
+            label: 'Search:',
+        },
+    ]
+
     constructor(props) {
         super(props);
 
         this.state = {
-            data: <ProductCard />,
+            data: <ProductCardSimple />,
         }
     }
 
     componentDidMount = async () => {
         const { data } = await productService.list();
 
-        const result = data
-            .sort((a, b) => Number(new Date(a.createdAt)) - Number(new Date(b.createdAt)))
-            .map((doc, index) => {
-                return <ProductCard key={doc.id} data={{ index, ...doc }} />
-            })
+        const result = data.slice(0, 5)
 
         this.setState({
             data: result
         });
     }
 
+    submitHandler(data) {
+        console.log(data);
+    }
+
     render() {
         return (
             <Common>
-                <> {this.state.data} </>
+                <Wrapper>
+
+                    <FormControl
+                        fields={this.fields}
+                        formAction={this.submitHandler}
+                        buttonTitle='Search'
+                        theme='dark'
+                    />
+
+                    <div>
+                        <Title title='Available rooms'/>
+                        <List>
+                            <ProductCardSimple />
+                        </List>
+                    </div>
+                </Wrapper>
             </Common>
         )
     }
 }
+
+const Wrapper = styled.section`
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 5%;
+    padding: 5%;
+`;
+
+const List = styled.section`
+    margin-top: 2.3%;
+`;
 
 export default Home

@@ -3,8 +3,12 @@
     height: 12vh;
     background-color:transparent;
     top: 0;
-    text-transform: uppercase;
-    
+    text-transform: uppercase;    
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 30% 70%;
+}
+
+.nav {
+    text-align: end;
+    padding-right: 3%;
 }

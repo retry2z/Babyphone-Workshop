@@ -55,7 +55,7 @@ class InputField extends React.Component {
     }
 
     onBlurHandler = () => {
-        if (!!this.validators.length === false) {
+        if (!!this.validators?.length === false) {
             return
         }
 
