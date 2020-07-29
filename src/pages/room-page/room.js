@@ -1,11 +1,11 @@
 import React from 'react';
-import './room.module.css'
+import styled from 'styled-components';
+import './room.module.css';
 
 import Common from '../../components/common/common';
 import ProductCard from '../../components/product-card/card';
 import productService from '../../services/product-service';
-import InformationPanel from '../../components/information-panel/information-panel';
-import DefinedButton from '../../components/core/button/button';
+import Title from '../../components/core/title/title';
 
 class Room extends React.Component {
     constructor(props) {
@@ -31,11 +31,13 @@ class Room extends React.Component {
     render() {
         return (
             <Common>
-                <textarea></textarea>
-                <DefinedButton title='Post' />
-                <InformationPanel title='History'>
-                    {this.state.data}
-                </InformationPanel>
+                <Wrapper>
+                    <ProductCard type='leave' />
+                    <div>
+                        <Title title='Notifications' />
+                        <textarea disabled></textarea>
+                    </div>
+                </Wrapper>
             </Common>
         )
     }
@@ -43,9 +45,13 @@ class Room extends React.Component {
 
 const Wrapper = styled.section`
     display: grid;
-    grid-template-columns: 40% 60%;
-    grid-gap: 5%;
-    padding: 5%;
+    padding: 2%;
+    margin: 0 auto;
+    grid-template-columns: 28% 62%;
+    grid-gap: 10%;
+    padding-left: 5%;
+    padding-bottom: 5%
 `;
+
 
 export default Room

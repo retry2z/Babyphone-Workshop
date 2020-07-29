@@ -4,7 +4,7 @@ import defaultImage from '../../images/room-default.jpg';
 
 import ActiveBtn from './button';
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data, type = 'join' }) => {
     const author = data?.author || '...';
     const imageUrl = data?.imageUrl || defaultImage;
     const people = data?.people || 'Loading...';
@@ -29,7 +29,7 @@ const ProductCard = ({ data }) => {
                     <p>Floor</p>
                 </div>
             </div>
-            <ActiveBtn type='owner' />
+            <ActiveBtn type={type} />
         </div>
     )
 }
