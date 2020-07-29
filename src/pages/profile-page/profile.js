@@ -4,7 +4,7 @@ import style from './profile.module.css'
 import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
 import FormControl from '../../components/from-control/form';
-import ProductCard from '../../components/product-card/card';
+import ProductCard from '../../components/product-card-simple/card';
 
 class Profile extends React.Component {
     form = [
