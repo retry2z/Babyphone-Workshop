@@ -22,7 +22,7 @@ const ProfileCard = ({ data }) => {
                     {email}
                 </p>
                 <p>
-                    <span>Created post: </span>
+                    <span>Created rooms: </span>
                     {count}
                 </p>
                 <DefinedButton title='Logout' />

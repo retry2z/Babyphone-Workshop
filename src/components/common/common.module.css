@@ -29,13 +29,13 @@ body {
     z-index: 9999;
 }
 
-.default, .product {
+.default, .product, .user {
     position: fixed;
     left: 0;
     right: 0;
     z-index: 1;
     display: block;
-    background: url('../../images/default-bg.jpg') no-repeat center center fixed; 
+    background: url('../../images/auth-bg.jpg') no-repeat center center fixed; 
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -o-background-size: cover;
