@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
+import UserContext from './user-context';
 import NavigationRouter from './navigation';
-
 
 ReactDOM.render(
   <React.StrictMode>
-    <NavigationRouter />
+    <UserContext>
+      <NavigationRouter />
+    </UserContext>
   </React.StrictMode>,
   document.getElementById('root')
 );

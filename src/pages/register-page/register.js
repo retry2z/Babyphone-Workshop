@@ -5,6 +5,10 @@ import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
 import FormControl from '../../components/from-control/form';
 
+import Contexts from '../../Contexts';
+
+const { UserContext } = Contexts();;
+
 class Register extends React.Component {
 
     fields = [
@@ -64,8 +68,10 @@ class Register extends React.Component {
         }
     ]
 
+    static contextType = UserContext;
 
     submitHandler = (value) => {
+        console.log(this.context);
         console.log(value);
     }
 
