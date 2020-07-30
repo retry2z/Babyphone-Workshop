@@ -52,7 +52,7 @@ class Home extends React.Component {
                     />
 
                     <div>
-                        <Title title='Available rooms'/>
+                        <Title title='Last created rooms'/>
                         <List>
                             <ProductCardSimple />
                         </List>
@@ -71,7 +71,7 @@ const Wrapper = styled.section`
 `;
 
 const List = styled.section`
-    margin-top: 2.3%;
+    margin-top: 4.2%;
 `;
 
 export default Home
