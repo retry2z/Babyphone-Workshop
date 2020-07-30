@@ -20,6 +20,7 @@ const admin = () => {
 
     return {
         url: 'https://us-central1-workshop-project-58361.cloudfunctions.net/api/',
+        // url: 'http://localhost:5000/workshop-project-58361/us-central1/api/',
         db
     }
 }
