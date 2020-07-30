@@ -5,6 +5,7 @@ import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
 import FormControl from '../../components/from-control/form';
 
+import authService from '../../services/auth-service';
 import Contexts from '../../Contexts';
 
 const { UserContext } = Contexts();;
@@ -68,11 +69,37 @@ class Register extends React.Component {
         }
     ]
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoading: false,
+        }
+    }
+
     static contextType = UserContext;
 
-    submitHandler = (value) => {
-        console.log(this.context);
-        console.log(value);
+    submitHandler = async (value) => {
+        if (this.state.isLoading) {
+            return
+        }
+
+        await this.setState({
+            isLoading: true,
+        });
+
+        const response = await authService.register(value);
+
+        this.setState({
+            isLoading: false,
+        });
+
+        if (!response.isValid) {
+            return response.error
+        } else {
+            this.props.history.push('/');
+            return false
+        }
     }
 
     render() {

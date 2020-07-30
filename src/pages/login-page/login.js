@@ -5,6 +5,8 @@ import Common from '../../components/common/common';
 import Title from '../../components/core/title/title';
 import FormControl from '../../components/from-control/form';
 
+import authService from '../../services/auth-service';
+
 class Login extends React.Component {
 
     form = [
@@ -40,9 +42,36 @@ class Login extends React.Component {
         },
     ]
 
+    constructor(props) {
+        super(props);
 
-    submitHandler = (value) => {
-        console.log(value);
+        this.state = {
+            isLoading: false,
+        }
+    }
+
+
+    submitHandler = async (value) => {
+        if (this.state.isLoading) {
+            return
+        }
+
+        await this.setState({
+            isLoading: true,
+        });
+
+        const response = await authService.login(value);
+
+        this.setState({
+            isLoading: false,
+        });
+
+        if (!response.isValid) {
+            return response.error
+        } else {
+            this.props.history.push('/');
+            return false
+        }
     }
 
     render() {
@@ -55,7 +84,6 @@ class Login extends React.Component {
                         formAction={this.submitHandler}
                         buttonTitle='Login'
                     />
-
                 </Wrapper>
             </Common>
         )

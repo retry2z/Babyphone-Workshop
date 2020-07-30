@@ -1,46 +1,48 @@
 import React from 'react'
 import Contexts from './Contexts'
+import cookieAdmin from './cookie';
 
+const cookieHandler = cookieAdmin();
 const { UserContext } = Contexts();
-// function getCookie(name) {
-//   const cookieValue = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-//   console.log(cookieValue);
-// }
-
 
 class ContextContainer extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      loggedIn: null,
+      isLogged: false,
       user: null
     }
   }
 
-  logIn = (user) => {
+  login = (user) => {
+
   }
 
-  logOut = () => {
+  logout = () => {
   }
 
   componentDidMount() {
-    console.log('da');
+    const token = cookieHandler.get() || '';
+
+    if (!!token.length === false) {
+      return
+    }
+
+    
+
   }
 
   render() {
-    const {
-      loggedIn,
-      user
-    } = this.state
+    const { isLogged, user } = this.state
 
     return (
       <UserContext.Provider
         value={{
-          loggedIn,
+          isLogged,
           user,
-          logIn: this.logIn,
-          logOut: this.logOut
+          login: this.login,
+          logout: this.logout
         }}>
 
         {this.props.children}

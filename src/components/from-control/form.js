@@ -82,7 +82,7 @@ class FormControl extends React.Component {
 
 
 
-    submitHandler = (event) => {
+    submitHandler = async (event) => {
         event.preventDefault();
 
         if (!this.shouldBeValidated) {
@@ -91,7 +91,7 @@ class FormControl extends React.Component {
 
         const results = validateGroup(this.state.data, this.validators);
         const verify = results.find(x => x.validate.isValid === false);
-        
+
         if (verify) {
             const newState = { ...this.state };
             newState.errorMessage = verify.validate.message;
@@ -108,7 +108,12 @@ class FormControl extends React.Component {
             return
         }
 
-        this.formAction(this.state.data);
+        const isError = await this.formAction(this.state.data);
+        if (isError) {
+            const newState = { ...this.state };
+            newState.errorMessage = isError;
+            this.setState(newState);
+        }
     }
 
     render() {

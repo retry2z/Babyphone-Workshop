@@ -21,13 +21,12 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
-            data: <ProductCardSimple />,
+            data: [],
         }
     }
 
     componentDidMount = async () => {
         const { data } = await productService.list();
-
         const result = data.slice(0, 5)
 
         this.setState({
@@ -52,9 +51,17 @@ class Home extends React.Component {
                     />
 
                     <div>
-                        <Title title='Last created rooms'/>
+                        <Title title='Last created rooms' />
                         <List>
-                            <ProductCardSimple />
+                            {
+                                !!this.state.data.length ?
+
+                                    this.state.data.map((doc => {
+                                        return <ProductCardSimple key={doc.data.id} data={doc.data} />
+                                    }))
+
+                                    : <h1>Loading...</h1>
+                            }
                         </List>
                     </div>
                 </Wrapper>
