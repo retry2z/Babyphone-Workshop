@@ -1,8 +1,7 @@
 import React from 'react'
 import Contexts from './Contexts'
-import cookieAdmin from './cookie';
+import userService from './services/user-service';
 
-const cookieHandler = cookieAdmin();
 const { UserContext } = Contexts();
 
 class ContextContainer extends React.Component {
@@ -22,15 +21,10 @@ class ContextContainer extends React.Component {
   logout = () => {
   }
 
-  componentDidMount() {
-    const token = cookieHandler.get() || '';
+  async componentDidMount() {
+    const { data, error } = await userService.profile();
 
-    if (!!token.length === false) {
-      return
-    }
-
-    
-
+    console.log(data, error);
   }
 
   render() {
