@@ -3,9 +3,8 @@ import style from './card.module.css';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({ data }) => {
-    const author = data?.author || '...';
     const title = data?.title || 'Loading...';
-    const keywords = data?.keywords || 'Loading...';
+    const keywords = data?.keyWords.join(', ') || 'Loading...';
     const id = data?.id || 'error';
 
     return (
@@ -20,12 +19,6 @@ const ProductCard = ({ data }) => {
                         <span>Key words: </span>
                         {keywords}
                     </p>
-                </div>
-                <div className={style.author}>
-                    <span>
-                        <small>Author: </small>
-                        {author}
-                    </span>
                 </div>
             </div>
         </Link>

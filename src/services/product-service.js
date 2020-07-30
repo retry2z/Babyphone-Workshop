@@ -1,8 +1,12 @@
 import axios from 'axios';
+import admin from './admin';
 
-const productService = {
+const { url } = admin();
+const collection = 'rooms';
+
+const productService = {    
     async list() {
-        return await axios.get('http://localhost:5000/origami-app-3f955/us-central1/api/origami');
+        return await axios.get(url + collection);
     },
 
     async get() {
