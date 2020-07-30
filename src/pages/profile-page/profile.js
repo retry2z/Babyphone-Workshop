@@ -1,17 +1,15 @@
 import React from 'react';
-import style from './profile.module.css'
+import styled from 'styled-components';
 
 import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
 import FormControl from '../../components/from-control/form';
-import ProductCard from '../../components/product-card-simple/card';
 
 class Profile extends React.Component {
-    form = [
+    fields = [
         {
-            type: 'password',
             name: 'password',
-            label: 'Current Password:',
+            label: 'Current password:',
             validators: [
                 {
                     type: 'minLength',
@@ -26,8 +24,8 @@ class Profile extends React.Component {
         },
         {
             type: 'password',
-            name: 'password',
-            label: 'New Password:',
+            name: 'newPassword',
+            label: 'Password:',
             validators: [
                 {
                     type: 'minLength',
@@ -58,12 +56,18 @@ class Profile extends React.Component {
         },
     ]
 
+    validators = [
+        {
+            type: 'passwordMatch',
+            param: ['newPassword', 'rePassword'],
+            message: 'Passwords are not equals',
+        }
+    ]
 
     constructor(props) {
         super(props);
 
         this.state = {
-            data: <ProductCard />,
         }
     }
 
@@ -75,22 +79,30 @@ class Profile extends React.Component {
     render() {
         return (
             <Common>
-                <div className={style.profile}>
-                    <div className={style.card}>
-                        <ProfileCard />
-                    </div>
-                    <div className={style.formPanel}>
-                        <FormControl
-                            fields={this.form}
-                            formAction={this.submitHandler}
-                            buttonTitle='Save'
-                        />
+                <Wrapper>
+                    <ProfileCard />
 
-                    </div>
-                </div>
+                    <FormControl
+                        fields={this.fields}
+                        validators={this.validators}
+                        formAction={this.submitHandler}
+                        buttonTitle='Save'
+                    />
+                </Wrapper>
             </Common>
         )
     }
 }
+
+const Wrapper = styled.section`
+    display: grid;
+    padding: 2%;
+    margin: 0 auto;
+    grid-template-columns: 45% 45%;
+    grid-gap: 5%;
+    padding-left: 5%;
+    padding-bottom: 5%;
+`;
+
 
 export default Profile
