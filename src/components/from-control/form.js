@@ -45,6 +45,12 @@ class FormControl extends React.Component {
     onChangeHandler = (event, field) => {
         const newState = { ...this.state };
 
+        if (this.shouldBeValidated) {
+            const results = validateGroup(this.state.data, this.validators);
+            const verify = results.find(x => x.validate.isValid === false);
+            newState.isValid = !!verify;
+        }
+
         newState.data[field] = event.target.value;
         newState.errorMessage = '';
         this.setState(newState);
@@ -85,6 +91,7 @@ class FormControl extends React.Component {
 
         const results = validateGroup(this.state.data, this.validators);
         const verify = results.find(x => x.validate.isValid === false);
+        
         if (verify) {
             const newState = { ...this.state };
             newState.errorMessage = verify.validate.message;
