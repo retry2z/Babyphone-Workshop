@@ -3,6 +3,7 @@
     display: block;
     padding: 0.5%;
     text-align: center;
+    margin: 0 auto;
 }
 
 .profile .personalInfo img {
@@ -20,10 +21,10 @@
     width: 50%;
 }
 .profile p{
-    padding-bottom: 5.5%;
+    padding-bottom: 5%;
 }
 
 .personalContent {
-    width: 55%;
+    width: 62%;
 }
 

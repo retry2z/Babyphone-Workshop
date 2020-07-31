@@ -6,9 +6,6 @@ import Title from '../../components/core/title/title';
 import FormControl from '../../components/from-control/form';
 
 import authService from '../../services/auth-service';
-import Contexts from '../../Contexts';
-
-const { UserContext } = Contexts();;
 
 class Register extends React.Component {
 
@@ -77,7 +74,6 @@ class Register extends React.Component {
         }
     }
 
-    static contextType = UserContext;
 
     submitHandler = async (value) => {
         if (this.state.isLoading) {
