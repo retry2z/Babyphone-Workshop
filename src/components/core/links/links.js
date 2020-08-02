@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './links.module.css';
 import { Link } from 'react-router-dom';
-import router from '../../../routes/routes';
+import headerLinks from './routes';
 
+import Contexts from '../../../Contexts';
+const { UserContext } = Contexts();
 
 const Links = () => {
-    const navigation = router();
+    const context = useContext(UserContext);
+
+    const navigation = headerLinks(context.isLogged);
 
     return (
         <>

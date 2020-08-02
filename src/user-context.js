@@ -33,12 +33,15 @@ class ContextContainer extends React.Component {
     const user = await userService.profile() || null;
 
     if (user === null) {
+      cookieHandler.remove();
+
       const newState = { ...this.state };
       newState.isLogged = false;
+      newState.user = null;
       this.setState(newState);
 
       return
-    } 
+    }
 
     if (!user.isValid) {
       cookieHandler.remove();
