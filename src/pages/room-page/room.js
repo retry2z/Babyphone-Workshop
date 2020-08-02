@@ -7,32 +7,43 @@ import ProductCard from '../../components/product-card/card';
 import productService from '../../services/product-service';
 import Title from '../../components/core/title/title';
 
+import Contexts from '../../Contexts';
+const { UserContext } = Contexts();
+
 class Room extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            data: <ProductCard />,
+            data: {}
         }
     }
 
+    static contextType = UserContext;
+
     componentDidMount = async () => {
-        const { data } = await productService.list();
+        const { match: { params } } = this.props;
 
-        const result = data
-            .sort((a, b) => Number(new Date(a.createdAt)) - Number(new Date(b.createdAt)))
-            .slice(0, 3)
+        try {
+            const { data } = await productService.get(params.id);
+            this.setState({
+                data,
+            })
+        }
+        catch (e) {
+            this.props.history.push('/error/room');
+        }
+    }
 
-        this.setState({
-            data: result
-        });
+    onJoinHandler = (isJoined) => {
+        console.log(isJoined);
     }
 
     render() {
         return (
             <Common>
                 <Wrapper>
-                    <ProductCard type='leave' />
+                    <ProductCard data={this.state.data} onJoinHandler={this.onJoinHandler} />
                     <div>
                         <Title title='Notifications' />
                         <textarea disabled></textarea>

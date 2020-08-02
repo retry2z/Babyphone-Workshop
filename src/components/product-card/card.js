@@ -1,35 +1,82 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import style from './card.module.css';
 import defaultImage from '../../images/room-default.jpg';
-
+import productService from '../../services/product-service';
 import ActiveBtn from './button';
 
-const ProductCard = ({ data, type = 'join' }) => {
-    const author = data?.author || '...';
+const ProductCard = ({ data, onJoinHandler }) => {
+    const { id } = useParams();
+    const [body, setBody] = useState([]);
+    const [isJoined, setIsJoined] = useState(false);
+
+    const title = data?.title || 'Loading...'
     const imageUrl = data?.imageUrl || defaultImage;
-    const people = data?.people || 'Loading...';
+    const people = data?.people || [];
+
+
+    const newBody = (arr) => {
+        return arr.map(
+            (name, index) => {
+                return (
+                    <div key={index} className={style.person}>
+                        <p>{name}</p>
+                    </div>
+                )
+            });
+    }
+
+    useEffect(() => {
+        if (people.length === 0) {
+            return
+        }
+        const data = newBody(people);
+        setBody(data);
+    }, [people]);
+
+    useEffect(() => {
+        onJoinHandler(isJoined);
+    }, [isJoined]);
+
+    useEffect(() => {
+        if (isJoined) {
+            return
+        }
+        
+        return () => {
+            productService.leave(id);
+        }
+    }, []);
+
+
+    const joinRoom = async () => {
+        const response = await productService.join(id);
+        const data = newBody(response.data.people);
+        setIsJoined(true);
+        setBody(data);
+    }
+
+    const leaveRoom = async () => {
+        const response = await productService.leave(id);
+        const data = newBody(response.data.people);
+        setBody(data);
+        setIsJoined(false);
+    }
 
     return (
         <div className={style.room}>
             <img src={imageUrl} alt="Room_image" className={style.room_image} />
-
-            <h5 className={style.room_name}>Bed Room</h5>
-
+            <h5 className={style.room_name}>{title}</h5>
             <div className={style.people}>
-                <div className={style.person}>
-                    <p>{people}</p>
-                </div>
-                <div className={style.person}>
-                    <p>{author}</p>
-                </div>
-                <div className={style.person}>
-                    <p>Tomato sauce</p>
-                </div>
-                <div className={style.person}>
-                    <p>Floor</p>
-                </div>
+                {
+                    body.length > 0 ? body : <div className={style.person}><p>Empty</p></div>
+                }
             </div>
-            <ActiveBtn type={type} />
+            {
+                isJoined ?
+                    <ActiveBtn type='leave' onClick={leaveRoom} /> :
+                    <ActiveBtn type='join' onClick={joinRoom} />
+            }
         </div>
     )
 }
