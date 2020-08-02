@@ -31,9 +31,9 @@ const Navigation = () => {
                 <Route path="/auth/login" component={LoginPage} />
                 <Route path="/auth/register" component={RegisterPage} />
 
+                <Route path="/product/details/:id" component={RoomPage} />
                 {context.isLogged ?
                     <>
-                        <Route path="/product/details/:id" component={RoomPage} />
 
                         <Route path="/user/profile" component={ProfilePage} />
                         <Route path="/user/logout" component={LogoutPage} />
