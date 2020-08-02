@@ -5,6 +5,11 @@ import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
 import FormControl from '../../components/from-control/form';
 
+import Contexts from '../../Contexts';
+
+const { UserContext } = Contexts();
+
+
 class Profile extends React.Component {
     fields = [
         {
@@ -71,16 +76,24 @@ class Profile extends React.Component {
         }
     }
 
+    static contextType = UserContext;
+
+    componentDidMount() {
+
+    }
+
 
     submitHandler = (value) => {
         console.log(value);
     }
 
     render() {
+        const { user, logout } = this.context;
+
         return (
             <Common>
                 <Wrapper>
-                    <ProfileCard />
+                    <ProfileCard data={user} onClick={logout} />
 
                     <FormControl
                         fields={this.fields}

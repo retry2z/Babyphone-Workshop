@@ -13,6 +13,7 @@ class FormControl extends React.Component {
         super(props);
         this.validators = props.validators || [];
         this.shouldBeValidated = false && !!this.validators.length;
+        this.errorMessage = '';
 
         this.fields = props.fields;
         this.buttonTitle = props.buttonTitle;
@@ -44,15 +45,9 @@ class FormControl extends React.Component {
 
     onChangeHandler = (event, field) => {
         const newState = { ...this.state };
-
-        if (this.shouldBeValidated) {
-            const results = validateGroup(this.state.data, this.validators);
-            const verify = results.find(x => x.validate.isValid === false);
-            newState.isValid = !!verify;
-        }
-
         newState.data[field] = event.target.value;
-        newState.errorMessage = '';
+        newState.showError = false;
+
         this.setState(newState);
     }
 
@@ -63,7 +58,6 @@ class FormControl extends React.Component {
 
         const isValidForm = () => {
             const data = JSON.stringify(this.state.validFields);
-
             if (data.includes('false') || data.includes('null')) {
                 return false
             }
@@ -72,14 +66,10 @@ class FormControl extends React.Component {
         }
 
         const newState = { ...this.state };
-
         newState.validFields[fieldName] = isValid;
         newState.isValid = isValidForm();
         this.setState(newState);
-        this.isValidated = true;
     }
-
-
 
 
     submitHandler = async (event) => {
@@ -89,30 +79,27 @@ class FormControl extends React.Component {
             return this.formAction(this.state.data);
         }
 
-        const results = validateGroup(this.state.data, this.validators);
-        const verify = results.find(x => x.validate.isValid === false);
-
-        if (verify) {
+        
+        const groupResults = validateGroup(this.state.data, this.validators);
+        const groupVerify = groupResults.find(x => x.validate.isValid === false);      
+        if (groupVerify || !this.state.isValid) {
             const newState = { ...this.state };
-            newState.errorMessage = verify.validate.message;
+            this.errorMessage = groupVerify?.validate.message || 'Form contain invalid fields';
+            newState.showError = true;
             this.setState(newState);
-
+            
             return
-        }
+        }       
 
-        if (!this.state.isValid) {
+        //Invoke submit function from parent and await if Its returns a message to show as error
+        const isThereErrorMessage = await this.formAction(this.state.data);
+        if (!!isThereErrorMessage) {
             const newState = { ...this.state };
-            newState.errorMessage = 'Form contain invalid fields';
+            newState.isValid = false;
+            newState.showError = true;
             this.setState(newState);
 
-            return
-        }
-
-        const isError = await this.formAction(this.state.data);
-        if (isError) {
-            const newState = { ...this.state };
-            newState.errorMessage = isError;
-            this.setState(newState);
+            this.errorMessage = isThereErrorMessage;
         }
     }
 
@@ -120,7 +107,7 @@ class FormControl extends React.Component {
         return (
             <div className={style.box}>
                 <form onSubmit={this.submitHandler}>
-                    {this.state.errorMessage ? <ErrorField message={this.state.errorMessage} /> : null}
+                    {this.state.showError ? <ErrorField message={this.errorMessage} /> : null}
 
                     {
                         this.fields.map((field, index) => {

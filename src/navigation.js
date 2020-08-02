@@ -1,37 +1,49 @@
 // import React, { Suspense } from 'react'
-import React from 'react'
+import React, { useContext } from 'react'
 
 import {
     BrowserRouter,
     Switch,
-    Route
-} from 'react-router-dom'
+    Route,
+    Redirect,
+} from 'react-router-dom';
 
 import HomePage from './pages/home-page/home';
-
 import RoomPage from './pages/room-page/room';
-
 import ProfilePage from './pages/profile-page/profile';
+import LogoutPage from './pages/logout-page/logout';
 
 import RegisterPage from './pages/register-page/register';
 import LoginPage from './pages/login-page/login';
-
 import ErrorPage from './pages/404-page/notFound';
 
+import Contexts from './Contexts';
+const { UserContext } = Contexts();
 
 const Navigation = () => {
+    const context = useContext(UserContext);
+
 
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={HomePage} />
-                <Route path="/product/details/:id" component={RoomPage} />
-                <Route path="/user/profile" component={ProfilePage} />
                 <Route path="/auth/login" component={LoginPage} />
                 <Route path="/auth/register" component={RegisterPage} />
+
+                {context.isLogged ?
+                    <>
+                        <Route path="/product/details/:id" component={RoomPage} />
+
+                        <Route path="/user/profile" component={ProfilePage} />
+                        <Route path="/user/logout" component={LogoutPage} />
+                    </>
+                    :
+                    <Redirect to='/' />
+                }
                 <Route component={ErrorPage} />
             </Switch>
-        </BrowserRouter>
+        </BrowserRouter >
     )
 }
 

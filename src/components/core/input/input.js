@@ -42,6 +42,8 @@ class InputField extends React.Component {
         }
 
         this.setState(newState);
+
+        //return to the parent element information about validating result
         this.onValidate({ valid: !verify });
     }
 
@@ -51,10 +53,14 @@ class InputField extends React.Component {
                 [id]: event.target.value
             }
         )
+
+        //return to the parent element input value
         this.onChange(event);
     }
 
     onBlurHandler = () => {
+        //validating field and past the result for checking.
+        
         if (!!this.validators?.length === false) {
             return
         }

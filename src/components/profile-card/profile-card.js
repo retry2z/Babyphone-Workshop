@@ -4,12 +4,10 @@ import defaultImage from '../../images/profile-icon.png';
 
 import DefinedButton from '../core/button/button';
 
-const ProfileCard = ({ data }) => {
+const ProfileCard = ({ data, onClick }) => {
     const name = data?.name || 'Name'
     const email = data?.email || 'example@domain.com';
     const imageUrl = data?.imageUrl || defaultImage;
-    const count = data?.count || 0;
-
 
     return (
         <div className={style.profile}>
@@ -22,10 +20,9 @@ const ProfileCard = ({ data }) => {
                     {email}
                 </p>
                 <p>
-                    <span>Created rooms: </span>
-                    {count}
+                    <span>Room History</span>
                 </p>
-                <DefinedButton title='Logout' />
+                <DefinedButton title='Logout' action={onClick} />
             </div>
         </div>
     )

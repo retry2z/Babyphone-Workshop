@@ -1,6 +1,7 @@
 import axios from 'axios';
 import admin from './admin';
 import cookieAdmin from './cookie';
+import userService from './user-service';
 
 const cookieHandler = cookieAdmin();
 const { url } = admin();
@@ -17,12 +18,20 @@ const errorHandler = (data = 0) => {
     return message[code]
 }
 
-const userService = {
+const authService = {
     async login(data) {
         try {
             const response = await axios.post(url + collection + '/login', data);
+            const isValid = cookieHandler.set(response.data.token);
+
+            if (!isValid) {
+                return
+            }
+            const user = await userService.profile();
+
             return {
-                isValid: cookieHandler.set(response.data.token)
+                isValid,
+                data: user.data
             }
         }
         catch (e) {
@@ -50,4 +59,4 @@ const userService = {
 
 }
 
-export default userService;
+export default authService;
