@@ -6,6 +6,8 @@ import Title from '../../components/core/title/title';
 import FormControl from '../../components/from-control/form';
 
 import authService from '../../services/auth-service';
+import Contexts from '../../Contexts';
+const { UserContext } = Contexts();
 
 class Register extends React.Component {
 
@@ -75,20 +77,21 @@ class Register extends React.Component {
     }
 
 
+    isLoading = false;
+
+    static contextType = UserContext;
+
+
     submitHandler = async (value) => {
-        if (this.state.isLoading) {
+        if (this.isLoading) {
             return
         }
 
-        await this.setState({
-            isLoading: true,
-        });
+        this.isLoading = true;
+        const response = await authService.login(value);
+        this.context.login(response.data);
+        this.isLoading = false;
 
-        const response = await authService.register(value);
-
-        this.setState({
-            isLoading: false,
-        });
 
         if (!response.isValid) {
             return response.error

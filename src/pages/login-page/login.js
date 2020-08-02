@@ -6,6 +6,8 @@ import Title from '../../components/core/title/title';
 import FormControl from '../../components/from-control/form';
 
 import authService from '../../services/auth-service';
+import Contexts from '../../Contexts';
+const { UserContext } = Contexts();
 
 class Login extends React.Component {
 
@@ -50,25 +52,25 @@ class Login extends React.Component {
         }
     }
 
+    isLoading = false;
+
+    static contextType = UserContext;
+
 
     submitHandler = async (value) => {
-        if (this.state.isLoading) {
+        if (this.isLoading) {
             return
         }
 
-        await this.setState({
-            isLoading: true,
-        });
-
+        this.isLoading = true;
         const response = await authService.login(value);
-
-        this.setState({
-            isLoading: false,
-        });
-
+        this.isLoading = false;
+        
+        
         if (!response.isValid) {
             return response.error
         } else {
+            this.context.login(response.data);
             this.props.history.push('/');
             return false
         }

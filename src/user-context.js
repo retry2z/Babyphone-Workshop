@@ -27,6 +27,13 @@ class ContextContainer extends React.Component {
 
   logout = () => {
     cookieHandler.remove();
+
+    const newState = { ...this.state };
+
+    newState.isLogged = false;
+    newState.user = null;
+
+    this.setState(newState);
   }
 
   async componentDidMount() {

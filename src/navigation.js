@@ -5,12 +5,14 @@ import {
     BrowserRouter,
     Switch,
     Route,
-    Redirect
+    Redirect,
 } from 'react-router-dom';
 
 import HomePage from './pages/home-page/home';
 import RoomPage from './pages/room-page/room';
 import ProfilePage from './pages/profile-page/profile';
+import LogoutPage from './pages/logout-page/logout';
+
 import RegisterPage from './pages/register-page/register';
 import LoginPage from './pages/login-page/login';
 import ErrorPage from './pages/404-page/notFound';
@@ -23,18 +25,22 @@ const Navigation = () => {
 
 
     return (
-        < BrowserRouter >
+        <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={HomePage} />
                 <Route path="/auth/login" component={LoginPage} />
                 <Route path="/auth/register" component={RegisterPage} />
 
-                <Route path="/product/details/:id" component={RoomPage} /> :
+                {context.isLogged ?
+                    <>
+                        <Route path="/product/details/:id" component={RoomPage} />
 
-
-                <Route path="/user/profile" component={ProfilePage} /> :
-
-
+                        <Route path="/user/profile" component={ProfilePage} />
+                        <Route path="/user/logout" component={LogoutPage} />
+                    </>
+                    :
+                    <Redirect to='/' />
+                }
                 <Route component={ErrorPage} />
             </Switch>
         </BrowserRouter >

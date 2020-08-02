@@ -22,7 +22,7 @@ const userService = {
         try {
             const token = cookieHandler.get() || '';
 
-            if (!!token.length === false) {
+            if (!!token === false) {
                 return
             }
 
