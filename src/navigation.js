@@ -12,6 +12,7 @@ import HomePage from './pages/home-page/home';
 import RoomPage from './pages/room-page/room';
 import ProfilePage from './pages/profile-page/profile';
 import LogoutPage from './pages/logout-page/logout';
+import CreateRoomPage from './pages/create-room-page/create';
 
 import RegisterPage from './pages/register-page/register';
 import LoginPage from './pages/login-page/login';
@@ -34,6 +35,8 @@ const Navigation = () => {
                 <Route path="/product/details/:id" component={RoomPage} />
                 {context.isLogged ?
                     <>
+                        <Route path="/product/create" component={CreateRoomPage} />
+
 
                         <Route path="/user/profile" component={ProfilePage} />
                         <Route path="/user/logout" component={LogoutPage} />

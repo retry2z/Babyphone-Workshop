@@ -26,8 +26,31 @@ const productService = {
         return await axios.get(url + collection + id);
     },
 
-    async post() {
+    async post(data) {
+        try {
+            const token = cookieHandler.get() || '';
 
+            if (!!token === false) {
+                return
+            }
+
+            const response = await axios.post(url + collection, data, {
+                headers: {
+                    'Authorization': token
+                }
+            });
+
+            return {
+                isValid: true,
+                data: response.data
+            }
+        }
+        catch (e) {
+            return {
+                isValid: false,
+                error: errorHandler(e.message)
+            }
+        }
     },
 
     async edit() {
@@ -51,7 +74,7 @@ const productService = {
                 data.headers = {};
             }
 
-            const response = await axios.get(url + collection + id + '/join',data);
+            const response = await axios.get(url + collection + id + '/join', data);
 
             return {
                 isValid: true,
@@ -79,7 +102,7 @@ const productService = {
                 data.headers = {};
             }
 
-            const response = await axios.get(url + collection + id + '/leave',data);
+            const response = await axios.get(url + collection + id + '/leave', data);
 
             return {
                 isValid: true,
@@ -91,7 +114,8 @@ const productService = {
                 isValid: false,
                 error: errorHandler(e.message)
             }
-        }    },
+        }
+    },
 }
 
 export default productService;
