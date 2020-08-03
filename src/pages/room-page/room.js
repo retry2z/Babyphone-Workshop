@@ -49,8 +49,7 @@ class Room extends React.Component {
             return (
                 <Common>
                     <Wrapper>
-
-                        <ProductCard onJoinHandler={this.onJoinHandler} />
+                        <h2>Loading...</h2>
                     </Wrapper>
                 </Common>
             )
