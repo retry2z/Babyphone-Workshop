@@ -12,6 +12,10 @@ const ActiveBtn = ({ type, onClick }) => {
             title: 'Leave',
             style: style.room_leave_btn
         },
+        owner: {
+            title: 'Delete',
+            style: style.room_owner_btn
+        },
     }
 
     return (
