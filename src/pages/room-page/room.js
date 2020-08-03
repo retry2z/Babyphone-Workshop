@@ -13,7 +13,7 @@ class Room extends React.Component {
     constructor(props) {
         super(props);
 
-        this.isAuthor = false;
+        this.isAuthor = null;
         this.state = {
             data: {}
         }
@@ -45,11 +45,25 @@ class Room extends React.Component {
     }
 
     render() {
+        if (this.isAuthor === null) {
+            return (
+                <Common>
+                    <Wrapper>
+
+                        <ProductCard onJoinHandler={this.onJoinHandler} />
+                    </Wrapper>
+                </Common>
+            )
+        }
         return (
             <Common>
                 <Wrapper>
                     <ProductCard data={this.state.data} onJoinHandler={this.onJoinHandler} owner={this.isAuthor} />
-                    <NotificationCard />
+                    {
+                        this.isAuthor ?
+                            null :
+                            <NotificationCard />
+                    }
                 </Wrapper>
             </Common>
         )

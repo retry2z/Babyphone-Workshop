@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './card.module.css'
 
-const ActiveBtn = ({ type, onClick }) => {
+const ActiveBtn = ({ type = 'default', onClick }) => {
 
     const theme = {
         join: {
@@ -15,6 +15,10 @@ const ActiveBtn = ({ type, onClick }) => {
         owner: {
             title: 'Delete',
             style: style.room_owner_btn
+        },
+        default: {
+            title: 'Loading...',
+            style: style.room_default_btn
         },
     }
 

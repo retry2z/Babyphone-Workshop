@@ -71,7 +71,7 @@ class Home extends React.Component {
                     />
 
                     <div>
-                        <Title title='Last created rooms' />
+                        <Title title='Rooms' />
                         <List>
                             {
                                 !!this.state.data.length ?
