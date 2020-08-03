@@ -6,10 +6,6 @@ import Title from '../../components/core/title/title';
 import FormControl from '../../components/from-control/form';
 import productService from '../../services/product-service';
 
-import Contexts from '../../Contexts';
-const { UserContext } = Contexts();
-
-
 const CreateRoom = (props) => {
     const form = [
         {
