@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import style from './card.module.css';
 import defaultImage from '../../images/room-default.jpg';
 import productService from '../../services/product-service';
 import ActiveBtn from './button';
 
-const ProductCard = ({ data, onJoinHandler }) => {
+const ProductCard = ({ data, onJoinHandler, owner = false }) => {
     const { id } = useParams();
+    const history = useHistory();
     const [body, setBody] = useState([]);
     const [isJoined, setIsJoined] = useState(false);
 
@@ -42,7 +43,6 @@ const ProductCard = ({ data, onJoinHandler }) => {
         if (isJoined) {
             return
         }
-        
         return () => {
             productService.leave(id);
         }
@@ -63,6 +63,11 @@ const ProductCard = ({ data, onJoinHandler }) => {
         setIsJoined(false);
     }
 
+    const deleteRoom = async () => {
+        await productService.remove(id);
+        history.push('/');
+    }
+
     return (
         <div className={style.room}>
             <img src={imageUrl} alt="Room_image" className={style.room_image} />
@@ -73,9 +78,11 @@ const ProductCard = ({ data, onJoinHandler }) => {
                 }
             </div>
             {
-                isJoined ?
-                    <ActiveBtn type='leave' onClick={leaveRoom} /> :
-                    <ActiveBtn type='join' onClick={joinRoom} />
+                owner ?
+                    <ActiveBtn type='owner' onClick={deleteRoom} /> :
+                    isJoined ?
+                        <ActiveBtn type='leave' onClick={leaveRoom} /> :
+                        <ActiveBtn type='join' onClick={joinRoom} />
             }
         </div>
     )

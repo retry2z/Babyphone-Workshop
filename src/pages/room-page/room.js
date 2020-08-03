@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import './room.module.css';
 
 import Common from '../../components/common/common';
 import ProductCard from '../../components/product-card/card';
+import NotificationCard from '../../components/notification-card/notification-card';
 import productService from '../../services/product-service';
-import Title from '../../components/core/title/title';
 
 import Contexts from '../../Contexts';
 const { UserContext } = Contexts();
@@ -14,6 +13,7 @@ class Room extends React.Component {
     constructor(props) {
         super(props);
 
+        this.isAuthor = false;
         this.state = {
             data: {}
         }
@@ -26,6 +26,11 @@ class Room extends React.Component {
 
         try {
             const { data } = await productService.get(params.id);
+
+            if (this.context.user !== null) {
+                this.isAuthor = data.author === this.context?.user.uid;
+            }
+
             this.setState({
                 data,
             })
@@ -43,11 +48,8 @@ class Room extends React.Component {
         return (
             <Common>
                 <Wrapper>
-                    <ProductCard data={this.state.data} onJoinHandler={this.onJoinHandler} />
-                    <div>
-                        <Title title='Notifications' />
-                        <textarea disabled></textarea>
-                    </div>
+                    <ProductCard data={this.state.data} onJoinHandler={this.onJoinHandler} owner={this.isAuthor} />
+                    <NotificationCard />
                 </Wrapper>
             </Common>
         )

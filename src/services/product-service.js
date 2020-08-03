@@ -57,8 +57,31 @@ const productService = {
 
     },
 
-    async remove() {
+    async remove(id) {
+        try {
+            const token = cookieHandler.get() || '';
 
+            if (!!token === false) {
+                return
+            }
+
+            const response = await axios.delete(url + collection + id, {
+                headers: {
+                    'Authorization': token
+                }
+            });
+
+            return {
+                isValid: true,
+                data: response.data
+            }
+        }
+        catch (e) {
+            return {
+                isValid: false,
+                error: errorHandler(e.message)
+            }
+        }
     },
 
     async join(id) {
