@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Common from '../../components/common/common';
 import ProductCard from '../../components/product-card/card';
 import NotificationCard from '../../components/notification-card/notification-card';
+import ProductActionCard from '../../components/product-action-card/product-action';
 import productService from '../../services/product-service';
 
 import Contexts from '../../Contexts';
@@ -60,7 +61,7 @@ class Room extends React.Component {
                     <ProductCard data={this.state.data} onJoinHandler={this.onJoinHandler} owner={this.isAuthor} />
                     {
                         this.isAuthor ?
-                            null :
+                            <ProductActionCard data={this.state.data} id={this.props.match.params.id} /> :
                             <NotificationCard />
                     }
                 </Wrapper>
