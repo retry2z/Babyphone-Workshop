@@ -37,7 +37,7 @@ const ProductCard = ({ data, onJoinHandler, owner = false }) => {
 
     useEffect(() => {
         onJoinHandler(isJoined);
-    }, [isJoined]);
+    }, [isJoined, onJoinHandler]);
 
     useEffect(() => {
         if (isJoined) {
