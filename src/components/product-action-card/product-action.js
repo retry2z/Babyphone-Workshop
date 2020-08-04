@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import FormControl from '../from-control/form';
 import Title from '../core/title/title';
 import productService from '../../services/product-service';
+import SpeechPanel from '../speech-detector/speech';
 
 const ProductActionCard = (props) => {
     const { id } = props;
@@ -53,6 +54,7 @@ const ProductActionCard = (props) => {
 
     return (
         <Wrapper>
+            <SpeechPanel />
             <Title title='Update room' />
             <FormControl
                 fields={form}

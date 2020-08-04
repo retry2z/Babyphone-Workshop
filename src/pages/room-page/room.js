@@ -30,11 +30,11 @@ class Room extends React.Component {
 
             if (this.context.user !== null) {
                 this.isAuthor = data.author === this.context?.user.uid;
+            } else {
+                this.isAuthor = false;
             }
 
-            this.setState({
-                data,
-            })
+            this.setState({ data });
         }
         catch (e) {
             this.props.history.push('/error/room');
@@ -42,6 +42,9 @@ class Room extends React.Component {
     }
 
     onJoinHandler = (isJoined) => {
+        if (this.isAuthor) {
+            return
+        }
         console.log(isJoined);
     }
 

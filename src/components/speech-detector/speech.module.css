@@ -1,0 +1,62 @@
+.speech_wrapper {
+    color: #234465;
+    background: rgb(238,238,238,0.81);
+    width: 100%;
+    margin: 1em auto;
+    border: 1px solid #234465;
+    border-radius: 4px;
+    padding: 0.2% 2% 0.2% 2%;
+    font-size: 16px;
+}
+
+.speech_body {
+    display: grid;
+    grid-template-columns: 45% 15% 15% 15%;
+    grid-gap: 2.5%;
+    padding: 2%;
+    align-items: center;
+}
+
+.speech_info {
+    font-size: 20;
+    font-weight: bold;
+}
+
+.speech_checkbox {
+    margin-left: 6px;
+    transform: scale(1.5);
+}
+
+.speech_start_btn {
+    background-color: forestgreen;
+    color:#f9f7f6;
+    border: 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    padding: 12% 5% 12% 5%;
+    cursor: pointer;
+    transform: all 0.2;
+    width: 100%;
+}
+
+.speech_start_btn:hover {
+    background-color: #07ac46;
+}
+
+.speech_abort_btn {
+    background-color: #FA7D58;
+    color:#f9f7f6;
+    border: 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    padding: 12% 5% 12% 5%;
+    cursor: pointer;
+    transform: all 0.2;
+    width: 100%;
+}
+
+.speech_abort_btn:hover {
+    background-color: #fa9273;
+}
