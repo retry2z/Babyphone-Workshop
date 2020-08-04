@@ -63,13 +63,14 @@ class Home extends React.Component {
             <Common>
                 <Wrapper>
 
-                    <FormControl
-                        fields={this.fields}
-                        formAction={this.submitHandler}
-                        buttonTitle='Search'
-                        theme='default'
-                    />
-
+                    <Search>
+                        <FormControl
+                            fields={this.fields}
+                            formAction={this.submitHandler}
+                            buttonTitle='Search'
+                            theme='default'
+                        />
+                    </Search>
                     <div>
                         <Title title='Rooms' />
                         <List>
@@ -98,7 +99,11 @@ const Wrapper = styled.section`
 `;
 
 const List = styled.section`
-    margin-top: 4.2%;
+    margin-top: 5.2%;
+`;
+
+const Search = styled.section`
+    height:18vh
 `;
 
 export default Home

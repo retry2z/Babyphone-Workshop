@@ -1,8 +1,8 @@
 .button_default{
-    background-color: #DAC3AB;
-    border: 2px solid #DAC3AB;
-    color: #777777;
-    padding:10px 20px;
+    background-color: #504038;
+    border: 2px solid #504038;
+    color:#f9f7f6;
+    padding:10px 40px;
 	text-transform:uppercase;
     display: block;
     margin: 0 auto;
@@ -14,9 +14,9 @@
 }
 
 .button_default:hover{
-    background-color: #f1d9be;
-    border: 2px solid #f1d9be;
-    color: #777777;
+    background-color: #7a6256;
+    border: 2px solid #7a6256;
+    color:#f9f7f6;
 }
 
 .button_dark{

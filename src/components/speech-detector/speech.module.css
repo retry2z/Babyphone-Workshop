@@ -28,35 +28,39 @@
 }
 
 .speech_start_btn {
-    background-color: forestgreen;
+    background-color: #317436;
     color:#f9f7f6;
     border: 0;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 16px;
-    padding: 12% 5% 12% 5%;
     cursor: pointer;
     transform: all 0.2;
     width: 100%;
+    padding:10px 20px;
+	text-transform:uppercase;
+    margin: 0 auto;
+    border-radius:4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
 }
 
 .speech_start_btn:hover {
-    background-color: #07ac46;
+    background-color: #3d9243;
 }
 
 .speech_abort_btn {
-    background-color: #FA7D58;
+    background-color: #503838;
     color:#f9f7f6;
     border: 0;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 16px;
-    padding: 12% 5% 12% 5%;
     cursor: pointer;
     transform: all 0.2;
     width: 100%;
+    padding:10px 20px;
+	text-transform:uppercase;
+    margin: 0 auto;
+    border-radius:4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
 }
 
 .speech_abort_btn:hover {
-    background-color: #fa9273;
+    background-color: #7c5555;
 }

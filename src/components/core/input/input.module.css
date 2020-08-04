@@ -26,6 +26,7 @@
 
 /* Validating */
 .valid {
+    color: #1c354e;
     border:0;
     background:transparent;
     width:100%;

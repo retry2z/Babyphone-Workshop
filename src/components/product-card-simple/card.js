@@ -2,9 +2,10 @@ import React from 'react';
 import style from './card.module.css';
 import { Link } from 'react-router-dom';
 
-const ProductCard = ({ data }) => {
+const ProductCardSimple = ({ data }) => {
     const title = data?.title || 'Loading...';
-    const keywords = data?.keyWords.join(', ') || 'Loading...';
+    const words = !!data?.keyWords ?  data.keyWords : [];
+    const keywords = words.join(', ');
     const id = data?.id || 'error';
 
     return (
@@ -25,4 +26,4 @@ const ProductCard = ({ data }) => {
     )
 }
 
-export default ProductCard
+export default ProductCardSimple

@@ -4,8 +4,9 @@
     width: 100%;
     height: auto;
     border: 1px solid #234465;
-    margin-bottom: 1.6%;
+    margin-bottom: 0.6%;
     border-radius: 4px;
+    transition: all 0.2s ease-in;
 }
 
 .body {

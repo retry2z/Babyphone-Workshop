@@ -80,13 +80,15 @@ const ProductCard = ({ data = false, onJoinHandler = null, owner = false }) => {
                     body.length > 0 ? body : <div className={style.person}><p>Empty</p></div>
                 }
             </div>
-            {
-                owner ?
-                    <ActiveBtn type='owner' onClick={deleteRoom} /> :
-                    isJoined ?
-                        <ActiveBtn type='leave' onClick={leaveRoom} /> :
-                        <ActiveBtn type='join' onClick={joinRoom} />
-            }
+            <>
+                {
+                    owner ?
+                        <ActiveBtn type='owner' onClick={deleteRoom} /> :
+                        isJoined ?
+                            <ActiveBtn type='leave' onClick={leaveRoom} /> :
+                            <ActiveBtn type='join' onClick={joinRoom} />
+                }
+            </>
         </div>
     )
 }
