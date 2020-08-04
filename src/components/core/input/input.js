@@ -12,7 +12,6 @@ class InputField extends React.Component {
         this.label = props.label || '';
         this.onChange = props.onChange;
         this.validators = props.validators;
-        this.value = props.value;
         this.onValidate = props.onValidate;
 
         this.state = this.initState();
@@ -23,9 +22,21 @@ class InputField extends React.Component {
 
         data.isValid = true;
         data.error = { message: '' };
-        data[this.id] = '';
+        data[this.id] = this.props?.value || '';
 
         return data
+    }
+
+    componentDidMount() {
+        this.props.forceValidate(this.onBlurHandler);         //passing validating system to parent
+
+        this.onChange(this.state[this.id]);
+
+        if (!this.state[this.id]) {
+            return
+        }
+
+        this.onBlurHandler();
     }
 
     validatorHandler(data = []) {
@@ -55,12 +66,12 @@ class InputField extends React.Component {
         )
 
         //return to the parent element input value
-        this.onChange(event);
+        this.onChange(event.target.value);
     }
 
     onBlurHandler = () => {
         //validating field and past the result for checking.
-        
+
         if (!!this.validators?.length === false) {
             return
         }
@@ -81,7 +92,7 @@ class InputField extends React.Component {
                     onChange={event => this.onChangeHandler(event, this.id)}
                     onBlur={this.onBlurHandler}
 
-                    value={this.value}
+                    defaultValue={this.props.value}
                 />
                 <label className={style.label} htmlFor={this.id}>{this.label}</label>
                 <span className={style.span}>{this.state.error.message}</span>

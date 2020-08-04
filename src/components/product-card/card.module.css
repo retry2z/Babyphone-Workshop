@@ -87,3 +87,16 @@
 .room_owner_btn:hover {
     background-color: #fc7975;
 }
+
+.room_default_btn {
+    background-color: #b9b9b9;
+    color:#222222;
+    border: none;
+    border-radius: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding: 1.2rem;
+    cursor: pointer;
+    transform: all 0.2;
+    width: 100%;
+}

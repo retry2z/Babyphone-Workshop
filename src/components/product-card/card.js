@@ -5,7 +5,7 @@ import defaultImage from '../../images/room-default.jpg';
 import productService from '../../services/product-service';
 import ActiveBtn from './button';
 
-const ProductCard = ({ data, onJoinHandler, owner = false }) => {
+const ProductCard = ({ data = false, onJoinHandler = null, owner = false }) => {
     const { id } = useParams();
     const history = useHistory();
     const [body, setBody] = useState([]);
@@ -36,6 +36,9 @@ const ProductCard = ({ data, onJoinHandler, owner = false }) => {
     }, [people]);
 
     useEffect(() => {
+        if (onJoinHandler === null) {
+            return
+        }
         onJoinHandler(isJoined);
     }, [isJoined, onJoinHandler]);
 

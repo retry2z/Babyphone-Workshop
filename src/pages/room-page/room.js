@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Common from '../../components/common/common';
 import ProductCard from '../../components/product-card/card';
 import NotificationCard from '../../components/notification-card/notification-card';
+import ProductActionCard from '../../components/product-action-card/product-action';
 import productService from '../../services/product-service';
 
 import Contexts from '../../Contexts';
@@ -13,7 +14,7 @@ class Room extends React.Component {
     constructor(props) {
         super(props);
 
-        this.isAuthor = false;
+        this.isAuthor = null;
         this.state = {
             data: {}
         }
@@ -29,11 +30,11 @@ class Room extends React.Component {
 
             if (this.context.user !== null) {
                 this.isAuthor = data.author === this.context?.user.uid;
+            } else {
+                this.isAuthor = false;
             }
 
-            this.setState({
-                data,
-            })
+            this.setState({ data });
         }
         catch (e) {
             this.props.history.push('/error/room');
@@ -41,15 +42,31 @@ class Room extends React.Component {
     }
 
     onJoinHandler = (isJoined) => {
+        if (this.isAuthor) {
+            return
+        }
         console.log(isJoined);
     }
 
     render() {
+        if (this.isAuthor === null) {
+            return (
+                <Common>
+                    <Wrapper>
+                        <h2>Loading...</h2>
+                    </Wrapper>
+                </Common>
+            )
+        }
         return (
             <Common>
                 <Wrapper>
                     <ProductCard data={this.state.data} onJoinHandler={this.onJoinHandler} owner={this.isAuthor} />
-                    <NotificationCard />
+                    {
+                        this.isAuthor ?
+                            <ProductActionCard data={this.state.data} id={this.props.match.params.id} /> :
+                            <NotificationCard />
+                    }
                 </Wrapper>
             </Common>
         )

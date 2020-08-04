@@ -53,8 +53,33 @@ const productService = {
         }
     },
 
-    async edit() {
+    async edit(id, data) {
+        console.log(id, data);
+        try {
+            const token = cookieHandler.get() || '';
 
+            if (!!token === false) {
+                return
+            }
+
+            const response = await axios.patch(url + collection + id, data, {
+                headers: {
+                    'Authorization': token
+                }
+            });
+
+            return {
+                isValid: true,
+                data: response.data
+            }
+        }
+        catch (e) {
+            console.log(e);
+            return {
+                isValid: false,
+                error: errorHandler(e.message)
+            }
+        }
     },
 
     async remove(id) {

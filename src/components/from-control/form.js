@@ -20,6 +20,7 @@ class FormControl extends React.Component {
         this.formAction = props.formAction;
         this.theme = props.theme;
 
+        this.forceValidate = [];
         this.state = this.initState();
     }
 
@@ -43,9 +44,9 @@ class FormControl extends React.Component {
         }
     }
 
-    onChangeHandler = (event, field) => {
+    onChangeHandler = (value, field) => {
         const newState = { ...this.state };
-        newState.data[field] = event.target.value;
+        newState.data[field] = value;
         newState.showError = false;
 
         this.setState(newState);
@@ -75,34 +76,32 @@ class FormControl extends React.Component {
     submitHandler = async (event) => {
         event.preventDefault();
 
+        await this.forceValidate.forEach(forceValidateField => forceValidateField());
 
         if (!this.shouldBeValidated) {
             return this.formAction(this.state.data);
         }
 
-        
         const groupResults = validateGroup(this.state.data, this.validators);
-        const groupVerify = groupResults.find(x => x.validate.isValid === false);    
-        console.log(this.shouldBeValidated);
-  
+        const groupVerify = groupResults.find(x => x.validate.isValid === false);
+
         if (groupVerify || !this.state.isValid) {
             const newState = { ...this.state };
             this.errorMessage = groupVerify?.validate.message || 'Form contain invalid fields';
             newState.showError = true;
             this.setState(newState);
-            
+
             return
-        }       
+        }
 
         //Invoke submit function from parent and await if Its returns a message to show as error
         const isThereErrorMessage = await this.formAction(this.state.data);
         if (!!isThereErrorMessage) {
+            this.errorMessage = isThereErrorMessage;
             const newState = { ...this.state };
             newState.isValid = false;
             newState.showError = true;
             this.setState(newState);
-
-            this.errorMessage = isThereErrorMessage;
         }
     }
 
@@ -123,6 +122,7 @@ class FormControl extends React.Component {
                                     validators={field.validators}
                                     onValidate={isValid => this.onValidateHandler(isValid, field.name)}
                                     value={field.value}
+                                    forceValidate={ref => this.forceValidate.push(ref)}
                                 />
                             )
                         })
