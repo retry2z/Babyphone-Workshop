@@ -5,14 +5,16 @@ import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
 import FormControl from '../../components/from-control/form';
 
-import Contexts from '../../Contexts';
+import userService from '../../services/user-service';
 
+import Contexts from '../../Contexts';
 const { UserContext } = Contexts();
 
 
 class Profile extends React.Component {
     fields = [
         {
+            type: 'password',
             name: 'password',
             label: 'Current password:',
             validators: [
@@ -71,6 +73,7 @@ class Profile extends React.Component {
 
     constructor(props) {
         super(props);
+        this.isLoading = false;
 
         this.state = {
         }
@@ -78,13 +81,21 @@ class Profile extends React.Component {
 
     static contextType = UserContext;
 
-    componentDidMount() {
+    submitHandler = async (value) => {
+        if (this.isLoading) {
+            return
+        }
 
-    }
+        this.isLoading = true;
+        const response = await userService.changePassword(value);
+        this.isLoading = false;
 
-
-    submitHandler = (value) => {
-        console.log(value);
+        if (!response.isValid) {
+            return response.error
+        } else {
+            this.props.history.push('/');
+            return false
+        }
     }
 
     render() {

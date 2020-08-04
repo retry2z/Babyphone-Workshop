@@ -25,8 +25,9 @@ class ContextContainer extends React.Component {
     this.setState(newState);
   }
 
-  logout = () => {
+  logout = async () => {
     cookieHandler.remove();
+    await userService.logout();
 
     const newState = { ...this.state };
 
@@ -37,9 +38,10 @@ class ContextContainer extends React.Component {
   }
 
   async componentDidMount() {
+    const { data: { uid } } = await userService.current();
     const user = await userService.profile() || null;
 
-    if (user === null || !user.isValid) {
+    if ((user === null || !user.isValid) || (uid !== user.data.uid)) {
       cookieHandler.remove();
 
       const newState = { ...this.state };

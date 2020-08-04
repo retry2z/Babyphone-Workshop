@@ -23,8 +23,14 @@
 }
 
 .speech_checkbox {
-    margin-left: 6px;
+    margin-left: 8px;
     transform: scale(1.5);
+}
+
+
+.speed_auto label, input {
+    cursor: pointer;
+    transform:all 2s ;
 }
 
 .speech_start_btn {
@@ -47,7 +53,7 @@
 }
 
 .speech_abort_btn {
-    background-color: #503838;
+    background-color: #743b31;
     color:#f9f7f6;
     border: 0;
     cursor: pointer;
@@ -62,5 +68,5 @@
 }
 
 .speech_abort_btn:hover {
-    background-color: #7c5555;
+    background-color: #9b4f41;
 }

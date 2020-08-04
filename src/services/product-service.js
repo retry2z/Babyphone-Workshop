@@ -10,6 +10,7 @@ const errorHandler = (data = 0) => {
     const message = {
         0: 'Something went wrong',
         403: 'Permission Denied',
+        401: 'Unauthorized',
         404: 'Page not found',
     }
     const code = data.split(' code ')[1];
@@ -54,7 +55,6 @@ const productService = {
     },
 
     async edit(id, data) {
-        console.log(id, data);
         try {
             const token = cookieHandler.get() || '';
 
