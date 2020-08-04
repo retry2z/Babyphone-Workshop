@@ -28,12 +28,14 @@ class InputField extends React.Component {
     }
 
     componentDidMount() {
+        this.props.forceValidate(this.onBlurHandler);         //passing validating system to parent
+
         this.onChange(this.state[this.id]);
 
         if (!this.state[this.id]) {
             return
         }
-        
+
         this.onBlurHandler();
     }
 
