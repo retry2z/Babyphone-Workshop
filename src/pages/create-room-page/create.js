@@ -52,7 +52,7 @@ const CreateRoom = (props) => {
                 <FormControl
                     fields={form}
                     formAction={submitHandler}
-                    buttonTitle='Save'
+                    buttonTitle='Create'
                 />
             </Wrapper>
         </Common>

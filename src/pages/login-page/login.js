@@ -79,8 +79,8 @@ class Login extends React.Component {
     render() {
         return (
             <Common>
-                <Title title='Welcome' />
                 <Wrapper>
+                <Title title='Welcome' />
                     <FormControl
                         fields={this.form}
                         formAction={this.submitHandler}
@@ -94,6 +94,7 @@ class Login extends React.Component {
 
 const Wrapper = styled.section`
     margin: 1em auto;
+    margin-top:3em;
     width: 45%;
 `;
 

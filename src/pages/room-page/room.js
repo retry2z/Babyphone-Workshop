@@ -37,7 +37,7 @@ class Room extends React.Component {
             this.setState({ data });
         }
         catch (e) {
-            this.props.history.push('/error/room');
+            this.props.history.push('/error');
         }
     }
 

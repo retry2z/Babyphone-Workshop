@@ -11,6 +11,7 @@ import SpeechPanel from '../speech-detector/speech';
 const ProductActionCard = (props) => {
     const { id } = props;
     const history = useHistory();
+    const keyWords = !!props.data.keyWords ? props.data.keyWords : [];
 
     const form = [
         {
@@ -32,7 +33,7 @@ const ProductActionCard = (props) => {
         {
             name: 'keyWords',
             label: 'Key Words:',
-            value: props.data.keyWords.join(' '),
+            value: keyWords.join(' '),
             validators: [
                 {
                     type: 'minLength',

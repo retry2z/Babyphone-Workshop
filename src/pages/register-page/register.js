@@ -104,8 +104,8 @@ class Register extends React.Component {
     render() {
         return (
             <Common>
-                <Title title='Welcome' />
                 <Wrapper>
+                <Title title='Welcome' />
                     <FormControl
                         fields={this.fields}
                         validators={this.validators}
@@ -121,6 +121,7 @@ class Register extends React.Component {
 
 const Wrapper = styled.section`
     margin: 1em auto;
+    margin-top:3em;
     width: 45%;
 `;
 
