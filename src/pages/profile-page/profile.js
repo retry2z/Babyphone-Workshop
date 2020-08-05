@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
 
-import ChangePasswordPanel from '../../components/profile-change-password/change-password';
+import ChangePassword from '../../components/profile-change-password/change-password';
 import MyRooms from '../../components/profile-history-rooms/history-rooms';
-import ProfileUpdate from '../../components/profile-update-form/profile-update-form';
+import UserSettings from '../../components/profile-update-form/profile-update-form';
 
 import Contexts from '../../Contexts';
 const { UserContext } = Contexts();
@@ -24,11 +24,10 @@ class Profile extends React.Component {
 
     static contextType = UserContext;
 
-    actionHandler(value = 'test') {
-        console.log(value);
-        this.setState({
-            component: value || ''
-        });
+    actionHandler = (value = 'test') => {
+        const newState = { ...this.state };
+        newState.component = value;
+        this.setState(newState);
     }
 
     render() {
@@ -43,8 +42,8 @@ class Profile extends React.Component {
                         action={this.actionHandler}
                     />
                     {this.state.component === 'MyRooms' ? <MyRooms /> : null}
-                    {this.state.component === 'MyRooms' ? <MyRooms /> : null}
-                    {this.state.component === 'MyRooms' ? <MyRooms /> : null}
+                    {this.state.component === 'UserSettings' ? <UserSettings /> : null}
+                    {this.state.component === 'ChangePassword' ? <ChangePassword /> : null}
                 </Wrapper>
             </Common>
         )
