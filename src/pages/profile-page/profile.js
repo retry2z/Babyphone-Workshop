@@ -3,88 +3,31 @@ import styled from 'styled-components';
 
 import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
-import FormControl from '../../components/from-control/form';
+
+import ChangePassword from '../../components/profile-change-password/change-password';
+import MyRooms from '../../components/profile-history-rooms/history-rooms';
+import UserSettings from '../../components/profile-update-form/profile-update-form';
 
 import Contexts from '../../Contexts';
-
 const { UserContext } = Contexts();
 
 
 class Profile extends React.Component {
-    fields = [
-        {
-            name: 'password',
-            label: 'Current password:',
-            validators: [
-                {
-                    type: 'minLength',
-                    param: 8,
-                    message: 'Password must be at least 8 symbols',
-                },
-                {
-                    type: 'required',
-                    message: 'This field should not be empty'
-                },
-            ],
-        },
-        {
-            type: 'password',
-            name: 'newPassword',
-            label: 'Password:',
-            validators: [
-                {
-                    type: 'minLength',
-                    param: 8,
-                    message: 'Password must be at least 8 symbols',
-                },
-                {
-                    type: 'required',
-                    message: 'This field should not be empty'
-                },
-            ],
-        },
-        {
-            type: 'password',
-            name: 'rePassword',
-            label: 'Re-Password:',
-            validators: [
-                {
-                    type: 'minLength',
-                    param: 8,
-                    message: 'Password must be at least 8 symbols',
-                },
-                {
-                    type: 'required',
-                    message: 'This field should not be empty'
-                },
-            ],
-        },
-    ]
-
-    validators = [
-        {
-            type: 'passwordMatch',
-            param: ['newPassword', 'rePassword'],
-            message: 'Passwords are not equals',
-        }
-    ]
 
     constructor(props) {
         super(props);
-
+        this.isLoading = false;
         this.state = {
+            component: 'UserSettings',
         }
     }
 
     static contextType = UserContext;
 
-    componentDidMount() {
-
-    }
-
-
-    submitHandler = (value) => {
-        console.log(value);
+    actionHandler = (value = 'UserSettings') => {
+        const newState = { ...this.state };
+        newState.component = value;
+        this.setState(newState);
     }
 
     render() {
@@ -93,14 +36,18 @@ class Profile extends React.Component {
         return (
             <Common>
                 <Wrapper>
-                    <ProfileCard data={user} onClick={logout} />
-
-                    <FormControl
-                        fields={this.fields}
-                        validators={this.validators}
-                        formAction={this.submitHandler}
-                        buttonTitle='Save'
-                    />
+                    <Side>
+                        <ProfileCard
+                            data={user}
+                            onClick={logout}
+                            action={this.actionHandler}
+                        />
+                    </Side>
+                    <Main>
+                        {this.state.component === 'MyRooms' ? <MyRooms /> : null}
+                        {this.state.component === 'UserSettings' ? <UserSettings /> : null}
+                        {this.state.component === 'ChangePassword' ? <ChangePassword /> : null}
+                    </Main>
                 </Wrapper>
             </Common>
         )
@@ -110,12 +57,18 @@ class Profile extends React.Component {
 const Wrapper = styled.section`
     display: grid;
     padding: 2%;
-    margin: 0 auto;
-    grid-template-columns: 45% 45%;
+    margin: 1em auto;
+    grid-template-columns: 30% 65%;
     grid-gap: 5%;
-    padding-left: 5%;
-    padding-bottom: 5%;
 `;
 
+const Side = styled.section`
+    height:10vh;
+`;
+
+const Main = styled.section`
+    width:80%;
+    align-self:end;
+`;
 
 export default Profile

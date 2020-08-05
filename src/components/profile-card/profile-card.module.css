@@ -1,30 +1,47 @@
 .profile {
     width: 100%;
-    display: block;
-    padding: 0.5%;
+    color: #777777;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
     text-align: center;
-    margin: 0 auto;
 }
 
-.profile .personalInfo img {
-    max-width: 42%;
-    display: block;
-    padding: 1.5%;
-    padding-bottom: 25px;
-    margin: 0 auto;
-}
-
-.profile .personalInfo{
-    vertical-align: top;
+.personalInfo{
     padding: 10px;
-    color: #234465;
-    width: 50%;
-}
-.profile p{
-    padding-bottom: 5%;
 }
 
-.personalContent {
-    width: 62%;
+.personalInfo img {
+    max-width: 32%;
+}
+
+.option{
+    padding-bottom: 0.8em;
+}
+
+.option span{
+    padding-left: 0.4em;
+}
+
+.profile_options {   
+    text-align: left;
+}
+
+.profile_listItem:hover {
+    background-color:#f1d9be;
+}
+
+.profile_listItem {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 16px;    
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+    margin-top: 1.8%;
+    margin-left: 0.8%;
+    margin-bottom: 1.5%;
+    transition: all 0.2s ease-in;
 }
 

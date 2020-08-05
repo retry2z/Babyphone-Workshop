@@ -38,15 +38,15 @@ class SpeechPanel extends React.Component {
                         Status: <span className={style.speech_info}>{this.state.data ? 'Running...' : 'Off'}</span>
                     </div>
 
-                    <div>
-                        <label htmlFor='autostart'>Auto:</label>
+                    <div className={style.speed_auto}>
+                        <label>Auto:
                         <input
-                            className={style.speech_checkbox}
-                            type="checkbox"
-                            name="autostart"
-                            checked={this.state.isChecked}
-                            onChange={this.onChangeHandler}
-                        />
+                                className={style.speech_checkbox}
+                                type="checkbox"
+                                checked={this.state.isChecked}
+                                onChange={this.onChangeHandler}
+                            />
+                        </label>
                     </div>
 
                     <button className={style.speech_start_btn} onClick={() => startListen(this.state.isChecked)}>Start</button>
