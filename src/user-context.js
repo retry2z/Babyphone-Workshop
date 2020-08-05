@@ -38,10 +38,10 @@ class ContextContainer extends React.Component {
   }
 
   async componentDidMount() {
-    const current = await userService.current() || { data: { uid: false } };
+    const current = await userService.current() || null;
     const user = await userService.profile() || null;
 
-    if ((user === null || !user.isValid) || (current.data.uid !== user.data.uid)) {
+    if (((user === null || !user.isValid) || (current === null || !current.isValid)) || (user.uid !== current.uid)) {
       cookieHandler.remove();
 
       const newState = { ...this.state };
