@@ -53,7 +53,7 @@ const ProfileUpdate = () => {
 
     return (
         < Wrapper >
-            <Title title='Profile' />
+            <Title title='User settings' />
             <FormControl
                 fields={form}
                 formAction={submitHandler}

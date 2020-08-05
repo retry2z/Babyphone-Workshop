@@ -18,13 +18,13 @@ class Profile extends React.Component {
         super(props);
         this.isLoading = false;
         this.state = {
-            component: 'MyRooms',
+            component: 'UserSettings',
         }
     }
 
     static contextType = UserContext;
 
-    actionHandler = (value = 'test') => {
+    actionHandler = (value = 'UserSettings') => {
         const newState = { ...this.state };
         newState.component = value;
         this.setState(newState);
@@ -36,14 +36,18 @@ class Profile extends React.Component {
         return (
             <Common>
                 <Wrapper>
-                    <ProfileCard
-                        data={user}
-                        onClick={logout}
-                        action={this.actionHandler}
-                    />
-                    {this.state.component === 'MyRooms' ? <MyRooms /> : null}
-                    {this.state.component === 'UserSettings' ? <UserSettings /> : null}
-                    {this.state.component === 'ChangePassword' ? <ChangePassword /> : null}
+                    <Side>
+                        <ProfileCard
+                            data={user}
+                            onClick={logout}
+                            action={this.actionHandler}
+                        />
+                    </Side>
+                    <Main>
+                        {this.state.component === 'MyRooms' ? <MyRooms /> : null}
+                        {this.state.component === 'UserSettings' ? <UserSettings /> : null}
+                        {this.state.component === 'ChangePassword' ? <ChangePassword /> : null}
+                    </Main>
                 </Wrapper>
             </Common>
         )
@@ -54,8 +58,17 @@ const Wrapper = styled.section`
     display: grid;
     padding: 2%;
     margin: 1em auto;
-    grid-template-columns: 30% 69%;
-    grid-gap: 1%;
+    grid-template-columns: 30% 65%;
+    grid-gap: 5%;
+`;
+
+const Side = styled.section`
+    height:10vh;
+`;
+
+const Main = styled.section`
+    width:80%;
+    align-self:end;
 `;
 
 export default Profile

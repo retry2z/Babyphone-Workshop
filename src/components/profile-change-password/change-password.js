@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormControl from '../from-control/form';
+import Title from '../core/title/title';
 import userService from '../../services/user-service';
 
 const ChangePasswordPanel = () => {
@@ -85,12 +86,16 @@ const ChangePasswordPanel = () => {
     }
 
     return (
-        <FormControl
-            fields={fields}
-            validators={validators}
-            formAction={submitHandler}
-            buttonTitle='Change password'
-        />
+        <>
+            <Title title='Change password' />
+
+            <FormControl
+                fields={fields}
+                validators={validators}
+                formAction={submitHandler}
+                buttonTitle='Update'
+            />
+        </>
     )
 }
 
