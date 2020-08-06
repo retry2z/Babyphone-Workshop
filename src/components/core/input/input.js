@@ -86,6 +86,8 @@ class InputField extends React.Component {
                 <input
                     className={this.state.isValid ? style['valid'] : style['invalid']}
 
+                    placeholder=' '
+
                     id={this.id}
                     type={this.type}
 

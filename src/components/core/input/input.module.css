@@ -8,17 +8,16 @@
 
 .label{
     position:absolute;
-    top:0px;
+    top:-4px;
 	left:0px;
-    font-size:15px;
+    font-size:16px;
     will-change: transform;
-    transition: all 0.4s steps(120);
+    transition: all 0.3s steps(120);
 }
 
 .span {
     font-size: 14px;
     color:#d32b3f;
-    
     content: ' ';
     visibility: hidden;
     text-align: left;
@@ -61,17 +60,22 @@
 
 /* Animations */
 
-input:focus{ 
+
+.input input:focus{ 
     border:none;	
     outline:none;
     border-bottom:1px solid #1c354e;	
 }
 
-input:focus ~ .label {
-	top:-10px;
+.input input:placeholder-shown ~ .label {
+      top: 20px;
+}
+
+.input input:focus ~ .label {
+	top:-8px;
     font-size:14px;	
 }
 
-input:focus ~ .span {
+.input input:focus ~ .span {
     visibility: hidden;
 }
