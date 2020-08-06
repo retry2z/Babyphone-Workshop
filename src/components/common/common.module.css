@@ -46,8 +46,8 @@ body {
      background-size: cover;
      line-height: 1.6;
      height: 100%;
-     filter: blur(8px);
-    -webkit-filter: blur(8px);
+     filter: blur(4px);
+    -webkit-filter: blur(4px);
  }
 
 .auth {
