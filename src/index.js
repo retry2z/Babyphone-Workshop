@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 import UserContext from './user-context';
-import NavigationRouter from './navigation';
+import NavigationRouter from './navigation/navigation';
 
 ReactDOM.render(
   <React.StrictMode>
