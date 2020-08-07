@@ -29,7 +29,7 @@ const Navigation = () => {
                 <AuthGuard path='/auth/login' component={LoginPage} />
                 <AuthGuard path='/auth/register' component={RegisterPage} />
 
-                <AuthGuard path='/product/details/:id' component={RoomPage} />
+                <AuthGuard path='/product/details/:id' component={RoomPage} validate={false} />
 
                 <AuthGuard path='/product/create'
                     component={CreateRoomPage}
