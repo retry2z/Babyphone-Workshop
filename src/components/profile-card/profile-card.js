@@ -10,7 +10,7 @@ import UserSettings from '../../components/profile-update-form/profile-update-fo
 import DefinedButton from '../core/button/button';
 
 const ProfileCard = ({ data, buttonOnClick, menuAction }) => {
-    const name = data?.name || 'Loading...'
+    const name = data?.name || ''
     const email = data?.email || 'Loading...';
     const imageUrl = data?.imageUrl || defaultImage;
 

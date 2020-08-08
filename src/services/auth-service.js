@@ -45,8 +45,16 @@ const authService = {
     async register(data) {
         try {
             const response = await axios.post(url + collection + '/register', data);
+            const isValid = cookieHandler.set(response.data.token);
+
+            if (!isValid) {
+                return
+            }
+            const user = await userService.profile();
+
             return {
-                isValid: cookieHandler.set(response.data.token)
+                isValid,
+                data: user.data
             }
         }
         catch (e) {

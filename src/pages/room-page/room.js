@@ -45,7 +45,7 @@ class Room extends React.Component {
         if (this.isAuthor) {
             return
         }
-        console.log(isJoined);
+      //  console.log(isJoined);
     }
 
     render() {

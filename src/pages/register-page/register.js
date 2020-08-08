@@ -88,14 +88,14 @@ class Register extends React.Component {
         }
 
         this.isLoading = true;
-        const response = await authService.login(value);
-        this.context.login(response.data);
+        const response = await authService.register(value);
         this.isLoading = false;
-
-
+        
+        
         if (!response.isValid) {
             return response.error
         } else {
+            this.context.login(response.data);
             this.props.history.push('/');
             return false
         }
