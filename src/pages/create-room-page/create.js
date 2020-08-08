@@ -61,8 +61,8 @@ const CreateRoom = (props) => {
 
 
 const Wrapper = styled.section`
-    padding: 2%;
-    margin: 0 auto;
+    margin: 1em auto;
+    margin-top:3em;
     width:55%
 `;
 

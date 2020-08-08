@@ -1,6 +1,7 @@
 .fourOFour img{
+    margin: 1em auto;
+    margin-top:3em;
     width: 450px;
-    margin: 0 auto;
     display: block;
 }
 

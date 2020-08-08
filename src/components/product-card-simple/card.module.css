@@ -1,9 +1,9 @@
 .card_simple {
-    color: #234465;
-    background: rgb(238,238,238,0.81);
+    color: #504038;
+    background: rgb(238,238,238,0.62);
     width: 100%;
     height: auto;
-    border: 1px solid #234465;
+    border: 1px solid #504038;
     margin-bottom: 0.6%;
     border-radius: 4px;
     transition: all 0.2s ease-in;
@@ -26,7 +26,7 @@
 }
 
 .card_simple:hover {
-    background: #c4c4c4;
+    background: rgb(238, 238, 238);
     cursor: pointer;
 }
 

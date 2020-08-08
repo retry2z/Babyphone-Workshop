@@ -52,9 +52,9 @@ class Profile extends React.Component {
 }
 
 const Wrapper = styled.section`
-    display: grid;
-    padding: 2%;
     margin: 1em auto;
+    margin-top:3em;
+    display: grid;
     grid-template-columns: 30% 65%;
     grid-gap: 5%;
 `;

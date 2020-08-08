@@ -79,13 +79,11 @@ class Room extends React.Component {
 }
 
 const Wrapper = styled.section`
+    margin: 1em auto;
+    margin-top:3em;
     display: grid;
-    padding: 2%;
-    margin: 0 auto;
     grid-template-columns: 28% 62%;
     grid-gap: 10%;
-    padding-left: 5%;
-    padding-bottom: 5%
 `;
 
 

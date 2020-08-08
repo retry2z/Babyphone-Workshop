@@ -25,17 +25,17 @@
 
 /* Validating */
 .valid {
-    color: #1c354e;
+    color: #504038;
     border:0;
     background:transparent;
     width:100%;
     padding:22px 0 5px 0;
     font-size:19px;
-    border-bottom:1px solid #1c354e;  
+    border-bottom:1px solid #504038;  
 }
 
 .valid ~ label{
-    color:#1c354e;
+    color:#504038;
     font-weight: 500;	
 }
 
@@ -64,7 +64,7 @@
 .input input:focus{ 
     border:none;	
     outline:none;
-    border-bottom:1px solid #1c354e;	
+    border-bottom:1px solid #504038;	
 }
 
 .input input:placeholder-shown ~ .label {

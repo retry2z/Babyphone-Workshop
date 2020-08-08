@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 
 const Logo = ({ href, title }) => {
     return (
-        <Link to='/' id='logo'>
-            <div className={style.logo}>
+        <div className={style.logo}>
+            <Link to='/' id='logo'>
                 <img className={style.imgLogo} src={href} alt={title} />
-            </div>
-        </Link>
+            </Link>
+        </div>
     )
 }
 

@@ -20,6 +20,7 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
 
+        this.rooms = [];
         this.state = {
             data: [],
         }
@@ -27,18 +28,19 @@ class Home extends React.Component {
 
     componentDidMount = async () => {
         const { data } = await productService.list();
-        const result = data.slice(0, 5)
+        this.rooms = data.slice(0, 5);
 
         this.setState({
-            data: result
+            ...this.state,
+            data: this.search(this.rooms),
         });
     }
 
-    search = (arr, data) => {
+    search = (arr, data = '') => {
         return arr.filter(item => {
             const name = item.data.title.toLowerCase();
             const description = item.data.keyWords.join(' ').toLowerCase();
-            const search_data = data.toLowerCase() || '';
+            const search_data = data.toLowerCase();
 
             if (name.includes(search_data) || description.includes(search_data)) {
                 return item
@@ -48,21 +50,17 @@ class Home extends React.Component {
         });
     }
 
-
     submitHandler = (data) => {
-        const result = this.search(this.state.data, data.search);
-
         this.setState({
             ...this.state,
-            data: result
-        })
+            data: this.search(this.rooms, data.search),
+        });
     }
 
     render() {
         return (
             <Common>
                 <Wrapper>
-
                     <Search>
                         <FormControl
                             fields={this.fields}
@@ -92,14 +90,20 @@ class Home extends React.Component {
 }
 
 const Wrapper = styled.section`
+    margin: 1em auto;
+    margin-top:3em;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-gap: 5%;
-    padding: 5%;
 `;
 
 const List = styled.section`
-    margin-top: 5.2%;
+    margin-top: 2%;
+    height:34vh;
+    border:1px solid #504038; 
+    background: transparent;
+    border-radius:4px; 
+    padding:2.3em 1.8em;
 `;
 
 const Search = styled.section`
