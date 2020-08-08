@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
-
-import ChangePassword from '../../components/profile-change-password/change-password';
 import MyRooms from '../../components/profile-history-rooms/history-rooms';
-import UserSettings from '../../components/profile-update-form/profile-update-form';
+
+
 
 import Contexts from '../../Contexts';
 const { UserContext } = Contexts();
@@ -18,13 +17,13 @@ class Profile extends React.Component {
         super(props);
         this.isLoading = false;
         this.state = {
-            component: 'UserSettings',
+            component: <MyRooms />,
         }
     }
 
     static contextType = UserContext;
 
-    actionHandler = (value = 'UserSettings') => {
+    actionHandler = (value) => {
         const newState = { ...this.state };
         newState.component = value;
         this.setState(newState);
@@ -39,14 +38,12 @@ class Profile extends React.Component {
                     <Side>
                         <ProfileCard
                             data={user}
-                            onClick={logout}
-                            action={this.actionHandler}
+                            buttonOnClick={logout}
+                            menuAction={this.actionHandler}
                         />
                     </Side>
                     <Main>
-                        {this.state.component === 'MyRooms' ? <MyRooms /> : null}
-                        {this.state.component === 'UserSettings' ? <UserSettings /> : null}
-                        {this.state.component === 'ChangePassword' ? <ChangePassword /> : null}
+                        {this.state.component}
                     </Main>
                 </Wrapper>
             </Common>
