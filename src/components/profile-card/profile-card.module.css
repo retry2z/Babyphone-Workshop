@@ -1,7 +1,5 @@
 .profile {
     width: 100%;
-    color: #777777;
-    font-weight: bold;
     padding: 0.8rem 1.5rem;
     text-align: center;
 }
@@ -14,23 +12,19 @@
     max-width: 32%;
 }
 
-.option{
+.profile .personalInfo div{
     padding-bottom: 0.8em;
-}
-
-.option span{
-    padding-left: 0.4em;
 }
 
 .profile_options {   
     text-align: left;
 }
 
-.profile_listItem:hover {
+.profile_options li:hover, .active {
     background-color:#f1d9be;
 }
 
-.profile_listItem {
+.profile_options li {
     display: block;
     width: 100%;
     border: none;
@@ -43,5 +37,11 @@
     margin-left: 0.8%;
     margin-bottom: 1.5%;
     transition: all 0.2s ease-in;
+}
+
+.profile_options li a{
+    color: #777777;
+    font-weight: bold;
+    text-decoration: none;
 }
 
