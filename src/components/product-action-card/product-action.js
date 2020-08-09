@@ -44,6 +44,10 @@ const ProductActionCard = (props) => {
                     param: 2,
                     message: 'Key word should be more than 2 letters'
                 },
+                {
+                    type: 'onlyLettersAndDigits',
+                    message: 'Only letters and digits are allowed'
+                }
             ],
         },
     ]
@@ -55,7 +59,7 @@ const ProductActionCard = (props) => {
 
         if (data.isValid) {
             context.loadingToggle();
-            history.push('/');
+            history.push('/' + id);
         } else {
             context.loadingToggle();
             history.push('/error');
