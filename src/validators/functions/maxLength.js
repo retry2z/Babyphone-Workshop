@@ -1,5 +1,5 @@
 export default (data, length) => {
-    if (data.length >= Number(length) && !!data) {
+    if (data.length > Number(length)) {
         return false
     }
 
