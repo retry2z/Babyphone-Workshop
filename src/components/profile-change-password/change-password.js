@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormControl from '../from-control/form';
 import Title from '../core/title/title';
 import userService from '../../services/user-service';
+
+import Contexts from '../../Contexts';
+const { UserContext } = Contexts();
 
 const ChangePasswordPanel = () => {
     const fields = [
@@ -64,23 +67,20 @@ const ChangePasswordPanel = () => {
         }
     ]
 
-    const [isLoading, setIsLoading] = useState(false);
+    const context = useContext(UserContext);
     const history = useHistory();
 
 
     const submitHandler = async (value) => {
-        if (isLoading) {
-            return
-        }
-
-        setIsLoading(true);
+        context.loadingToggle();
         const response = await userService.changePassword(value);
-        setIsLoading(false);
 
         if (!response.isValid) {
-            return response.error
+            context.loadingToggle();
+            return response.error;
         } else {
             history.push('/');
+            context.loadingToggle();
             return false
         }
     }

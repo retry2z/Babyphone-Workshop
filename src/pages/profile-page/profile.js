@@ -5,8 +5,6 @@ import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
 import MyRooms from '../../components/profile-history-rooms/history-rooms';
 
-
-
 import Contexts from '../../Contexts';
 const { UserContext } = Contexts();
 

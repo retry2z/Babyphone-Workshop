@@ -44,16 +44,6 @@ class Login extends React.Component {
         },
     ]
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isLoading: false,
-        }
-    }
-
-    isLoading = false;
-
     static contextType = UserContext;
 
 
@@ -62,14 +52,15 @@ class Login extends React.Component {
             return
         }
 
-        this.isLoading = true;
-        const response = await authService.login(value);
-        this.isLoading = false;
-        
-        
+        this.context.loadingToggle();
+        const response = await authService.login(value);       
+
+
         if (!response.isValid) {
-            return response.error
+            this.isLoading = false;
+            return response.error;
         } else {
+            this.context.loadingToggle();
             this.context.login(response.data);
             this.props.history.push('/');
             return false
@@ -80,7 +71,7 @@ class Login extends React.Component {
         return (
             <Common>
                 <Wrapper>
-                <Title title='Welcome' />
+                    <Title title='Welcome' />
                     <FormControl
                         fields={this.form}
                         formAction={this.submitHandler}
