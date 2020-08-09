@@ -61,11 +61,11 @@ const ProfileCard = ({ data, buttonOnClick, menuAction }) => {
             <ul className={style.profile_options}>
                 {userMenuOptions.map(item => {
                     return (
-                        <li key={item.name} className={style[item.class]}>
-                            <Link to={`?active=${item.name}`} onClick={item.onclick}>
+                        <Link key={item.name} to={`?active=${item.name}`} onClick={item.onclick}>
+                            <li className={style[item.class]}>
                                 {item.value}
-                            </Link>
-                        </li>
+                            </li>
+                        </Link>
                     )
                 })}
             </ul>
