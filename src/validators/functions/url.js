@@ -1,5 +1,5 @@
 export default (data) => {
-    const pattern = /^([A-Za-z0-9\s]+)$/g;
+    const pattern = /^(http|https):/g;
     if (!pattern.test(data)) {
         return false
     }

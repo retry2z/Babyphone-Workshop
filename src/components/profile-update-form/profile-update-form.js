@@ -38,6 +38,10 @@ const ProfileUpdate = () => {
                     param: 6,
                     message: 'length should be more than 6 letters'
                 },
+                {
+                    type: 'isUrl',
+                    message: 'Invalid url entered'
+                },
             ],
         },
     ]

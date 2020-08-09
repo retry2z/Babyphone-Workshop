@@ -3,7 +3,8 @@ import minLength from './functions/minLength';
 import maxLength from './functions/maxLength';
 import required from './functions/requiredValidator';
 import passwordMatch from './functions/passwordMatch';
-import onlyLettersAndDigits from './functions/onlyLeetersAndDigits';
+import onlyLettersAndDigits from './functions/onlyLettersAndDigits';
+import isUrl from './functions/url';
 
 const validatorChecker = {
     email(data) {
@@ -23,6 +24,9 @@ const validatorChecker = {
     },
     onlyLettersAndDigits(data) {
         return onlyLettersAndDigits(data)
+    },
+    isUrl(data) {
+        return isUrl(data)
     },
 }
 
