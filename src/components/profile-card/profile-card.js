@@ -52,15 +52,12 @@ const ProfileCard = ({ data, buttonOnClick, menuAction }) => {
                     <img src={imageUrl} alt="Profile" />
                 </div>
                 <div>
-                    Name:
                     <span>{name}</span>
                 </div>
                 <div>
-                    Email:
                     <span>{email}</span>
                 </div>
             </div>
-            <hr />
             <ul className={style.profile_options}>
                 {userMenuOptions.map(item => {
                     return (
@@ -72,8 +69,7 @@ const ProfileCard = ({ data, buttonOnClick, menuAction }) => {
                     )
                 })}
             </ul>
-            <hr />
-            <DefinedButton title='Logout' action={buttonOnClick} />
+            <DefinedButton key='logout' title='Logout' action={buttonOnClick} />
         </div>
     )
 }

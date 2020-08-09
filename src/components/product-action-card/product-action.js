@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -8,9 +8,13 @@ import Title from '../core/title/title';
 import productService from '../../services/product-service';
 import SpeechPanel from '../speech-detector/speech';
 
+import Contexts from '../../Contexts';
+const { UserContext } = Contexts();
+
 const ProductActionCard = (props) => {
     const { id } = props;
     const history = useHistory();
+    const context = useContext(UserContext);
     const keyWords = !!props.data.keyWords ? props.data.keyWords : [];
 
     const form = [
@@ -40,16 +44,25 @@ const ProductActionCard = (props) => {
                     param: 2,
                     message: 'Key word should be more than 2 letters'
                 },
+                {
+                    type: 'onlyLettersAndDigits',
+                    message: 'Only letters and digits are allowed'
+                }
             ],
         },
     ]
 
 
     const submitHandler = async (value) => {
+        context.loadingToggle();
         const data = await productService.edit(id, value);
 
         if (data.isValid) {
-            history.push('/');
+            context.loadingToggle();
+            history.push('/' + id);
+        } else {
+            context.loadingToggle();
+            history.push('/error');
         }
     }
 

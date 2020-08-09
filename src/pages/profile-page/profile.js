@@ -5,8 +5,6 @@ import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
 import MyRooms from '../../components/profile-history-rooms/history-rooms';
 
-
-
 import Contexts from '../../Contexts';
 const { UserContext } = Contexts();
 
@@ -52,9 +50,9 @@ class Profile extends React.Component {
 }
 
 const Wrapper = styled.section`
-    display: grid;
-    padding: 2%;
     margin: 1em auto;
+    margin-top:3em;
+    display: grid;
     grid-template-columns: 30% 65%;
     grid-gap: 5%;
 `;

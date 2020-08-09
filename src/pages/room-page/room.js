@@ -16,7 +16,8 @@ class Room extends React.Component {
 
         this.isAuthor = null;
         this.state = {
-            data: {}
+            data: {},
+            isJoined: null,
         }
     }
 
@@ -34,7 +35,9 @@ class Room extends React.Component {
                 this.isAuthor = false;
             }
 
-            this.setState({ data });
+            const newState = { ...this.state };
+            newState.data = data;
+            this.setState(newState);
         }
         catch (e) {
             this.props.history.push('/error');
@@ -45,7 +48,9 @@ class Room extends React.Component {
         if (this.isAuthor) {
             return
         }
-      //  console.log(isJoined);
+        const newState = { ...this.state };
+        newState.isJoined = isJoined;
+        this.setState(newState);
     }
 
     render() {
@@ -65,7 +70,7 @@ class Room extends React.Component {
                     {
                         this.isAuthor ?
                             <ProductActionCard data={this.state.data} id={this.props.match.params.id} /> :
-                            <NotificationCard />
+                            <NotificationCard data={this.state.data} id={this.props.match.params.id} isJoined={this.state.isJoined} />
                     }
                 </Wrapper>
             </Common>
@@ -74,13 +79,11 @@ class Room extends React.Component {
 }
 
 const Wrapper = styled.section`
+    margin: 1em auto;
+    margin-top:3em;
     display: grid;
-    padding: 2%;
-    margin: 0 auto;
     grid-template-columns: 28% 62%;
     grid-gap: 10%;
-    padding-left: 5%;
-    padding-bottom: 5%
 `;
 
 

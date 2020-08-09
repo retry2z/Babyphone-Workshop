@@ -38,16 +38,22 @@ const ProfileUpdate = () => {
                     param: 6,
                     message: 'length should be more than 6 letters'
                 },
+                {
+                    type: 'isUrl',
+                    message: 'Invalid url entered'
+                },
             ],
         },
     ]
 
 
     const submitHandler = async (value) => {
+        context.loadingToggle();
         const response = await userService.update(value);
 
         if (response.isValid) {
             context.login(response.data.data)
+            context.loadingToggle();
         }
     }
 

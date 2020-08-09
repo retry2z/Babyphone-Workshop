@@ -1,41 +1,79 @@
 .button_default{
-    background-color: #504038;
-    border: 2px solid #504038;
-    color:#f9f7f6;
-    padding:10px 40px;
-	text-transform:uppercase;
     display: block;
-    margin: 0 auto;
-	margin-top:50px;
+    color:#f9f7f6;
+    background-color: #504038;
+    border: 1px solid #504038;
     border-radius:4px;
-    margin-bottom: 2%;
+    margin: 1em auto;
+    padding:10px 40px;
     cursor: pointer;
+	text-transform:uppercase;
     transition: all 0.2s ease-in;
 }
 
 .button_default:hover{
-    background-color: #7a6256;
-    border: 2px solid #7a6256;
     color:#f9f7f6;
+    background-color: #7a6256;
+    border: 1px solid #7a6256;
 }
 
+.button_default:disabled {
+    color:#f9f7f6;
+    background-color: #7a6256;
+    border: 1px solid #7a6256;
+}
+
+ /* loading dots */
+
+ .button_default p {
+    display: inline-block;
+    visibility: hidden;
+ }
+  
+ .button_default:disabled p {
+    visibility: visible;
+    color:#f9f7f6;
+    animation: dots 1.5s steps(9, end) infinite;}
+  
+  @keyframes dots {
+    0%, 20% {
+        color: rgba(0,0,0,0);
+        text-shadow:
+          .25em 0 0 rgba(0,0,0,0),
+          .5em 0 0 rgba(0,0,0,0);}
+    40% {
+        color: #f9f7f6;
+        text-shadow:
+          .25em 0 0 rgba(0,0,0,0),
+          .5em 0 0 rgba(0,0,0,0);}
+    60% {
+        text-shadow:
+          .25em 0 0 #f9f7f6,
+          .5em 0 0 rgba(0,0,0,0);}
+    80%, 100% {
+        text-shadow:
+          .25em 0 0 #f9f7f6,
+          .5em 0 0 #f9f7f6;}
+}
+
+
+
+
 .button_dark{
-    background-color: #1c354e;
-    border: 2px solid #1c354e;
-    color: #eeeeee;
-    padding:10px 20px;
-	text-transform:uppercase;
     display: block;
-    margin: 0 auto;
-	margin-top:50px;
+    color:#f9f7f6;
+    background-color: #504038;
+    border: 1px solid #504038;
     border-radius:4px;
-    margin-bottom: 2%;
+    margin: 1em auto;
+    padding:10px 40px;
     cursor: pointer;
+	text-transform:uppercase;
     transition: all 0.2s ease-in;
 }
 
 .button_dark:hover{
-    background-color: #30567c;
-    border: 2px solid #30567c;
-    color: #eeeeee;
+    color:#f9f7f6;
+    background-color: #7a6256;
+    border: 1px solid #7a6256;
 }

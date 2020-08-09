@@ -11,6 +11,7 @@ class ContextContainer extends React.Component {
     super(props)
 
     this.state = {
+      isLoading: false,
       isLogged: null,
       user: null
     }
@@ -37,6 +38,12 @@ class ContextContainer extends React.Component {
     this.setState(newState);
   }
 
+  loadingToggle = () => {
+    const newState = { ...this.state };
+    newState.isLoading = !this.state.isLoading;
+    this.setState(newState);
+  }
+
   async componentDidMount() {
     const current = await userService.current() || null;
     const user = await userService.profile() || null;
@@ -56,7 +63,7 @@ class ContextContainer extends React.Component {
   }
 
   render() {
-    const { isLogged, user } = this.state;
+    const { isLogged, user, isLoading } = this.state;
 
     if (isLogged === null) {
       return (<div>Loading...</div>)
@@ -65,10 +72,12 @@ class ContextContainer extends React.Component {
     return (
       <UserContext.Provider
         value={{
+          isLoading,
           isLogged,
           user,
           login: this.login,
-          logout: this.logout
+          logout: this.logout,
+          loadingToggle: this.loadingToggle,
         }}>
 
         {this.props.children}

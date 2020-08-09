@@ -9,7 +9,7 @@ const ProductCard = ({ data = false, onJoinHandler = null, owner = false }) => {
     const { id } = useParams();
     const history = useHistory();
     const [body, setBody] = useState([]);
-    const [isJoined, setIsJoined] = useState(false);
+    const [isJoined, setIsJoined] = useState(localStorage.getItem('isJoined') || false);
 
     const title = data?.title || 'Loading...'
     const imageUrl = data?.imageUrl || defaultImage;
@@ -44,14 +44,19 @@ const ProductCard = ({ data = false, onJoinHandler = null, owner = false }) => {
 
     useEffect(() => {
         return () => {
+            if (!localStorage.getItem('isJoined')) {
+                return
+            }
             productService.leave(id);
+            localStorage.removeItem('isJoined');
         }
-    },[id])
+    }, [id])
 
 
     const joinRoom = async () => {
         const response = await productService.join(id);
         const data = newBody(response.data.people);
+        localStorage.setItem('isJoined', true);
         setIsJoined(true);
         setBody(data);
     }
@@ -59,6 +64,7 @@ const ProductCard = ({ data = false, onJoinHandler = null, owner = false }) => {
     const leaveRoom = async () => {
         const response = await productService.leave(id);
         const data = newBody(response.data.people);
+        localStorage.removeItem('isJoined');
         setBody(data);
         setIsJoined(false);
     }

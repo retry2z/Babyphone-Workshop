@@ -36,7 +36,12 @@ const HistoryMyRooms = () => {
 }
 
 const List = styled.section`
-    margin-top: 5.5%;
+    margin-top: 2%;
+    height:34vh;
+    border:1px solid #504038; 
+    background: transparent;
+    border-radius:4px; 
+    padding:2.3em 1.8em;
 `;
 
 export default HistoryMyRooms
