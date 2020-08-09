@@ -9,7 +9,8 @@ const { db } = admin();
 const NotificationCard = ({ data, id, isJoined }) => {
     const red = db.collection('rooms').doc(id);
     const parsedDate = moment(data.createdAt).utcOffset('+03:00').format('LL [-] HH:mm');
-    const defaultValue = `\n\n\nRoom Keywords: ${data?.keyWords.join(', ')} \nRoom Created at: ${parsedDate}\n`;
+    const parsedKeyWords = !!data?.keyWords ? data.keyWords.join(', ') : '';
+    const defaultValue = `\n\n\nRoom Keywords: ${parsedKeyWords} \nRoom Created at: ${parsedDate}\n`;
     const [value, setValue] = useState(defaultValue);
 
     useEffect(() => {

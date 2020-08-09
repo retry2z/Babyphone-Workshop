@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ProductCardSimple = ({ data }) => {
     const title = data?.title || 'Loading...';
-    const words = !!data?.keyWords ?  data.keyWords : [];
-    const keywords = words.join(', ');
+    const parsedKeyWords = !!data?.keyWords ? data.keyWords.join(', ') : '';
     const id = data?.id || 'error';
 
     return (
@@ -18,7 +17,7 @@ const ProductCardSimple = ({ data }) => {
                     </p>
                     <p>
                         <span>Key words: </span>
-                        {keywords}
+                        {parsedKeyWords}
                     </p>
                 </div>
             </div>

@@ -68,7 +68,7 @@ const ProductActionCard = (props) => {
 
     return (
         <Wrapper>
-            <SpeechPanel />
+            <SpeechPanel id={id} />
             <Title title='Update room' />
             <FormControl
                 fields={form}
