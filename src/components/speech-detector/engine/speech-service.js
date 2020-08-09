@@ -16,23 +16,32 @@ recognition.status = false;
 const startListen = (continues = false) => {
   //Connect to speech recognition service
   recognition.onstart = () => {
-    EventEmitter.dispatch('onChange', true);
-    console.log('SpeechRecognition.onstart');
+    EventEmitter.dispatch('isRunning', true);
+
+    const data = {
+      time: new Date(Date.now()).toUTCString(),
+      message: 'Babyphone is now listening...'
+    }
+    EventEmitter.dispatch('notification', data);
   }
+
   recognition.onend = () => {
+    EventEmitter.dispatch('isRunning', false);
     continues ? recognition.start() : recognition.stop()
   }
 
   //Fired when sound that is recognized by the speech recognition service as speech has been detected. <------
   recognition.onspeechstart = () => {
-    console.log('SpeechRecognition.onspeechstart');
+    const data = {
+      time: new Date(Date.now()).toUTCString(),
+      message: 'I am hearing some noises now \nBabyphone is now turning off...'
+    }
+    EventEmitter.dispatch('notification', data);
 
     recognition.stop()
   }
 
   recognition.onspeechend = () => {
-    EventEmitter.dispatch('onChange', false);
-    console.log('SpeechRecognition.onspeechend');
   }
 
   //Error cached
@@ -43,11 +52,8 @@ const startListen = (continues = false) => {
 }
 
 const stopListen = () => {
-  recognition.onend = () => {
-    EventEmitter.dispatch('onChange', false);
-    console.log('SpeechRecognition.onend');
-  }
-
+  recognition.onend = () => { };
+  EventEmitter.dispatch('isRunning', false);
   recognition.stop();
 }
 

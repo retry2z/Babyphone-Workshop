@@ -16,9 +16,11 @@ const Links = () => {
             {
                 navigation.map(path => {
                     return (
-                        <li key={path.title} className={style.listItem}>
-                            <Link to={path.link}>{path.title}</Link>
-                        </li>
+                        <Link key={path.title} to={path.link}>
+                            <li className={style.listItem}>
+                                {path.title}
+                            </li>
+                        </Link>
                     )
                 })
             }

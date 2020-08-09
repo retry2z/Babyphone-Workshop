@@ -74,7 +74,6 @@ const productService = {
             }
         }
         catch (e) {
-            console.log(e);
             return {
                 isValid: false,
                 error: errorHandler(e.message)
@@ -151,6 +150,33 @@ const productService = {
             }
 
             const response = await axios.get(url + collection + id + '/leave', data);
+
+            return {
+                isValid: true,
+                data: response.data
+            }
+        }
+        catch (e) {
+            return {
+                isValid: false,
+                error: errorHandler(e.message)
+            }
+        }
+    },
+
+    async notify(id, data) {
+        try {
+            const token = cookieHandler.get() || '';
+
+            if (!!token === false) {
+                return
+            }
+
+            const response = await axios.post(url + collection + id + '/notification', data, {
+                headers: {
+                    'Authorization': token
+                }
+            });
 
             return {
                 isValid: true,

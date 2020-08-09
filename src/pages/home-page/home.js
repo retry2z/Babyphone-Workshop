@@ -39,7 +39,7 @@ class Home extends React.Component {
     search = (arr, data = '') => {
         return arr.filter(item => {
             const name = item.data.title.toLowerCase();
-            const description = item.data.keyWords.join(' ').toLowerCase();
+            const description = !!item?.keyWords ? item.keyWords.join(' ').toLowerCase() : '';
             const search_data = data.toLowerCase();
 
             if (name.includes(search_data) || description.includes(search_data)) {

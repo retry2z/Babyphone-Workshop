@@ -1,13 +1,16 @@
 import React from 'react';
 import EventEmitter from './engine/EventEmitter';
 import { startListen, stopListen } from './engine/speech-service';
-import style from './speech.module.css'
+import style from './speech.module.css';
+
+import productService from '../../services/product-service';
 
 class SpeechPanel extends React.Component {
 
     constructor(props) {
         super(props);
 
+        this.id = props.id;
         this.state = {
             data: false,
             isChecked: false,
@@ -15,12 +18,20 @@ class SpeechPanel extends React.Component {
     }
 
     componentDidMount() {
-        EventEmitter.subscribe('onChange', (data) => {
+        EventEmitter.subscribe('isRunning', (data) => {
             this.setState({
+                ...this.state,
                 data
             });
         });
+
+
+        EventEmitter.subscribe('notification', (data) => {
+            console.log(data);
+            productService.notify(this.id, data);
+        });
     }
+
 
     onChangeHandler = () => {
         this.setState({
