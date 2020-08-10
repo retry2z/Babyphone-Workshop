@@ -10,7 +10,7 @@ The application is about people who wants to follow is their baby is making some
 
 - ReactJS.
 - Custom Flexible form-control with field validation or group validation.
-- Custom Speech detection API and EventEmitter.
+- Speech detection and custom EventEmitter.
 - Custom Flexible authentication guard for privet/public routes.
 - Real-time notification update with Firebase firestrore.
 
