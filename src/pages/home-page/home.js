@@ -66,7 +66,7 @@ class Home extends React.Component {
                             fields={this.fields}
                             formAction={this.submitHandler}
                             buttonTitle='Search'
-                            theme='default'
+                            theme='stroked'
                         />
                     </Search>
                     <div>

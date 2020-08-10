@@ -4,6 +4,7 @@ import { startListen, stopListen } from './engine/speech-service';
 import style from './speech.module.css';
 
 import productService from '../../services/product-service';
+import DefinedButton from '../core/button/button';
 
 class SpeechPanel extends React.Component {
 
@@ -45,23 +46,25 @@ class SpeechPanel extends React.Component {
             <div className={style.speech_wrapper}>
                 <div className={style.speech_body}>
 
-                    <div className={style.speech_status}>
+                    <div>
                         Status: <span className={style.speech_info}>{this.state.data ? 'Running...' : 'Off'}</span>
                     </div>
 
-                    <div className={style.speed_auto}>
-                        <label>Auto:
+                    <div className={style.speech_cmd}>
+                        <div className={style.speech_autoStart}>
+                            <label>Auto:
                         <input
-                                className={style.speech_checkbox}
-                                type="checkbox"
-                                checked={this.state.isChecked}
-                                onChange={this.onChangeHandler}
-                            />
-                        </label>
-                    </div>
+                                    className={style.speech_checkbox}
+                                    type="checkbox"
+                                    checked={this.state.isChecked}
+                                    onChange={this.onChangeHandler}
+                                />
+                            </label>
+                        </div>
 
-                    <button className={style.speech_start_btn} onClick={() => startListen(this.state.isChecked)}>Start</button>
-                    <button className={style.speech_abort_btn} onClick={stopListen}>Abort</button>
+                        <DefinedButton title='Start' action={() => startListen(this.state.isChecked)} />
+                        <DefinedButton theme='stroked' title='Stop' action={stopListen} />
+                    </div>
                 </div>
             </div>
         )

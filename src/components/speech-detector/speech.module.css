@@ -1,25 +1,30 @@
 .speech_wrapper {
     color: #504038;
     background: rgb(238,238,238,0.62);
-    width: 100%;
-    margin: 1em auto;
     border: 1px solid #504038;
     border-radius: 4px;
-    padding: 0.2% 2%;
     font-size: 16px;
 }
 
 .speech_body {
     display: grid;
-    grid-template-columns: 47% 13% 15% 15%;
-    grid-gap: 1.2%;
-    padding: 2%;
+    grid-template-columns: 30% 69%;
+    grid-gap: 1%;
+    padding: 5px 15px;
     align-items: center;
 }
 
 .speech_info {
-    font-size: 20;
     font-weight: bold;
+}
+
+.speech_cmd {
+    text-align: right;
+}
+
+.speech_autoStart {
+    display: inline;
+    padding-right: 15px;
 }
 
 .speech_checkbox {
@@ -27,46 +32,16 @@
     transform: scale(1.5);
 }
 
-
-.speed_auto label, input {
+.speech_autoStart label, input {
     cursor: pointer;
-    transform:all 2s ;
 }
 
-.speech_start_btn {
-    background-color: #317436;
-    color:#f9f7f6;
-    border: 0;
-    cursor: pointer;
-    transform: all 0.2;
-    width: 100%;
-    padding:10px 20px;
-	text-transform:uppercase;
-    margin: 0 auto;
-    border-radius:4px;
-    cursor: pointer;
-    transition: all 0.2s ease-in;
+.speech_autoStart ~ button {
+    margin-right: 15px;
+    display: inline;
 }
 
-.speech_start_btn:hover {
-    background-color: #3d9243;
-}
-
-.speech_abort_btn {
-    background-color: #743b31;
-    color:#f9f7f6;
-    border: 0;
-    cursor: pointer;
-    transform: all 0.2;
-    width: 100%;
-    padding:10px 20px;
-	text-transform:uppercase;
-    margin: 0 auto;
-    border-radius:4px;
-    cursor: pointer;
-    transition: all 0.2s ease-in;
-}
-
-.speech_abort_btn:hover {
-    background-color: #9b4f41;
+.speech_autoStart ~ button:last-child {
+    margin-right: 0px;
+    display: inline;
 }

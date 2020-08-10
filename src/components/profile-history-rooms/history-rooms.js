@@ -11,8 +11,13 @@ const HistoryMyRooms = () => {
     useEffect(() => {
         async function fetchData() {
             const response = await userServices.myRooms();
-            setData(response.data);
 
+            if (!response.isValid) {
+                this.props.history.push('/error');
+                return response.error;
+            } else {
+                setData(response.data);
+            }
         }
         fetchData();
     }, []);
