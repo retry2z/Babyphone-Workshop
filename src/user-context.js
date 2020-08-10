@@ -45,11 +45,13 @@ class ContextContainer extends React.Component {
   }
 
   async componentDidMount() {
-    const current = await userService.current() || null;
+    //const current = await userService.current() || null;
     const user = await userService.profile() || null;
 
-    if (((user === null || !user.isValid) || (current === null || !current.isValid)) || (user.uid !== current.uid)) {
-      cookieHandler.remove();
+    // if (((user === null || !user.isValid) || (current === null || !current.isValid)) || (user.uid !== current.uid)) {
+    if (user === null || !user.isValid) {
+  
+    cookieHandler.remove();
 
       const newState = { ...this.state };
       newState.isLogged = false;
