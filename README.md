@@ -7,7 +7,6 @@
 The application is about people who wants to follow is their baby is making some noises and take care. Only register users can create a room and start monitoring. Everyone can join the room and receive a notification if there are some noises.
 
 ## Technologies
-
 - ReactJS.
 - Custom Flexible form-control with field validation or group validation.
 - Speech detection and custom EventEmitter.
@@ -15,7 +14,6 @@ The application is about people who wants to follow is their baby is making some
 - Real-time notification update with Firebase firestrore.
 
 ## Prerequisites
-
 Before you begin, ensure you have met the following requirements:
 
 You have installed the latest version of NPM - https://www.npmjs.com/get-npm
@@ -25,7 +23,6 @@ You have read https://docs.npmjs.com/.
 Some basic knowledge about ReactJS, React-router-dom, Firebase, Styled-components.
 
 ## Installing and configuration before running
-
 Download or pull this repository and type ``npm install`` in terminal. 
 In the project directory, you can run: 
 
@@ -43,7 +40,6 @@ Builds the app for production to the `build` folder. It correctly bundles React 
 Your app is ready to be deployed!
 
 ## Application routes
-
 ROUTE | LINK | DESCRIPTION
 ------|-------------|---------
 | |    
@@ -56,11 +52,10 @@ ROUTE | LINK | DESCRIPTION
 /user/logout | Logout route | Destroying current authorization token and cookie. Note - the token can't be reused if is been destroyed.
 
 ## Examples
-
-http://testing-test-app.s3-website.us-east-2.amazonaws.com/
+https://workshop-project-58361.web.app/
 
 ## Contributing to Babyphone
-To contribute to Serverless-API-Workshop, follow these steps:
+To contribute to Babyphone-Workshop, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
@@ -69,15 +64,10 @@ To contribute to Serverless-API-Workshop, follow these steps:
 5. Add title and description
 6. Wait for review approval and merge
 
-
-
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
 ## Contributors
 
-
-
 ## Contact
-
 If you want to contact me you can reach me at h.hristow.88@gmail.com
 
