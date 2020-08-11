@@ -28,7 +28,6 @@ class SpeechPanel extends React.Component {
 
 
         EventEmitter.subscribe('notification', (data) => {
-            console.log(data);
             productService.notify(this.id, data);
         });
     }
