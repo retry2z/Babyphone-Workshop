@@ -22,7 +22,7 @@ import ErrorPage from '../pages/404-page/notFound';
 const Navigation = () => {
 
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={window.location.pathname || ''}>
             <Switch>
                 <AuthGuard path='/' exact={true} component={HomePage} validate={false} />
 
