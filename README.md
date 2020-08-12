@@ -72,10 +72,11 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 - Share privet link to join.
 
 ## To fix
-create component - implement loading button
-register component - implement loading button
-url validation fix to be not reuired.
-profile image style with round broder.
+- create component - implement loading button
+- register component - implement loading button
+- url validation fix to be not required.
+- profile image style with round border.
+- upload with firebase/storage
 
 ## Contributors
 
