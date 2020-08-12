@@ -71,6 +71,12 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 - Asd for password to enter.
 - Share privet link to join.
 
+## To fix
+create component - implement loading button
+register component - implement loading button
+url validation fix to be not reuired.
+profile image style with round broder.
+
 ## Contributors
 
 ## Contact
