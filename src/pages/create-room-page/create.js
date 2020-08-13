@@ -46,11 +46,10 @@ const CreateRoom = (props) => {
         const response = await productService.post(value);
 
         if (!response.isValid) {
-            this.context.loadingToggle();
+            context.loadingToggle();
             return response.error
         } else {
             context.loadingToggle();
-            context.login(response.data);
             props.history.push('/');
             return false
         }
