@@ -73,10 +73,7 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 - upload images to firebase/storage
 
 ## Known bugs
-- updating information about user or room can't be an empty string.
 - loading buttons are disabled in same time. 
-- make a locale context api for notification and disable navigation. This will fix above problem.
-- after creating a new room and enter it doesn't receive owner permissions.
 
 ## Contributors
 
