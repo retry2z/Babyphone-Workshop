@@ -13,9 +13,9 @@
 
 .personalInfo img {
     border:1px solid #504038; 
-    border-radius: 60px;
-    max-width: 120px;
-    width: 120px;
+    border-radius: 55px;
+    width: 110px;
+    height: 110px;
 }
 
 .profile .personalInfo div{
