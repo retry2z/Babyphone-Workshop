@@ -26,27 +26,35 @@ const Navigation = () => {
             <Switch>
                 <AuthGuard path='/' exact={true} component={HomePage} validate={false} />
 
-                <AuthGuard path='/auth/login' component={LoginPage} />
-                <AuthGuard path='/auth/register' component={RegisterPage} />
+                <AuthGuard
+                    path='/auth/login'
+                    component={LoginPage}
+                    redirect='/'
+                />
+                <AuthGuard
+                    path='/auth/register'
+                    component={RegisterPage}
+                    redirect='/'
+                />
 
                 <AuthGuard path='/product/details/:id' component={RoomPage} validate={false} />
 
                 <AuthGuard path='/product/create'
                     component={CreateRoomPage}
                     authorization={true}
-                    redirect='/error'
+                    redirect='/auth/login'
                 />
 
                 <AuthGuard path='/user/profile'
                     component={ProfilePage}
                     authorization={true}
-                    redirect='/error'
+                    redirect='/auth/login'
                 />
 
                 <AuthGuard path='/user/logout'
                     component={LogoutPage}
                     authorization={true}
-                    redirect='/error'
+                    redirect='/auth/login'
                 />
 
                 <Route component={ErrorPage} />
