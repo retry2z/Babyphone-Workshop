@@ -30,6 +30,7 @@ const ProfileUpdateImage = () => {
     }
 
     const submitHandler = async () => {
+        context.loadingToggle();
         const supportedFiles = ['jpeg', 'gif', 'png', 'apng', 'svg', 'png', 'jpg'];  
 
         if (imageAsFile === '') {
@@ -53,7 +54,6 @@ const ProfileUpdateImage = () => {
             await storage.ref(`/users/${context.user.uid}`).put(imageAsFile);
             const imageUrl = await storage.ref('users').child(context.user.uid).getDownloadURL();
             const response = await userService.update({ imageUrl });
-            context.loadingToggle();
 
             if (response.isValid) {
                 context.loadingToggle();
