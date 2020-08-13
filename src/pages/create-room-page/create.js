@@ -25,7 +25,11 @@ const CreateRoom = (props) => {
                 {
                     type: 'onlyLettersAndDigits',
                     message: 'Only letters and digits are allowed'
-                }
+                },
+                {
+                    type: 'required',
+                    message:'The field is required'
+                },
             ],
         },
         {
