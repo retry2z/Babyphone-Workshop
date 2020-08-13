@@ -50,19 +50,22 @@ class ContextContainer extends React.Component {
 
     // if (((user === null || !user.isValid) || (current === null || !current.isValid)) || (user.uid !== current.uid)) {
     if (user === null || !user.isValid) {
-  
-    cookieHandler.remove();
-
-      const newState = { ...this.state };
-      newState.isLogged = false;
-      newState.user = null;
-      this.setState(newState);
-
+      this.logout();
       return
     }
 
     this.login(user.data);
   }
+
+  // async componentDidUpdate() {
+  //   //console.log(this.state.user);
+  //   const { user } = this.state;
+
+  //   if (!user) {
+  //     this.logout();
+  //     return
+  //   }
+  // }
 
   render() {
     const { isLogged, user, isLoading } = this.state;

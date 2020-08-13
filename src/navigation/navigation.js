@@ -22,36 +22,75 @@ import ErrorPage from '../pages/404-page/notFound';
 const Navigation = () => {
 
     return (
-        <BrowserRouter basename={window.location.pathname || ''}>
+        <BrowserRouter>
             <Switch>
                 <AuthGuard path='/' exact={true} component={HomePage} validate={false} />
 
-                <AuthGuard path='/auth/login' component={LoginPage} />
-                <AuthGuard path='/auth/register' component={RegisterPage} />
+                <AuthGuard
+                    path='/auth/login'
+                    component={LoginPage}
+                    redirect='/'
+                />
+                <AuthGuard
+                    path='/auth/register'
+                    component={RegisterPage}
+                    redirect='/'
+                />
 
                 <AuthGuard path='/product/details/:id' component={RoomPage} validate={false} />
 
                 <AuthGuard path='/product/create'
                     component={CreateRoomPage}
                     authorization={true}
-                    redirect='/error'
+                    redirect='/auth/login'
                 />
 
                 <AuthGuard path='/user/profile'
                     component={ProfilePage}
                     authorization={true}
-                    redirect='/error'
+                    redirect='/auth/login'
                 />
 
                 <AuthGuard path='/user/logout'
                     component={LogoutPage}
                     authorization={true}
-                    redirect='/error'
+                    redirect='/auth/login'
                 />
 
                 <Route component={ErrorPage} />
             </Switch>
         </BrowserRouter >
+
+
+        // <BrowserRouter>
+        //     <Switch>
+        //         <Route path='/' exact={true} component={HomePage} />
+
+        //         <Route path='/auth/login'>
+        //             {context.isLogged ? (<Redirect to="/" />) : (<LoginPage />)}
+        //         </Route>
+
+        //         <Route path='/auth/register'>
+        //             {context.isLogged ? (<Redirect to="/" />) : (<RegisterPage />)}
+        //         </Route>
+
+        //         <Route path='/product/details/:id' component={RoomPage} />
+
+        //         <Route path='/product/create'>
+        //             {context.isLogged ? (<CreateRoomPage />) : (<Redirect to="/login" />)}
+        //         </Route>
+
+        //         <Route path="/user/profile">
+        //             {context.isLogged ? (<ProfilePage />) : (<Redirect to="/login" />)}
+        //         </Route>
+
+        //         <Route path="/user/logout">
+        //             {context.isLogged ? (<LogoutPage />) : (<Redirect to="/login" />)}
+        //         </Route>
+
+        //         <Route component={ErrorPage} />
+        //     </Switch>
+        // </BrowserRouter >
     )
 }
 

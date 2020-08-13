@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import Common from '../../components/common/common';
@@ -6,7 +6,12 @@ import Title from '../../components/core/title/title';
 import FormControl from '../../components/from-control/form';
 import productService from '../../services/product-service';
 
+import Contexts from '../../Contexts';
+const { UserContext } = Contexts();
+
 const CreateRoom = (props) => {
+    const context = useContext(UserContext);
+
     const form = [
         {
             name: 'title',
@@ -34,14 +39,20 @@ const CreateRoom = (props) => {
                 },
             ],
         },
-    ]
-
+    ];
 
     const submitHandler = async (value) => {
-        const data = await productService.post(value);
+        context.loadingToggle();
+        const response = await productService.post(value);
 
-        if (data.isValid) {
+        if (!response.isValid) {
+            this.context.loadingToggle();
+            return response.error
+        } else {
+            context.loadingToggle();
+            context.login(response.data);
             props.history.push('/');
+            return false
         }
     }
 

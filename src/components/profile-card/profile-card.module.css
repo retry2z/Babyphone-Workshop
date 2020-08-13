@@ -12,7 +12,10 @@
 }
 
 .personalInfo img {
-    width: 120px;
+    border:1px solid #504038; 
+    border-radius: 55px;
+    width: 110px;
+    height: 110px;
 }
 
 .profile .personalInfo div{

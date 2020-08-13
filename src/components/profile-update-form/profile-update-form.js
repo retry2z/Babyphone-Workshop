@@ -54,6 +54,8 @@ const ProfileUpdate = () => {
         if (response.isValid) {
             context.login(response.data.data)
             context.loadingToggle();
+        } else {
+            context.loadingToggle();
         }
     }
 

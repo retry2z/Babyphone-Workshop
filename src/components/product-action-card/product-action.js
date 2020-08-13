@@ -57,7 +57,8 @@ const ProductActionCard = (props) => {
         context.loadingToggle();
         const data = await productService.edit(id, value);
 
-        if (data.isValid) {
+        console.log(data);          
+        if (data.isValid) {  
             context.loadingToggle();
             history.push('/' + id);
         } else {
