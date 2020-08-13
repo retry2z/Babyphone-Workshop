@@ -9,10 +9,12 @@ class InputField extends React.Component {
     constructor(props) {
         super(props);
         this.type = props.type || 'text';
+        this.name = props.name || false;
         this.label = props.label || '';
-        this.onChange = props.onChange;
+        this.onChange = props.onChange; //call parent with typed data
+        this.onValidate = props.onValidate; //call parent with validated date
+        this.forceValidate = props.forceValidate || false;
         this.validators = props.validators;
-        this.onValidate = props.onValidate;
 
         this.state = this.initState();
     }
@@ -22,16 +24,18 @@ class InputField extends React.Component {
 
         data.isValid = true;
         data.error = { message: '' };
-        data[this.id] = this.props?.value || '';
+        data[this.name || this.id] = this.props?.value || '';
 
         return data
     }
 
     componentDidMount() {
-        this.props.forceValidate(this.onBlurHandler);         //passing validating system to parent
+        if (!this.forceValidate) {
+            return
+        }
 
+        this.forceValidate(this.onBlurHandler);       //call parent with validated date
         this.onChange(this.state[this.id]);
-
         if (!this.state[this.id]) {
             return
         }
@@ -39,12 +43,26 @@ class InputField extends React.Component {
         this.onBlurHandler();
     }
 
-    validatorHandler(data = []) {
-        if (!!data.length === false) {
+    onChangeHandler(event, id) {
+        this.setState(
+            {
+                [id]: event.target.value
+            }
+        )
+
+        //return to the parent element input value
+        this.onChange(event.target.value, event);
+    }
+
+    onBlurHandler = () => {
+        //validating field and past the result for checking.
+
+        if (!!this.validators?.length === false) {
             return
         }
 
-        const verify = data.find(x => x.validate.isValid === false);
+        const results = validateField(this.state[this.id], this.validators);
+        const verify = results.find(x => x.validate.isValid === false);
         const newState = { ...this.state };
 
         newState.isValid = !verify;
@@ -56,28 +74,6 @@ class InputField extends React.Component {
 
         //return to the parent element information about validating result
         this.onValidate({ valid: !verify });
-    }
-
-    onChangeHandler(event, id) {
-        this.setState(
-            {
-                [id]: event.target.value
-            }
-        )
-
-        //return to the parent element input value
-        this.onChange(event.target.value);
-    }
-
-    onBlurHandler = () => {
-        //validating field and past the result for checking.
-
-        if (!!this.validators?.length === false) {
-            return
-        }
-
-        const results = validateField(this.state[this.id], this.validators);
-        this.validatorHandler(results);
     }
 
     render() {

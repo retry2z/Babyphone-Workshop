@@ -43,9 +43,7 @@
 }
 
 .button_stroked:disabled {
-    color:#f9f7f6;
-    background-color: #7a6256;
-    border: 1px solid #7a6256;
+    background-color: #fcf2ee;
 }
 
  /* loading dots */

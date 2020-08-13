@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import style from './profile-card.module.css';
 import defaultImage from '../../images/profile-icon.png';
+import editButton from '../../images/edit-btn.png';
 
 import ChangePassword from '../../components/profile-change-password/change-password';
 import MyRooms from '../../components/profile-history-rooms/history-rooms';
@@ -40,7 +41,7 @@ const ProfileCard = ({ data, buttonOnClick, menuAction }) => {
 
     const findActiveOption = userMenuOptions.find(x => x.name === active);
     if (findActiveOption) {
-        findActiveOption.class = 'active'
+        findActiveOption.class = 'active';
     } else {
         userMenuOptions[0].class = 'active'
     }
@@ -49,7 +50,12 @@ const ProfileCard = ({ data, buttonOnClick, menuAction }) => {
         <div className={style.profile}>
             <div className={style.personalInfo}>
                 <div>
-                    <img src={imageUrl} alt="Profile" />
+                    <Link to='/user/profile/image/upload'>
+                        <img className={style.profile_image} src={imageUrl} alt="Profile" />
+                        <div className={style.profile_edit}>
+                            <img className={style.profile_edit_img} src={editButton} alt='Edit' />
+                        </div>
+                    </Link>
                 </div>
                 <div>
                     <span>{name}</span>

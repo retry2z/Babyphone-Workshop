@@ -1,3 +1,7 @@
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/storage';
+
 const firebaseConfig = {
     apiKey: "AIzaSyAlhPGy2SkRK-mP_9Ftlr6cxQE8Daot8LA",
     authDomain: "workshop-project-58361.firebaseapp.com",
@@ -9,19 +13,18 @@ const firebaseConfig = {
     measurementId: "G-4PHL0N0826"
 }
 
-var firebase = require('firebase/app');
-require('firebase/firestore');
-
-var app = firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
 const admin = () => {
     const db = app.firestore();
+    const storage = app.storage();
 
 
     return {
-        // url: 'https://us-central1-workshop-project-58361.cloudfunctions.net/api/',
-        url: 'http://localhost:5000/workshop-project-58361/us-central1/api/',
-        db
+        // url: 'http://localhost:5000/workshop-project-58361/us-central1/api/',
+        url: 'https://us-central1-workshop-project-58361.cloudfunctions.net/api/',
+        db,
+        storage,
     }
 }
 
