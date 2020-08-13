@@ -22,7 +22,7 @@ import ErrorPage from '../pages/404-page/notFound';
 const Navigation = () => {
 
     return (
-        <BrowserRouter basename={window.location.pathname || ''}>
+        <BrowserRouter>
             <Switch>
                 <AuthGuard path='/' exact={true} component={HomePage} validate={false} />
 
@@ -52,6 +52,37 @@ const Navigation = () => {
                 <Route component={ErrorPage} />
             </Switch>
         </BrowserRouter >
+
+
+        // <BrowserRouter>
+        //     <Switch>
+        //         <Route path='/' exact={true} component={HomePage} />
+
+        //         <Route path='/auth/login'>
+        //             {context.isLogged ? (<Redirect to="/" />) : (<LoginPage />)}
+        //         </Route>
+
+        //         <Route path='/auth/register'>
+        //             {context.isLogged ? (<Redirect to="/" />) : (<RegisterPage />)}
+        //         </Route>
+
+        //         <Route path='/product/details/:id' component={RoomPage} />
+
+        //         <Route path='/product/create'>
+        //             {context.isLogged ? (<CreateRoomPage />) : (<Redirect to="/login" />)}
+        //         </Route>
+
+        //         <Route path="/user/profile">
+        //             {context.isLogged ? (<ProfilePage />) : (<Redirect to="/login" />)}
+        //         </Route>
+
+        //         <Route path="/user/logout">
+        //             {context.isLogged ? (<LogoutPage />) : (<Redirect to="/login" />)}
+        //         </Route>
+
+        //         <Route component={ErrorPage} />
+        //     </Switch>
+        // </BrowserRouter >
     )
 }
 

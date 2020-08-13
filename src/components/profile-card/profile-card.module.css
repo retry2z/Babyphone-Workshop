@@ -13,7 +13,8 @@
 
 .personalInfo img {
     border:1px solid #504038; 
-    border-radius: 50%;
+    border-radius: 60px;
+    max-width: 120px;
     width: 120px;
 }
 
