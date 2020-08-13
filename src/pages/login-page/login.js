@@ -48,16 +48,12 @@ class Login extends React.Component {
 
 
     submitHandler = async (value) => {
-        if (this.isLoading) {
-            return
-        }
-
         this.context.loadingToggle();
         const response = await authService.login(value);       
 
 
         if (!response.isValid) {
-            this.isLoading = false;
+            this.context.loadingToggle();
             return response.error;
         } else {
             this.context.loadingToggle();

@@ -68,33 +68,18 @@ class Register extends React.Component {
         }
     ]
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isLoading: false,
-        }
-    }
-
-
-    isLoading = false;
-
     static contextType = UserContext;
 
-
     submitHandler = async (value) => {
-        if (this.isLoading) {
-            return
-        }
-
-        this.isLoading = true;
+        this.context.loadingToggle();
         const response = await authService.register(value);
-        this.isLoading = false;
         
         
         if (!response.isValid) {
+            this.context.loadingToggle();
             return response.error
         } else {
+            this.context.loadingToggle();
             this.context.login(response.data);
             this.props.history.push('/');
             return false
