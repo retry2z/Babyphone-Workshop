@@ -57,15 +57,8 @@ class ContextContainer extends React.Component {
     this.login(user.data);
   }
 
-  // async componentDidUpdate() {
-  //   //console.log(this.state.user);
-  //   const { user } = this.state;
-
-  //   if (!user) {
-  //     this.logout();
-  //     return
-  //   }
-  // }
+  async componentDidUpdate() {
+  }
 
   render() {
     const { isLogged, user, isLoading } = this.state;
