@@ -31,6 +31,10 @@ const ProductActionCard = (props) => {
                 {
                     type: 'onlyLettersAndDigits',
                     message: 'Only letters and digits are allowed'
+                },
+                {
+                    type: 'required',
+                    message:'The field is required'
                 }
             ],
         },
@@ -57,7 +61,6 @@ const ProductActionCard = (props) => {
         context.loadingToggle();
         const data = await productService.edit(id, value);
 
-        console.log(data);
         if (data.isValid) {  
             context.loadingToggle();
             history.push('/');
