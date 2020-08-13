@@ -12,6 +12,7 @@ import AuthGuard from './authGuard';
 import HomePage from '../pages/home-page/home';
 import RoomPage from '../pages/room-page/room';
 import ProfilePage from '../pages/profile-page/profile';
+import ProfileImageUploadPage from '../pages/profile-page-upload-image/profile-update-image';
 import LogoutPage from '../pages/logout-page/logout';
 import CreateRoomPage from '../pages/create-room-page/create';
 
@@ -45,12 +46,17 @@ const Navigation = () => {
                     redirect='/auth/login'
                 />
 
+
+                <AuthGuard path='/user/profile/image/upload'
+                    component={ProfileImageUploadPage}
+                    authorization={true}
+                    redirect='/auth/login'
+                />
                 <AuthGuard path='/user/profile'
                     component={ProfilePage}
                     authorization={true}
                     redirect='/auth/login'
                 />
-
                 <AuthGuard path='/user/logout'
                     component={LogoutPage}
                     authorization={true}
