@@ -70,13 +70,13 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 - Rooms option to be public/privet.
 - Asd for password to enter.
 - Share privet link to join.
+- upload images to firebase/storage
 
-## To fix
-- create component - implement loading button
-- register component - implement loading button
-- url validation fix to be not required.
-- profile image style with round border.
-- upload with firebase/storage
+## Known bugs
+- updating information about user or room can't be an empty string.
+- loading buttons are disabled in same time. 
+- make a locale context api for notification and disable navigation. This will fix above problem.
+- after creating a new room and enter it doesn't receive owner permissions.
 
 ## Contributors
 
