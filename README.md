@@ -70,7 +70,6 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 - Rooms option to be public/privet.
 - Asd for password to enter.
 - Share privet link to join.
-- upload images to firebase/storage
 
 ## Known bugs
 - loading buttons are disabled in same time. 
