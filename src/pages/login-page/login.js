@@ -70,8 +70,7 @@ class Login extends React.Component {
                     <Title title='Welcome' />
                     <FormControl
                         fields={this.form}
-                        formAction={this.submitHandler}
-                        buttonTitle='Login'
+                        formAction={[this.submitHandler,'Login']}
                     />
                 </Wrapper>
             </Common>

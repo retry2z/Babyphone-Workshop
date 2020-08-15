@@ -76,8 +76,7 @@ const ProductActionCard = (props) => {
             <Title title='Update room' />
             <FormControl
                 fields={form}
-                formAction={submitHandler}
-                buttonTitle='Save'
+                formAction={[submitHandler,'Save']}
             />
         </Wrapper>
     )

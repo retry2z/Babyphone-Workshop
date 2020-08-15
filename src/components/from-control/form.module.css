@@ -6,3 +6,15 @@
     border-radius: 3px;
     width: 100%;
 }
+
+.fromActions {
+    text-align: center;
+}
+
+.fromActions button {
+    display: inline-block;    
+}
+
+.fromActions button:not(:first-child) {
+    margin-left: 15px;
+}

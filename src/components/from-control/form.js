@@ -8,19 +8,27 @@ import ErrorField from '../core/errorField/errorField';
 import validateGroup from '../../validators';
 
 class FormControl extends React.Component {
+    errorMessage = '';
+    forceValidate = [];
 
     constructor(props) {
         super(props);
-        this.validators = props.validators || [];
-        this.shouldBeValidated = false && !!this.validators.length;
-        this.errorMessage = '';
-
-        this.fields = props.fields;
-        this.buttonTitle = props.buttonTitle;
-        this.formAction = props.formAction;
         this.theme = props.theme;
 
-        this.forceValidate = [];
+        this.validators = props.validators || [];
+        this.shouldBeValidated = false && !!this.validators.length;
+
+        this.fields = props.fields;
+
+        this.formAction = props.formAction[0];
+        this.submitButtonTitle = props.formAction[1];
+        this.submitButtonTheme = props.formAction[2];
+
+        this.formResetOption = props.fromReset || [false, false];
+        this.formReset = this.formResetOption[0];
+        this.resetButtonTitle = this.formResetOption[1];
+        this.resetButtonTheme = props.formAction[2];
+
         this.state = this.initState();
     }
 
@@ -52,7 +60,7 @@ class FormControl extends React.Component {
         this.setState(newState);
     }
 
-    onValidateHandler = (isValid = null, fieldName) => {
+    onBlurHandler = (isValid = null, fieldName) => {
         if (isValid === null) {
             return
         }
@@ -118,16 +126,27 @@ class FormControl extends React.Component {
                                     key={index}
                                     type={field.type}
                                     label={field.label}
-                                    onChange={event => this.onChangeHandler(event, field.name)}
                                     validators={field.validators}
-                                    onValidate={isValid => this.onValidateHandler(isValid, field.name)}
-                                    value={field.value}
+                                    onChange={event => this.onChangeHandler(event, field.name)}
+                                    onBlur={isValid => this.onBlurHandler(isValid, field.name)}
                                     forceValidate={ref => this.forceValidate.push(ref)}
+                                    value={field.value}
                                 />
                             )
                         })
                     }
-                    <DefinedButton title={this.buttonTitle} theme={this.theme} />
+                    <div className={style.fromActions}>
+                        {
+                            this.resetButtonTitle ?
+                                <DefinedButton
+                                    theme={this.resetButtonTheme || 'stroked'}
+                                    title={this.resetButtonTitle}
+                                    action={this.formReset}
+                                />
+                                : null
+                        }
+                        <DefinedButton title={this.submitButtonTitle} theme={this.submitButtonTheme} />
+                    </div>
                 </form>
             </div>
         )

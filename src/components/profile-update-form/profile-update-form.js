@@ -64,8 +64,7 @@ const ProfileUpdate = () => {
             <Title title='User settings' />
             <FormControl
                 fields={form}
-                formAction={submitHandler}
-                buttonTitle='Update'
+                formAction={[submitHandler,'Update']}
             />
         </Wrapper >
     )

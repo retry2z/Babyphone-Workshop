@@ -28,7 +28,7 @@ const CreateRoom = (props) => {
                 },
                 {
                     type: 'required',
-                    message:'The field is required'
+                    message: 'The field is required'
                 },
             ],
         },
@@ -65,8 +65,8 @@ const CreateRoom = (props) => {
                 <Title title='Create a new room' />
                 <FormControl
                     fields={form}
-                    formAction={submitHandler}
-                    buttonTitle='Create'
+                    formAction={[submitHandler,'Create']}
+                    fromReset={['reset','Reset']}
                 />
             </Wrapper>
         </Common>

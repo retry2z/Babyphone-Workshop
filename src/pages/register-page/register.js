@@ -94,8 +94,7 @@ class Register extends React.Component {
                     <FormControl
                         fields={this.fields}
                         validators={this.validators}
-                        formAction={this.submitHandler}
-                        buttonTitle='Register'
+                        formAction={[this.submitHandler,'Register']}
                     />
 
                 </Wrapper>
