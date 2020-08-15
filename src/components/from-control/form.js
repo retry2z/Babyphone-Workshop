@@ -20,14 +20,8 @@ class FormControl extends React.Component {
 
         this.fields = props.fields;
 
-        this.formAction = props.formAction[0];
-        this.submitButtonTitle = props.formAction[1];
-        this.submitButtonTheme = props.formAction[2];
-
-        this.formResetOption = props.fromReset || [false, false];
-        this.formReset = this.formResetOption[0];
-        this.resetButtonTitle = this.formResetOption[1];
-        this.resetButtonTheme = props.formAction[2];
+        this.fromSubmit = props.fromSubmit || null;
+        this.fromReset = props.fromReset || null;
 
         this.state = this.initState();
     }
@@ -81,13 +75,11 @@ class FormControl extends React.Component {
     }
 
 
-    submitHandler = async (event) => {
-        event.preventDefault();
-
+    submitHandler = async () => {
         await this.forceValidate.forEach(forceValidateField => forceValidateField());
 
         if (!this.shouldBeValidated) {
-            return this.formAction(this.state.data);
+            return this.fromSubmit.action(this.state.data);
         }
 
         const groupResults = validateGroup(this.state.data, this.validators);
@@ -103,7 +95,7 @@ class FormControl extends React.Component {
         }
 
         //Invoke submit function from parent and await if Its returns a message to show as error
-        const isThereErrorMessage = await this.formAction(this.state.data);
+        const isThereErrorMessage = await this.fromSubmit.action(this.state.data);
         if (!!isThereErrorMessage) {
             this.errorMessage = isThereErrorMessage;
             const newState = { ...this.state };
@@ -116,7 +108,7 @@ class FormControl extends React.Component {
     render() {
         return (
             <div className={style.box}>
-                <form onSubmit={this.submitHandler}>
+                <form>
                     {this.state.showError ? <ErrorField message={this.errorMessage} /> : null}
 
                     {
@@ -137,15 +129,24 @@ class FormControl extends React.Component {
                     }
                     <div className={style.fromActions}>
                         {
-                            this.resetButtonTitle ?
+                            !!this.fromSubmit ?
                                 <DefinedButton
-                                    theme={this.resetButtonTheme || 'stroked'}
-                                    title={this.resetButtonTitle}
-                                    action={this.formReset}
+                                    theme={this.fromSubmit.theme || 'basic'}
+                                    title={this.fromSubmit.title}
+                                    action={this.submitHandler}
                                 />
                                 : null
                         }
-                        <DefinedButton title={this.submitButtonTitle} theme={this.submitButtonTheme} />
+                        {
+                            !!this.fromReset ?
+                                <DefinedButton
+                                    theme={this.fromReset.theme || 'stroked'}
+                                    title={this.fromReset.title}
+                                    type={this.fromReset.type}
+                                    action={this.fromReset.action}
+                                />
+                                : null
+                        }
                     </div>
                 </form>
             </div>

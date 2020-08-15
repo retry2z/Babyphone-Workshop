@@ -64,7 +64,14 @@ const ProfileUpdate = () => {
             <Title title='User settings' />
             <FormControl
                 fields={form}
-                formAction={[submitHandler,'Update']}
+                fromSubmit={{
+                    title: 'Update',
+                    action: submitHandler,
+                }}
+                fromReset={{
+                    title: 'Reset',
+                    type: 'reset',
+                }}
             />
         </Wrapper >
     )

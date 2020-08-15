@@ -37,7 +37,7 @@ class Home extends React.Component {
     }
 
     search = (arr, data = '') => {
-        return arr.filter(item => {
+        return arr.slice(0).filter(item => {
             const name = item.data.title.toLowerCase();
             const description = !!item?.keyWords ? item.keyWords.join(' ').toLowerCase() : '';
             const search_data = data.toLowerCase();
@@ -57,6 +57,13 @@ class Home extends React.Component {
         });
     }
 
+    resetHandler = () => {
+        this.setState({
+            ...this.state,
+            data: this.rooms,
+        });
+    }
+
     render() {
         return (
             <Common>
@@ -64,7 +71,14 @@ class Home extends React.Component {
                     <Search>
                         <FormControl
                             fields={this.fields}
-                            formAction={[this.submitHandler,'Search']}
+                            fromSubmit={{
+                                title: 'Search',
+                                action: this.submitHandler,
+                            }}
+                            fromReset={{
+                                title: 'Reset',
+                                action: this.resetHandler,
+                            }}
                         />
                     </Search>
                     <div>

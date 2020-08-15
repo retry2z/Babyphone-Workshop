@@ -52,7 +52,7 @@
     visibility: hidden;
  }
   
- button:disabled .loader {
+ .button_basic:disabled .loader {
     visibility: visible;
     color:#f9f7f6;
     animation: dots 1.5s steps(9, end) infinite;}
@@ -76,6 +76,32 @@
         text-shadow:
           .25em 0 0 #f9f7f6,
           .5em 0 0 #f9f7f6;}
+}
+
+.button_stroked:disabled .loader {
+    visibility: visible;
+    color:#f9f7f6;
+    animation: dots 1.5s steps(9, end) infinite;}
+  
+  @keyframes dots {
+    0%, 20% {
+        color: rgba(0,0,0,0);
+        text-shadow:
+          .25em 0 0 rgba(0,0,0,0),
+          .5em 0 0 rgba(0,0,0,0);}
+    40% {
+        color: #f9f7f6;
+        text-shadow:
+          .25em 0 0 rgba(0,0,0,0),
+          .5em 0 0 rgba(0,0,0,0);}
+    60% {
+        text-shadow:
+          .25em 0 0 #504038,
+          .5em 0 0 rgba(0,0,0,0);}
+    80%, 100% {
+        text-shadow:
+          .25em 0 0 #504038,
+          .5em 0 0 #504038;}
 }
 
 

@@ -30,26 +30,26 @@ const ProfileUpdateImage = () => {
     }
 
     const submitHandler = async () => {
-        context.loadingToggle();
-        const supportedFiles = ['jpeg', 'gif', 'png', 'apng', 'svg', 'png', 'jpg'];  
-
+        const supportedFiles = ['jpeg', 'gif', 'png', 'apng', 'svg', 'png', 'jpg'];
+        
         if (imageAsFile === '') {
             setErrorMessage('Please choose a file');
             return
         }
-
+        
         const fileSize = (imageAsFile.size / 1024) / 1024;
         if (fileSize >= 1) {
             setErrorMessage('File size should not be more than 1MB');
             return
         }
-
+        
         const fileExtension = imageAsFile.name.split('.').pop();
         if (!supportedFiles.includes(fileExtension)) {
             setErrorMessage('Unsupported file or image type');
             return
         }
-
+        
+        context.loadingToggle();
         try {
             await storage.ref(`/users/${context.user.uid}`).put(imageAsFile);
             const imageUrl = await storage.ref('users').child(context.user.uid).getDownloadURL();
@@ -81,7 +81,10 @@ const ProfileUpdateImage = () => {
                         label='File:'
                         onChange={handleImageAsFile}
                     />
-                    <DefinedButton title='Upload' action={submitHandler} />
+                    <ActionPanel>
+                        <DefinedButton title='Upload' action={submitHandler} />
+                        <DefinedButton title='Back' theme='stroked' action={() => history.push('/user/profile')} />
+                    </ActionPanel>
                 </Box>
             </Wrapper >
         </Common>
@@ -103,5 +106,16 @@ const Box = styled.section`
     width: 62%;
 `;
 
+
+const ActionPanel = styled.section`
+    text-align: center;
+    button {
+        display: inline-block;    
+    }
+
+    button:not(:first-child) {
+     margin-left: 15px;
+    }
+`;
 export default ProfileUpdateImage
 

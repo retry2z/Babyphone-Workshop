@@ -70,7 +70,6 @@ const ChangePasswordPanel = () => {
     const context = useContext(UserContext);
     const history = useHistory();
 
-
     const submitHandler = async (value) => {
         context.loadingToggle();
         const response = await userService.changePassword(value);
@@ -92,7 +91,14 @@ const ChangePasswordPanel = () => {
             <FormControl
                 fields={fields}
                 validators={validators}
-                formAction={[submitHandler,'Update']}
+                fromSubmit={{
+                    title: 'Change',
+                    action: submitHandler,
+                }}
+                fromReset={{
+                    title: 'Reset',
+                    type: 'reset',
+                }}
             />
         </>
     )
