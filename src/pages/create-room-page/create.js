@@ -59,10 +59,6 @@ const CreateRoom = (props) => {
         }
     }
 
-    const resetHandler = () => {
-        props.history.push('/');
-    }
-
     return (
         <Common>
             <Wrapper>
@@ -70,7 +66,7 @@ const CreateRoom = (props) => {
                 <FormControl
                     fields={form}
                     formAction={[submitHandler,'Create']}
-                    fromReset={[resetHandler,'Back']}
+                    fromReset={['reset','Reset']}
                 />
             </Wrapper>
         </Common>

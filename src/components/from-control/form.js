@@ -138,8 +138,12 @@ class FormControl extends React.Component {
                     <div className={style.fromActions}>
                         {
                             this.resetButtonTitle ?
-                            <DefinedButton title={this.resetButtonTitle} theme={this.resetButtonTheme || 'stroked'} action={this.formReset} />
-                            : null
+                                <DefinedButton
+                                    theme={this.resetButtonTheme || 'stroked'}
+                                    title={this.resetButtonTitle}
+                                    action={this.formReset}
+                                />
+                                : null
                         }
                         <DefinedButton title={this.submitButtonTitle} theme={this.submitButtonTheme} />
                     </div>
