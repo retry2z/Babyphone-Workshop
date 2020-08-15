@@ -29,7 +29,7 @@ const HistoryMyRooms = () => {
                 {
                     !!data.length ?
 
-                        data.map((doc => {
+                        data.slice(0,5).map((doc => {
                             return <ProductCardSimple key={doc.id} data={doc} />
                         }))
 

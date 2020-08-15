@@ -28,7 +28,7 @@ class Home extends React.Component {
 
     componentDidMount = async () => {
         const { data } = await productService.list();
-        this.rooms = data.slice(0, 5);
+        this.rooms = data;
 
         this.setState({
             ...this.state,
@@ -87,7 +87,7 @@ class Home extends React.Component {
                             {
                                 !!this.state.data.length ?
 
-                                    this.state.data.map((doc => {
+                                    this.state.data.slice(0, 5).map((doc => {
                                         return <ProductCardSimple key={doc.data.id} data={doc.data} />
                                     }))
 
