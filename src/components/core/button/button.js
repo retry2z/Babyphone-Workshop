@@ -4,7 +4,13 @@ import style from './button.module.css';
 import Contexts from '../../../Contexts';
 const { UserContext } = Contexts();
 
-const DefinedButton = ({ title = 'Default', action, theme = 'basic' }) => {
+const DefinedButton = (
+    {
+        action,
+        title = 'Default',
+        theme = 'basic',
+        type = 'submit',
+    }) => {
     const context = useContext(UserContext);
 
     const availableThemes = ['basic', 'stroked'];
@@ -13,9 +19,16 @@ const DefinedButton = ({ title = 'Default', action, theme = 'basic' }) => {
     return (
         <button
             className={style['button_' + currentTheme]}
-            onClick={action === 'reset' ? null : action}
-            type={action === 'reset' ? 'reset' : null}
+            type={type}
             disabled={context.isLoading}
+
+            onClick={(e) => {
+                if (!!action) {
+                    e.preventDefault();
+                    action();
+                }
+                return
+            }}
         >
             {title}
             <p className={style.loader}>.</p>

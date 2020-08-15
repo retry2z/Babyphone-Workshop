@@ -73,8 +73,8 @@ class Register extends React.Component {
     submitHandler = async (value) => {
         this.context.loadingToggle();
         const response = await authService.register(value);
-        
-        
+
+
         if (!response.isValid) {
             this.context.loadingToggle();
             return response.error
@@ -90,11 +90,14 @@ class Register extends React.Component {
         return (
             <Common>
                 <Wrapper>
-                <Title title='Welcome' />
+                    <Title title='Welcome' />
                     <FormControl
                         fields={this.fields}
                         validators={this.validators}
-                        formAction={[this.submitHandler,'Register']}
+                        fromSubmit={{
+                            title: 'Register',
+                            action: this.submitHandler,
+                        }}
                     />
 
                 </Wrapper>

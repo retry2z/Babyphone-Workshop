@@ -49,7 +49,7 @@ class Login extends React.Component {
 
     submitHandler = async (value) => {
         this.context.loadingToggle();
-        const response = await authService.login(value);       
+        const response = await authService.login(value);
 
 
         if (!response.isValid) {
@@ -70,7 +70,10 @@ class Login extends React.Component {
                     <Title title='Welcome' />
                     <FormControl
                         fields={this.form}
-                        formAction={[this.submitHandler,'Login']}
+                        fromSubmit={{
+                            title: 'Login',
+                            action: this.submitHandler,
+                        }}
                     />
                 </Wrapper>
             </Common>

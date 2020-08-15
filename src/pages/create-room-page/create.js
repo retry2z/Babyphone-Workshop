@@ -65,8 +65,14 @@ const CreateRoom = (props) => {
                 <Title title='Create a new room' />
                 <FormControl
                     fields={form}
-                    formAction={[submitHandler,'Create']}
-                    fromReset={['reset','Reset']}
+                    fromSubmit={{
+                        title: 'Create',
+                        action: submitHandler,
+                    }}
+                    fromReset={{
+                        title: 'Reset',
+                        type: 'reset',
+                    }}
                 />
             </Wrapper>
         </Common>

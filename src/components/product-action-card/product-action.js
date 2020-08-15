@@ -34,7 +34,7 @@ const ProductActionCard = (props) => {
                 },
                 {
                     type: 'required',
-                    message:'The field is required'
+                    message: 'The field is required'
                 }
             ],
         },
@@ -61,7 +61,7 @@ const ProductActionCard = (props) => {
         context.loadingToggle();
         const data = await productService.edit(id, value);
 
-        if (data.isValid) {  
+        if (data.isValid) {
             context.loadingToggle();
             history.push('/');
         } else {
@@ -76,7 +76,14 @@ const ProductActionCard = (props) => {
             <Title title='Update room' />
             <FormControl
                 fields={form}
-                formAction={[submitHandler,'Save']}
+                fromSubmit={{
+                    title: 'Save',
+                    action: submitHandler,
+                }}
+                fromReset={{
+                    title: 'Reset',
+                    type: 'reset',
+                }}
             />
         </Wrapper>
     )
