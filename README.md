@@ -49,7 +49,9 @@ ROUTE | LINK | DESCRIPTION
 /product/create | Create new room | Authenticated users can create a room.  
 /product/details/:id | Details about a room | Guests can join the room and receive notification and leave to stop receiving. Authenticated owner can modify room information and start/stop the speech detection. 
 /user/profile | Profile page | Authenticated user can modify their account information, see his rooms  and change its password.
+/user/profile/image/upload | Image upload page | User can upload image to server and make it as profile.
 /user/logout | Logout route | Destroying current authorization token and cookie. Note - the token can't be reused if is been destroyed.
+
 
 ## Examples
 https://workshop-project-58361.web.app/
