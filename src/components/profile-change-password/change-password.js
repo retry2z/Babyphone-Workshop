@@ -92,8 +92,7 @@ const ChangePasswordPanel = () => {
             <FormControl
                 fields={fields}
                 validators={validators}
-                formAction={submitHandler}
-                buttonTitle='Update'
+                formAction={[submitHandler,'Update']}
             />
         </>
     )

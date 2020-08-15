@@ -28,7 +28,7 @@ const CreateRoom = (props) => {
                 },
                 {
                     type: 'required',
-                    message:'The field is required'
+                    message: 'The field is required'
                 },
             ],
         },
@@ -59,14 +59,18 @@ const CreateRoom = (props) => {
         }
     }
 
+    const resetHandler = () => {
+        props.history.push('/');
+    }
+
     return (
         <Common>
             <Wrapper>
                 <Title title='Create a new room' />
                 <FormControl
                     fields={form}
-                    formAction={submitHandler}
-                    buttonTitle='Create'
+                    formAction={[submitHandler,'Create']}
+                    fromReset={[resetHandler,'Back']}
                 />
             </Wrapper>
         </Common>

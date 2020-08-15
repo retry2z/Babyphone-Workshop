@@ -12,7 +12,7 @@ class InputField extends React.Component {
         this.name = props.name || false;
         this.label = props.label || '';
         this.onChange = props.onChange; //call parent with typed data
-        this.onValidate = props.onValidate; //call parent with validated date
+        this.onBlur = props.onBlur; //call parent with validated date
         this.forceValidate = props.forceValidate || false;
         this.validators = props.validators;
 
@@ -73,7 +73,7 @@ class InputField extends React.Component {
         this.setState(newState);
 
         //return to the parent element information about validating result
-        this.onValidate({ valid: !verify });
+        this.onBlur({ valid: !verify });
     }
 
     render() {
