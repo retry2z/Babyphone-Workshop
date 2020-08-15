@@ -3,27 +3,52 @@ import styled from 'styled-components';
 
 import Common from '../../components/common/common';
 import ProfileCard from '../../components/profile-card/profile-card';
+
 import MyRooms from '../../components/profile-history-rooms/history-rooms';
+import ChangePassword from '../../components/profile-change-password/change-password';
+import UserSettings from '../../components/profile-update-form/profile-update-form';
 
 import Contexts from '../../Contexts';
 const { UserContext } = Contexts();
 
 
 class Profile extends React.Component {
+    active = new URLSearchParams(this.props.location.search).get('active');
+
+    userMenuOptions = {
+        MyRooms: <MyRooms />,
+        UserSettings: <UserSettings />,
+        ChangePassword: <ChangePassword />,
+    };
 
     constructor(props) {
         super(props);
-        this.isLoading = false;
         this.state = {
-            component: <MyRooms />,
+            component: '',
+            name: '',
         }
     }
 
     static contextType = UserContext;
 
-    actionHandler = (value) => {
+    componentDidMount = () => {
         const newState = { ...this.state };
-        newState.component = value;
+        if (!!this.userMenuOptions[this.active]) {
+            newState.component = this.userMenuOptions[this.active];
+            newState.name = this.active;
+
+        } else {
+            newState.component = <MyRooms />
+            newState.name = 'MyRooms'
+        }
+        this.setState(newState);
+    }
+
+    optionComponentHandle = (value) => {
+        const newState = { ...this.state };
+        newState.component = this.userMenuOptions[value];
+        newState.name = value;
+
         this.setState(newState);
     }
 
@@ -37,7 +62,8 @@ class Profile extends React.Component {
                         <ProfileCard
                             data={user}
                             buttonOnClick={logout}
-                            menuAction={this.actionHandler}
+                            activeMenu={this.state.name}
+                            componentMenu={this.optionComponentHandle}
                         />
                     </Side>
                     <Main>
